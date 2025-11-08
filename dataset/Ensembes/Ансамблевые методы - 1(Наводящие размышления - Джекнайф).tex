@@ -1,0 +1,700 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm, headheight=30pt]{geometry}
+\usepackage{amssymb}
+\usepackage{cmap}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\usepackage{subcaption}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+
+
+\sloppy
+
+
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmin}{Arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+\DeclareMathOperator*{\logloss}{logloss}
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+
+
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+
+\usepackage{textcase} 
+\usepackage{titlesec}
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Ансамбли моделей\\
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+
+\newpage
+%
+\pagestyle{empty}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+\section{Наводящие размышления}
+Здравствуйте, уважаемые слушатели. К настоящему моменту мы уже изучили некоторые приемы работы с данными: мы научились определять наиболее важные признаки, сокращать размерность данных, строить различные виды классификаторов, проводить регрессию, оценивать точность построенной модели и многое-многое другое. В то же время, при решении той или иной задачи, мы всегда исходили из следующей парадигмы: возьмем конкретный метод (или алгоритм), настроим его параметры на исходных данных, оценим точность и, если она неплоха, вуаля -- задача решена. Но насколько описанный подход является правильным и эффективным?
+
+К чему это мы ведем, спросите вы? А к тому, что ни один из методов машинного обучения, конечно же, не является полностью универсальным. Каждый из них хорошо работает на конкретных данных, в конкретной ситуации, и надеяться, что он сработает, причем хорошо, на любых данных, достаточно наивно. Да и большинство алгоритмов разработано в предположении, что данные удовлетворяют достаточно большому набору весьма синтетических условий, что на практике встречается, увы, редко.
+ 
+В этой лекции мы будем говорить об ансамблях, или композициях моделей. Идея ансамблей совершенно не нова и знакома каждому из нас, а на бытовом уровне может быть описана следующим образом: <<собери как можно больше мнений об одном и том же от разных специалистов, а затем, основываясь на новых данных, согласно какому-то правилу прими окончательное решение>>. В этой фразе, применительно к машинному обучению, специалисты -- это различные алгоритмы, обученные на одних и тех же данных, а правило -- это окончательное решение, принятое по набору предсказанных ответов. Подробнее обо всех этом мы поговорим чуть позже.
+
+Еще один из способов понять идею ансамблей -- басня о слепцах и слоне\footnote{Elephant and blind sages by Blanca Marti for Equilibre. \\ https://wildequus.org/2014/05/07/sufi-story-blind-men-elephant/}, в которой у каждого из слепцов имеется свое описание слона, причем верное, но очень однобокое. Куда лучше было бы собраться вместе и обсудить их расхождения до того, как прийти к окончательному выводу. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{elephant.png}
+\caption{The Blind Men and the Elephant.}
+\label{elephant}
+\end{figure}
+
+Итак, мотивации к изучению вроде бы достаточно, но есть одно но: для обучения разных моделей, нам желательно иметь разные данные, что бывает редко, ведь обычно мы имеем дело лишь с одной выборкой. Но может быть из этой выборки мы можем получать какие-то другие, так называемые псевдовыборки? С обсуждения этого вопроса, относящегося чисто к статистике, мы и начнем.
+
+ 
+\section{Повторные выборки (Ресемплинг)}
+\subsection{Введение}
+Итак, как мы уже поняли, многие методы машинного обучения основаны на аппарате математической статистики. Но чем же занимается статистика? Статистика, как мы знаем, занимается оценкой различных характеристик генеральной совокупности. Естественно, чтобы что-то делать с этими характеристиками на практике, получать их конкретные значения, изучать, сравнивать и применять в конкретных прикладных задачах, статистический аппарат нуждается в хлебе -- в <<проявлениях>> генеральной совокупности -- в выборке. Методы ресемплинга, о которых пойдет речь далее, как раз-таки помогают (что, наверное, понятно и из названия) получать какие-то выборки. Но какие?
+
+Перед тем как сказать какие (и привести примеры конкретных методов), давайте все-таки начнем сначала и ответим себе на вопрос: а что такое методы ресемплинга, и зачем они нужны? Методы ресемплинга, или методы получения повторных выборок, -- это статистические методы, позволяющие из данной нам выборки сгенерировать некоторым образом множество новых выборок. Зачем? Это хороший вопрос, который мы подробно осветим чуть позже, а сейчас ответим чисто практически -- ради более высокой точности оценки. Ведь дальнейший план таков: на каждой полученной выборке мы вычисляем интересующую нас статистику, полученные значения как-то усредняем и в итоге получаем величину, которая оказывается не хуже, чем та, что просто вычислена на всей исходной выборке.
+
+ По сути дела, методы ресемплинга -- это методы моделирования поведения генеральной совокупности на основе какой-то выборки из нее. Еще раз подчеркнем: в отличие от методов, обсуждаемых ранее, новые выборки берутся не из генеральной совокупности, а формируются из исходной выборки, взятой из генеральной совокупности. Кстати, этот прием для нас не нов. Кросс-валидация, о которой велись разговоры ранее -- это ровно-таки один из методов ресемплинга.
+ 
+ Теперь поподробнее остановимся на вопросе: зачем? Чем плоха исходная выборка? В принципе, ничем не плоха, но на практике то и дело сталкиваешься со следующими проблемами (перечислим только некоторые из них):
+ \begin{enumerate}
+ 	\item Ошибочность предположения о распределении генеральной совокупности. Многие методы статистики основаны на каких-то предположениях о распределении генеральной совокупности. Но если предположение неверно или размер выборки мал (что может случаться по совершенно разным причинам), то параметрические методы, основанные на теоретических хорошо изученных распределениях, вряд ли сильно нам помогут. В такой ситуации может быть вообще лучше рассмотреть так называемую <<непараметрическую>> модель.
+ 	\item Неслучайные выборки. Классическое, <<стерильное>> предположение многих методов статистики -- это случайность выборки. Однако бывают ситуации, когда выборка вовсе не случайна, ведь на практике их получать намного быстрее и даже дешевле (как, например, <<self-selected samples>>). Ну и как тут применять изученные математические догмы?
+ 	\item Маленький объем выборки. Для получения адекватных результатов во многих статистических методах требуется, чтобы объем выборки был достаточно велик (ведь результаты обычно асимптотические, когда $n \to + \infty$). Если же выборка имеет маленьких объем, то методы либо не работают вовсе, либо очень неточны.
+ 	\item Невозможность в явном виде вычислить интересующие характеристики той или иной статистики. 
+ \end{enumerate}
+Чтобы осветить последний пункт более подробно, остановимся вот на каком чисто теоретическом примере. Пусть $X_1$, $X_2$, $\ldots$, $X_n$ -- выборка объема $n$ из генеральной совокупности, имеющей равномерное распределение ${\mathsf U}_{0,\theta}$ на отрезке $[0,\,\theta]$, где $\theta > 0$. Как оценить параметр $\theta$? 
+
+Как известно, математическое ожидание случайной величины $\xi$, имеющей равномерное распределение ${\mathsf U}_{a,b}$ на отрезке $[a, b]$ -- это
+$$
+{\mathsf E} \xi = \frac{a+b}{2}.
+$$
+Значит, для случайной величины $\xi$, имеющей распределение $\mathsf U_{0, \theta}$,
+$$
+\mathsf E \xi = \frac{\theta}{2} \Rightarrow \theta = 2 \mathsf E \xi.
+$$
+
+В то же время прекрасно известно, что хорошей оценкой математического ожидания случайной величины, имеющей какое угодно распределение, является выборочное среднее $\overline{X}$. Тогда, в качестве оценки параметра $\theta$ можно предложить следующую статистику:
+$$
+\widehat \theta = 2 \overline{X}.
+$$
+Для написанной статистики можно вычислить все основные характеристики: математическое ожидание (или среднее), дисперсию, среднеквадратическое отклонение, можно построить асимптотический доверительный интервал и многое-многое другое. 
+
+\begin{remark}
+На самом деле более хорошей оценкой (оценкой максимального правдоподобия) параметра $\theta$ является $n$-ый член вариационного ряда $X_{(n)}$, то есть 
+$$
+\widehat \theta = X_{(n)},
+$$	
+для которой тоже можно вычислить все перечисленные выше характеристики, но это технически сложнее и не пригодится нам в канве дальнейшего изложения.
+\end{remark}
+
+С другой стороны, если использовать достаточно известный метод моментов, то для параметра $\theta$ можно предложить и другие оценки, например такую:
+$$
+\widehat \theta = \sqrt{3 \cdot \overline{X^2}} = \sqrt{3 \cdot \frac{X_1^2+ \ldots +X_n^2}{n}}.
+$$
+Для написанной статистики аналитически получить математическое ожидание или дисперсию -- задача совершенно не простая. Тут и пригождаются методы ресемплинга. Методы, которые мы будем рассматривать -- это джекнайф (<<складной нож>>, англ. Jackknife) и бутстрэп (от англ. bootstrap).
+
+\subsection{Джекнайф}
+\subsubsection{Немного о самом методе}
+Метод Джекнайф -- это один из методов ресемплинга. Изначально его разработал  Морис Анри Кенуилль (Maurice Henri Quenouille) для корректировки смещения статистики $\widehat{\theta}$ для малого числа $n$. Лишь позже Джон Тьюки (John Wilder Tukey) обнаружил, что метод может применяться для построения достаточно точных характеристик статистики $\widehat \theta$, даже для построения доверительных интервалов. Именно поэтому метод носит название (которое и предложил Тьюки) того самого швейцарского ножа — универсального инструмента, заменяющего собой целый набор приспособлений. В своей сути метод складного ножа призван заменить различные частные методы и свести их к одному. 
+
+Итак, перейдем непосредственно к методу. Предположим, что в результате эксперимента мы наблюдаем выборку $X_1, X_2, ..., X_n$ объема $n$ из генеральной совокупности $\xi$.
+\begin{remark}
+Под выборкой $X_1, X_2, ..., X_n$ из генеральной совокупности $\xi$ мы классически понимаем набор независимых (в совокупности) случайных величин, одинаково распределенных с $\xi$.
+\end{remark}
+Теперь опишем, как множатся выборки при использовании метода складного ножа. Начнем с основного определения.
+\begin{definition}
+Джекнайф-выборками $X_{[1]}, X_{[2]}, ..., X_{[n]}$ называются наборы, формируемые из исходной выборки следующим образом:
+$$
+X_{[i]} = (X_1, ..., X_{i - 1}, X_{i+1}, ..., X_n).
+$$
+\end{definition}
+Иными словами, $i$-ая джекнайф-выборка получается из исходной удалением $i$-ого элемента. Обратите внимание: вместо одной выборки мы получили сразу $n$ псевдовыборок.
+
+Пусть теперь $\theta$ -- это некоторая характеристика генеральной совокупности, а 
+$$
+\widehat \theta = \widehat \theta_n(X_1, X_2, ..., X_n)
+$$ 
+-- ее оценка по выборке $X_1, X_2, ..., X_n$. Введем напрашивающееся определение.
+\begin{definition}
+Частичной оценкой $\widehat \theta_{(-i)}$, $i \in \{1, 2, ..., n\}$ параметра $\theta$ на джекнайф-выборке $X_{[i]}$ называется статистика
+$$
+\widehat \theta_{(-i)} = \widehat \theta_{n-1} \left(X_{[i]}\right) = \widehat \theta_{n-1}(X_1, ..., X_{i-1}, X_{i+1}, ..., X_n).
+$$
+\end{definition}
+Итак, вместо одной оценки интересующей характеристики по исходной выборке, мы получили $n$ частичных оценок. Поясним сказанное выше на примере.
+\begin{example}
+Пусть параметр $\theta$ -- математическое ожидание генеральной совокупности. Как обычно, не имея никаких дополнительных сведений о распределении, в качестве его оценки резонно рассмотреть выборочное среднее
+$$
+\widehat \theta = \overline{X_n} = \frac{1}{n} \sum_{i=1}^n X_i.
+$$
+Тогда частичная оценка $\widehat \theta_{(-i)}$, $i \in \{1, 2, ..., n\}$ параметра $\theta$ на джекнайф-выборке $X_{[i]}$ -- это статистика
+$$
+\widehat \theta_{(-i)} = \overline{(X_{[i]})_{n-1}} = \frac{1}{n-1} \sum_{j=1, \ j \neq i}^{n} X_j.
+$$
+Полученная статистика есть не что иное, как выборочное среднее $i$-ой джекнайф-выборки.
+\end{example}
+Для удобства дальнейших выкладок, введем следующее обозначение для среднего арифметического частичных оценок:
+$$
+\widehat \theta_{(\bullet)} = \frac{1}{n}\sum\limits_{i = 1}^n \widehat \theta_{(-i)}.
+$$
+Для того чтобы дать определение джекнайф-оценки, введем понятие псевдозначения.
+\begin{definition}
+Величина
+$$
+\widetilde \theta_i = n \widehat \theta_n - (n - 1) \widehat \theta_{(-i)}, \quad i \in \{1, 2, ..., n\}
+$$	
+называется $i$-ым псевдозначением параметра $\theta$, построенным по джекнайф-выборке $X_{[i]}$.
+\end{definition}
+Теперь должно быть понятно, как определяется джекнайф-оценка.
+\begin{definition}
+Джекнайф-оценкой $\widehat \theta_{jack}$ параметра $\theta$ называется величина
+$$
+\widehat \theta_{jack} = \frac{1}{n}\sum\limits_{i = 1}^n \widetilde \theta_i.
+$$	
+\end{definition}
+\begin{remark}
+Перепишем последнее определение в несколько другой форме. Так как $\widetilde \theta_i = n \widehat \theta_n - (n - 1) \widehat \theta_{(-i)}$, то
+$$
+\widehat\theta_{jack} = \frac{1}{n}\sum\limits_{i = 1}^n \widetilde \theta_i = \frac{1}{n}\sum\limits_{i = 1}^n \left( n \widehat \theta_n - (n - 1) \widehat \theta_{(-i)} \right) = 
+$$
+$$
+= n \widehat \theta_n - \frac{n - 1}{n}\sum\limits_{i = 1}^n \widehat \theta_{(-i)} = n \widehat \theta_n - (n-1)\widehat \theta_{(\bullet)}.
+$$
+В итоге, джекнайф-оценка параметра $\theta$ -- это $n$ исходных оценок на выборке $X_1, X_2, ..., X_n$ минус $(n-1)$ среднее арифметическое частичных оценок.
+\end{remark}
+\begin{example}
+Рассмотрим пример вычисления оценки методом джекнайф на конкретной выборке. Пусть $X = (1, 4, 7, 9)$ -- выборка объема $4$, $\theta$ -- неизвестное математическое ожидание генеральной совокупности. Оценим его, используя выборочное среднее $\overline{X}$, то есть $\widehat \theta = \overline{X}$.
+Тогда получим, что
+$$
+\widehat \theta = \frac{1+4+7+9}{4} = 5.25.
+$$
+Джекнайф-выборка $X_{[1]}$ состоит из следующих элементов:
+$$
+X_{[1]} = (4, 7, 9),
+$$
+а частичная оценка, посчитанная по нему, равна:
+$$
+\widehat \theta_{(-1)} = \widehat \theta (X_{[1]}) = \frac{4+7+9}{3} = \frac{20}{3}.
+$$
+Тогда первое псевдозначение может быть найдено, как
+$$
+\widetilde \theta_1 = 4 \cdot 5.25 - 3 \cdot \frac{20}{3} = 1.
+$$
+Аналогично определяются оставшиеся джекнайф-выборки:
+$$
+X_{[2]} = (1, 7, 9), \quad X_{[3]} = (1, 4, 9), \quad X_{[4]} = (1, 4, 7),
+$$
+затем по ним вычисляются частичные оценки
+$$
+\widehat \theta_{(-2)} = \frac{17}{3}, \quad \widehat \theta_{(-3)} = \frac{14}{3},\quad \widehat \theta_{(-4)} = 4,
+$$
+и, в конце концов, по ним вычисляются и псевдозначения:
+
+$$
+\widetilde \theta_{2} = 4, \quad \widetilde \theta_{3} = 7, \quad \widetilde \theta_{4} = 9,
+$$
+Как мы видим, полученные псевдозначения совпадают с элементами исходной выборки, поэтому оценка $\widehat \theta_{jack}$ будет совпадать с исходной оценкой $\widehat \theta = \overline{X}$:
+$$
+\widehat \theta_{jack} = \frac{1}{4}\sum\limits_{i = 1}^n \widetilde \theta_i = \frac{1 + 4 + 7 + 9}{4} = 5.25 = \overline{X}.
+$$
+\end{example}
+Оказывается, справедлив и более общий факт: выборочное среднее инвариантно относительно метода джекнайф.
+\begin{example}
+	Пусть $\theta$ -- неизвестное математическое ожидание генеральной совокупности. Для его оценки, как уже было сказано много раз, удобно использовать выборочное среднее $\overline{X}$. Тогда
+	$$
+	\widehat \theta_n = \overline{X},
+	$$
+	$$
+	\widehat \theta_{(\bullet)} = \frac{1}{n} \sum\limits_{i = 1}^n \widehat \theta_{(-i)} = \frac{1}{n}\sum\limits_{i = 1}^n \frac{1}{n-1}\sum\limits_{j = 1, \ j \neq i}^n X_j = 
+	$$
+	$$
+	= \frac{1}{n(n-1)}\left((n-1)X_1 + (n-1)X_2 + ... +(n-1)X_n\right) = \frac{1}{n}\sum\limits_{i = 1}^n X_i = \overline{X},
+	$$
+откуда 
+$$
+\widehat\theta_{jack} = n \widehat \theta_n - (n-1)\widehat \theta_{(\bullet)} = n\overline{X} - (n-1)\overline{X} = \overline{X}.
+$$
+и джекнайф-оценка совпадает с исходной. 
+\end{example}
+На самом деле легко понять, что справедливо и более общее утверждение.
+\begin{lemma}
+Пусть дана выборка $X_1, X_2, ..., X_n$ и функция $f: \mathbb R \to \mathbb{R}$. Если оценка параметра $\theta$ имеет вид
+$$
+\widehat \theta = \widehat \theta_n(X_1, X_2, ..., X_n) = \frac{1}{n}\sum\limits_{i = 1}^n f(X_i),
+$$	
+то
+$$
+\widehat\theta_{jack} = \widehat \theta.
+$$
+\end{lemma}
+
+\begin{proof}
+Доказательство проводится напрямую. Проведем его, чтобы еще раз повторить введенные обозначения.
+$$
+\widehat \theta_{(\bullet)} = \frac{1}{n}\sum\limits_{i = 1}^n \widehat \theta_{(-i)} = \frac{1}{n}\sum\limits_{i = 1}^n\frac{1}{n - 1}\sum\limits_{j = 1, \ j \neq i}^n f(X_j) = 
+$$
+$$
+= \frac{1}{n(n-1)}\left((n-1)f(X_1) + (n-1)f(X_2) + ... +(n-1)f(X_n) \right) = 
+$$
+$$
+= \frac{1}{n}\sum\limits_{i = 1}^n f(X_i) = \widehat \theta_n.
+$$
+Но тогда
+$$
+\widehat\theta_{jack} = n\widehat \theta_n - (n-1) \widehat \theta_{(\bullet)} = n \widehat \theta_n - (n-1) \widehat \theta_n = \widehat \theta_n.
+$$
+\end{proof}
+
+Из этой теоремы следует, что для оценок, скажем, моментов случайной величины, метод складного ножа не дает ничего нового, ведь оценка $k$-ого момента имеет вид
+$$
+\widehat \theta = \widehat \theta_n(X_1, X_2, ..., X_n) = \frac{1}{n}\sum\limits_{i = 1}^n X_i^k
+$$
+и попадает под условие теоремы, если взять $f(x) = x^k$. 
+
+В то же время, если рассматриваемая статистика $\widehat \theta$ имеет более сложную структуру, метод джекнайф позволяет уменьшить ее смещение, если оно есть. Поговорим об этом подробнее. 
+\subsubsection{Джекнайф-оценка смещения}
+Итак, приступим к изучению свойств джекнайф-оценки. Так как
+$$
+\widehat\theta_{jack} = n\widehat \theta_n - (n-1) \widehat \theta_{(\bullet)}, 
+$$
+то резонно рассмотреть величину
+$$
+\widehat\theta_{jack} - \widehat\theta_n = (n-1)(\widehat \theta_n - \widehat \theta_{(\bullet)}),
+$$
+которая показывает отклонение выбранной оценки от джекнайф-оценки.
+\begin{definition}
+	Величина
+$$
+\widehat{\mathsf{bias}}_{jack} = (n-1)(\widehat \theta_n - \widehat \theta_{(\bullet)})
+$$
+называется джекнайф-оценкой смещения статистики $\widehat \theta_n$.
+\end{definition}
+Логично полагать, что если изначальная оценка была несмещенная, то и получившаяся оценка должна оставаться несмещенной. Это и правда так.
+\begin{lemma}
+Пусть $\widehat \theta_n$ -- несмещенная оценка параметра $\theta$, то есть 
+$$
+\mathsf E_\theta \widehat \theta_n = \theta.
+$$
+Тогда $\widehat\theta_{jack}$ -- тоже несмещенная оценка параметра $\theta$.
+\end{lemma}
+
+\begin{proof}
+Так как 
+$$
+\widehat\theta_{jack} - \widehat{\theta_n} = (n-1)(\widehat \theta_n - \widehat \theta_{(\bullet)}) = \widehat{\mathsf{bias}}_{jack},
+$$
+то
+$$
+\widehat\theta_{jack} = \widehat \theta_n + \widehat{\mathsf{bias}}_{jack}.
+$$	
+Тогда
+$$
+\mathsf E_{\theta} \widehat\theta_{jack} = \mathsf E_\theta \widehat \theta_n + \mathsf E_\theta \widehat{\mathsf{bias}}_{jack} = \theta + \mathsf E_\theta \widehat{\mathsf{bias}}_{jack},
+$$
+где последнее равенство справедливо в силу несмещенности оценки $\widehat \theta_n$. Но 
+$$
+\mathsf E_\theta \widehat{\mathsf{bias}}_{jack} = \mathsf E_\theta\left( (n-1)(\widehat \theta_n - \widehat \theta_{(\bullet)})\right) = (n-1)(\mathsf E_\theta \widehat \theta_n - \mathsf E_\theta \widehat \theta_{(\bullet)}) = 
+$$
+$$
+= (n - 1)\left(\theta - \mathsf E_\theta \widehat \theta_{(\bullet)}\right).
+$$
+В то же время,
+$$
+\mathsf E_\theta \widehat \theta_{(\bullet)} = \mathsf E_\theta \left(\frac{1}{n}\sum\limits_{i = 1}^n\widehat \theta_{(-i)}\right) = \frac{1}{n}\sum\limits_{i = 1}^n \mathsf E_{\theta}\widehat \theta_{(-i)} = \theta.
+$$
+Значит, в предположении несмещенности $\widehat \theta_n$, получаем, что $\mathsf E_\theta \widehat{\mathsf{bias}}_{jack} = 0$. А тогда $\mathsf E_{\theta} \widehat\theta_{jack} = \theta$.
+\end{proof}
+
+Что же происходит с оценкой, если она смещенная? Давайте для примера рассмотрим оценку $S^2$ выборочной дисперсии
+$$
+S^2 = \frac{1}{n}\sum\limits_{i = 1}^n (X_i - \overline{X})^2.
+$$
+Как мы знаем, она смещенная, причем если дисперсия генеральной совокупности $\mathsf D \xi$ равна $\sigma^2$, то
+$$
+\mathsf E S^2 = \frac{n - 1}{n}\sigma^2,
+$$
+а значит смещение, то есть разность между математическим ожиданием оценки и истинным значением параметра, равно
+$$
+\mathsf E S^2 - \sigma^2 = -\frac{\sigma^2}{n},
+$$
+и смещение убывает с ростом объема выборки $n$ со скоростью $n^{-1}$. Теперь вычислим смещение оценки, построенной методом складного ножа. Так как
+$$
+\mathsf E_\theta \widehat{\mathsf{bias}}_{jack} = (n - 1)\left(\mathsf E_\theta \widehat \theta_n - \mathsf E_\theta \widehat \theta_{(\bullet)} \right) = (n-1)\left(\frac{n-1}{n}\sigma^2 - \frac{1}{n}\sum\limits_{i = 1}^n \frac{n - 2}{n - 1}\sigma^2\right) = 
+$$
+$$
+= (n-1)\sigma^2\left(\frac{n - 1}{n} - \frac{n - 2}{n - 1} \right) = \frac{\sigma^2}{n},
+$$
+то в итоге
+$$
+\mathsf E_\theta \widehat\theta_{jack} = \mathsf E_\theta \widehat \theta_n + \mathsf E_\theta \widehat{\mathsf{bias}}_{jack} = \frac{n - 1}{n}\sigma^2 + \frac{\sigma^2}{n} = \sigma^2.
+$$
+И какой вывод? А такой, что джекнайф-оценка, построенная по оценке $S^2$ оказывается несмещенной. Можно показать, что она совпадает с несмещенной оценкой $S_0^2$, равной, как известно,
+$$
+\widehat\theta_{jack} = S_0^2 = \frac{1}{n - 1}\sum\limits_{i = 1}^n (X_i - \overline{X})^2.
+$$
+\begin{example}
+Пусть известно, что генеральная совокупность $\xi$ имеет распределение $\mathsf U_{\theta, \theta + 1}$ с неизвестным параметром $\theta$. Тогда оценка параметра $\theta$ (согласно методу максимального правдоподобия) по выборке $X_1, X_2, ..., X_n$ задается следующим аналитическим выражением:
+$$
+\widehat \theta = \widehat{\theta}_n(X_1, X_2, ..., X_n) = X_{(1)},
+$$
+где $X_{(1)}$ -- первый член построенного по выборке вариационного ряда.
+Пусть $\theta = 2.5$, а набор
+$$
+(2.60, 3.26, 2.75, 2.64, 2.83, 2.58, 3.17, 3.31, 3.48, 3.14),
+$$
+-- выборка объема $10$ из равномерного распределения $\mathsf U_{2.5, 3.5}$, элементы которой округлены до сотых. По данной выборке, согласно выбранной статистике, $\theta$ оценивается через минимальный элемент исходной выборки:
+$$
+\widehat{\theta} = X_{(1)} = 2.58.
+$$
+Теперь сформируем $n = 10$ джекнайф-наборов. Первый набор $X_{[1]}$ будет состоять из следующих элементов (исключен первый элемент из исходной выборки):
+$$
+(3.26, 2.75, 2.64, 2.83, 2.58, 3.17, 3.31, 3.48, 3.14),
+$$
+Найдем частичную оценку $\widehat \theta_{(-1)}$, которая, по сути, выдает минимальный элемент набора $X_{[1]}$. Тогда 
+$$
+\widehat \theta_{(-1)} = 2.58.
+$$ 
+Выполнив аналогичные шаги для оставшихся девяти псевдовыборок получим, что джекнайф-оценка будет равна:
+$$
+\widehat \theta_{jack}= n \widehat{\theta}_1 - (n-1) \frac{1}{n}\sum\limits_{i = 1}^n \widehat \theta_{(-i)} \approx 2.56.
+$$
+Как видим, полученная джекнайф-оценка оказалась ближе к истинному значению $\theta = 2.5$, нежели исходная. 
+
+Проведем моделирование для выборок большего объема. Из рисунка \ref{jack_uniform_x_1} можно заметить, что обе оценки приближаются к истинному значению $\theta$ с ростом объема выборки $n$. Однако исходная оценка $\widehat{\theta} = X_{(1)}$ (синие точки на рисунке) всегда оказывается больше истинного значения, равного $2.5$ (ему отвечает зеленая прямая). Джекнайф-оценки же располагаются по разные стороны от истинного значения и в большинстве своем находятся ближе к истинному значению, чем исходные. 
+
+В итоге мы исправили смещение со <<всегда положительного>> до <<меньшего и разного по знаку>>. Смысл проделанного может быть описан на таком бытовом примере: если весы в магазине ошибаются, но всегда в пользу покупателя (то есть показывают меньшую массу, чем есть на самом деле), то при каждой покупке магазин несет убытки. Если же весы периодически <<играют>> в пользу магазина, а периодически -- в пользу покупателя, то в среднем не проигрывает никто.
+
+\begin{figure}[h!]
+	\centering\includegraphics[width=1\linewidth]{jack_uniform_x_1.png}
+	\caption{Зависимость оценок $\widehat{\theta_1}$ и $\widehat{\theta}_{(jack)}$ от объема выборки $n$}
+		\label{jack_uniform_x_1}
+\end{figure}
+\end{example}
+
+
+Оказывается, справедливо и более общее утверждение.
+\begin{theorem}
+Пусть $\widehat \theta = \widehat \theta_n(X_1, X_2, ..., X_n)$ -- оценка параметра $\theta$, причем
+$$
+\mathsf E_\theta \widehat\theta = \theta + \frac{a_1(\theta)}{n} + \frac{a_2(\theta)}{n^2} + O(n^{-3}).
+$$	
+Тогда
+$$
+\mathsf E_\theta \widehat\theta_{jack} = \theta - \frac{a_2(\theta)}{n(n-1)} + O(n^{-2}).
+$$
+\end{theorem}
+Иными словами, теорема утверждает, что если смещение $\mathsf E_\theta \widehat \theta - \theta$ убывало с ростом $n$ со скоростью $n^{-1}$, то смещение джекнайф-оценки станет убывать со скоростью $n^{-2}$.
+\begin{proof}
+
+Вычислим 
+	$$
+	\mathsf E_\theta \widehat{\mathsf{bias}}_{jack} = (n-1)\left(\mathsf E_\theta \widehat \theta_n - \mathsf E_\theta \widehat \theta_{(\bullet)} \right).
+	$$
+Так как 
+$$
+\mathsf E_\theta \widehat \theta_{(-i)} = \theta + \frac{a_1(\theta)}{n - 1} + \frac{a_2(\theta)}{(n-1)^2} + O(n^{-3}),
+$$
+то
+$$
+\mathsf E_\theta \widehat \theta_{(\bullet)} = \frac{1}{n}\sum\limits_{i = 1}^n\left(\theta + \frac{a_1(\theta)}{n - 1} + \frac{a_2(\theta)}{(n-1)^2} + O(n^{-3}) \right) = \theta + \frac{a_1(\theta)}{n - 1} + \frac{a_2(\theta)}{(n-1)^2} + O(n^{-3}).
+$$
+Тогда
+$$
+\mathsf E_\theta \widehat{\mathsf{bias}}_{jack} = (n-1)\left(a_1(\theta)\left(\frac{1}{n} - \frac{1}{n - 1}\right) + a_2(\theta)\left(\frac{1}{n^2} - \frac{1}{(n-1)^2} \right) + O(n^{-3}) \right) = 
+$$
+$$
+= -\frac{a_1(\theta)}{n} - \frac{(2n - 1)a_2(\theta)}{n^2(n-1)} + O(n^{-2}).
+$$
+В итоге,
+$$
+\mathsf E_\theta \widehat\theta_{jack} = \mathsf E_\theta \widehat\theta + \mathsf E_\theta \widehat{\mathsf{bias}}_{jack} = 
+$$
+$$
+= \theta + \frac{a_1(\theta)}{n} + \frac{a_2(\theta)}{n^2} + O(n^{-3})-\frac{a_1(\theta)}{n} - \frac{(2n - 1)a_2(\theta)}{n^2(n-1)} + O(n^{-2}) = 
+$$
+$$
+ = \theta -\frac{a_2(\theta)}{n(n-1)}+O(n^{-2}).
+$$
+\end{proof}
+
+Итак, джекнайф-оценка позволяет корректировать смещение, ускоряя его стремление к нулю.
+
+
+\begin{remark}
+Полезно также заметить, что условие на математическое ожидание, сформулированное в теореме, встречается на практике достаточно часто. В частности, как уже упоминалось,
+$$
+S^2 = \frac{n - 1}{n}\sigma^2 = \sigma^2 - \frac{\sigma^2}{n}
+$$
+удовлетворяет условию теоремы. В данном случае $a_1(\theta) = -\sigma^2$ (так как параметром является именно $\sigma$, ну или $\sigma^2$), а $a_2(\theta) = 0$. Как мы убедились выше, джекнайф-оценка, построенная на основе $S^2$, оказывается несмещенной и совпадает с $S_0^2$.
+\end{remark}
+
+\subsubsection{Джекнайф-оценка дисперсии}
+Оценим дисперсию $\widehat \theta_n$. Ясно, что несмещенная выборочная дисперсия псевдозначений, определяемых равенствами
+$$
+\widetilde \theta_i = n\widehat \theta_n - (n-1)\widehat \theta_{(-i)},
+$$
+равна
+$$
+S_0^2(\widetilde \theta) = \frac{1}{n - 1}\sum\limits_{i = 1}^n (\widetilde \theta_i - \widehat\theta_{jack})^2,
+$$
+так как
+$$
+\widehat\theta_{jack} = \frac{1}{n}\sum\limits_{i = 1}^n \widetilde \theta_i.
+$$
+\begin{definition}
+	Джекнайф-оценкой дисперсии $\widehat \theta_n$ называют величину
+	$$
+	\widehat{\mathsf{Var}}_{jack} = \frac{S_0^2(\widetilde{\theta})}{n} = \frac{1}{n(n - 1)}\sum\limits_{i = 1}^n (\widetilde \theta_i - \widehat\theta_{jack})^2.
+	$$
+\end{definition}
+\begin{remark}
+Заметим, что в случае, когда $\theta$ -- это математическое ожидание генеральной совокупности, а в качеств его оценки берется $\widehat \theta = \widehat \theta_n(X_1, X_2, ..., X_n) = \overline{X}$, то
+$$
+\widetilde \theta_i = (X_1 + X_2 + ... +X_n) - (X_1 + ... + X_{i -1} + X_{i+1} + ... + X_n) = X_i.
+$$ 	
+Кроме того, как было вычислено ранее,
+$$
+\widehat\theta_{jack} = \overline{X},
+$$
+а значит
+$$
+\widehat{\mathsf{Var}}_{jack} = \frac{1}{n(n-1)}\sum\limits_{i = 1}^n (X_i - \overline{X})^2 = \frac{\sigma^2}{n} = \mathsf D_\theta \overline{X}.
+$$
+\end{remark}
+Оказывается, выражение для джекнайф-оценки дисперсии может быть переписано следующим образом:
+$$
+\widehat{\mathsf{Var}}_{jack} = \frac{1}{n(n - 1)}\sum\limits_{i = 1}^n (\widetilde \theta_i - \widehat\theta_{jack})^2 = \frac{n - 1}{n}\sum\limits_{i = 1}^n \left(\widehat \theta_{(-i)} - \widehat \theta_{(\bullet)} \right)^2.
+$$
+Без дополнительных пояснений отметим, что в случае, если $\theta_n$ удовлетворяет достаточно регулярным условиям, например, если $\theta_n$ -- гладкая функция выборочного среднего $\overline{X}$, то джекнайф-оценка дисперсии $\widehat \theta_n$ является состоятельной. Если же изначальная статистика не является гладкой, как, например, выборочная медиана, то джекнайф использовать совершенно бесполезно -- его оценки почти наверняка будут несостоятельны.

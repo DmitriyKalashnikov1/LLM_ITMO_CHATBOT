@@ -1,0 +1,534 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm, headheight=30pt]{geometry}
+\usepackage{amssymb}
+\usepackage{cmap}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\usepackage{subcaption}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+
+
+\sloppy
+
+
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmin}{Arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+\DeclareMathOperator*{\logloss}{logloss}
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+
+
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+
+\usepackage{textcase} 
+\usepackage{titlesec}
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Ансамбли моделей\\
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+
+\newpage
+%
+\pagestyle{empty}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+\section{Многоклассовая классификация}
+Еще одним важным разделом, который мы до сих пор толком не обсудили, является многоклассовая классификация с использованием алгоритмов логистической регрессии или SVM. На самом деле, некоторые подходы к решению этой задачи мы уже осветили, когда рассматривали алгоритмы и ансамбли несколько ранее. 
+
+Итак, вопрос следующий: как уже изученные методы двухклассовой классификации применить в том случае, если классов больше? На самом деле, существует достаточно много способов сделать это -- мы перечислим лишь два самых популярных: один против всех и все против всех.
+
+\subsection{Один против всех (one-vs-all)}
+Начнем с подхода один против всех. Принцип, скорее всего, ясен из названия: так как мы умеем выполнять классификацию объекта к одному из двух возможных классов, то почему бы в случае, когда классов много, не обучить модель отвечать на вопрос: <<Принадлежит ли объект $m$-ому классу?>>, $m \in \{1, 2, ..., M\}$, а затем сформировать какое-то решающее правило на основе ответов алгоритма? 
+
+Озвученный подход, использующий двухклассовый классификатор, по своей сути, реализуется следующим образом: при обучении модели на определение принадлежности объекта к классу $m$, элементам $m$-ого класса устанавливается отклик <<$+1$>>, а всем остальным -- отклик <<$-1$>>. Перейдем к формальному алгоритму.
+
+\begin{enumerate}
+	\item Пусть решается задача $M$-классовой классификации, $Y = \{1, \ldots, M\}$, а $b_i(x)$, $i \in \{1, 2, ..., M\}$ -- базовые алгоритмы логистической регрессии, выдающие число в диапазоне $[0,1]$. Тогда для каждого $i \in \{1, 2, ..., M\}$
+	\begin{enumerate}
+	\item Всем объектам, принадлежащим классу $i$, назначить класс <<$+1$>>, остальным -- класс <<$-1$>>.
+	\item Обучить бинарный классификатор $b_i(x)$ на наборе данных с новыми откликами.
+	\end{enumerate}
+	\item Итоговый классификатор $a(x)$ будет выдавать класс, соответствующий номеру самого уверенного из бинарных классификаторов $b_i(x)$:
+$$
+a(x)=\argmax_{i \in \{1, 2, ..., M\}}  b_{i}(x).
+$$
+В случае, если подходит несколько значений $i$, можно присвоить объекту любой из подходящих классов, или фиктивный класс <<$0$>>.
+\end{enumerate}
+Ясно, что вместо базовых алгоритмов логистической регрессии можно использовать, например, базовые алгоритмы SVM или какие-то другие.
+\begin{remark}
+Иначе говоря, в случае, если классификатор строится на основе логистической регрессии, мы выбираем тот класс $i$, базовый алгоритм $b_i(x)$ на котором выдает наибольшую вероятность. Если рассматривается, например, SVM, то тот класс, на котором больше значение классификатора $b_i(x)$.
+\end{remark}
+\begin{remark}
+Конечно, описанное решающее правило -- лишь одно из возможных. Скажем, если логистическая регрессия при каждом $i$ выдает значение меньшее, чем $0.5$, то не всегда имеет  смысл присваивать объекту какой-то класс -- слишком уж большая <<неуверенность>>. В этом случае решающее правило можно поменять и алгоритм многоклассовой классификации $a(x)$ может быть, например, таким (с фиктивным классом <<$0$>> и принципом <<лучше промолчать, чем соврать>>):
+$$
+a(x)= \begin{cases}
+b(x), & b(x) \geq 0.5 \\
+0, & b(x) < 0.5
+\end{cases}, \quad 
+b(x)=\argmax_{i \in \{1, 2, ..., M\}}  b_{i}(x).
+$$
+Конечно, выбор решающего правила -- свобода и ответственность, предоставляемые исследователю.
+\end{remark}
+Простота описанного алгоритма влечет за собой и его недостатки. Например, при  обучении модели может оказаться, что все выборки имеют примерно равные объемы. Но тогда при обучении каждого алгоритма $b_i(x)$ представители отрицательного класса будут сильно перевешивать (хотя бы количеством) представителей положительного, тем самым положительный класс будет недооценен, и классификатор будет <<неуверенным>>. 
+
+\subsubsection{Пример}
+Применим алгоритм к уже знакомым данным о сладости и хрусткости различных продуктов. Как видно из таблицы, данные разделены на три класса. Кроме того, визуально, исходя из рисунка, понятно, что достаточно хорошо делятся на группы, так что алгоритм многоклассовой классификации, построенный на основе базовых алгоритмов логистической регрессии, должен показать себя не с худшей стороны.
+
+\begin{center}
+\captionof{table}{Тренировочные данные.} 
+\begin{tabular}{||p{3cm}|p{3cm}|p{3cm}|p{3cm}||} 
+\hline
+Продукт & Сладость & Хруст & Класс \\
+\hline\hline
+банан & 10 & 1 & фрукт\\
+\hline
+апельсин & 7 & 4 & фрукт\\
+\hline
+виноград & 8 & 3 & фрукт\\
+\hline
+креветка & 2 & 2 & протеин\\
+\hline
+бекон & 1 & 5 & протеин\\
+\hline
+орехи & 3 & 3 & протеин\\
+\hline
+сыр & 2 & 1 & протеин\\
+\hline
+рыба & 3 & 2 & протеин\\
+\hline
+огурец & 2 & 8 & овощ\\
+\hline
+яблоко & 9 & 8 & фрукт\\
+\hline
+морковь & 4 & 10 & овощ\\
+\hline
+сельдерей & 2 & 9 & овощ\\
+\hline
+салат айсберг & 3 & 7 & овощ\\
+\hline
+груша & 8 & 7 & фрукт\\
+\hline
+\end{tabular}
+\label{hrust}
+\end{center}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{4_dots.png}
+\caption{Визуализация значений таблицы.}
+\label{knn_data}
+\end{figure}
+
+Во-первых, для удобства занумеруем исходные классы следующим образом: фрукты -- 1, овощи -- 2, протеины -- 3.
+В таком случае, на первой итерации, при $i = 1$, мы будем обучать классификатор отличать фрукты от прочих объектов. На основе сформулированного в алгоритме правила, данным сначала назначается новый отклик $Y^\ast$. Результаты вы можете видеть в таблице \ref{data_k=1}.
+
+\begin{center}
+\captionof{table}{Итерация $k=1$.} 
+\begin{tabular}{||p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}||} 
+\hline
+Продукт & Сладость & Хруст & Класс $Y$ & Класс $Y^\ast$\\
+\hline\hline
+банан & 10 & 1 & 1 & $+1$\\
+\hline
+апельсин & 7 & 4 & 1 & $+1$\\
+\hline
+виноград & 8 & 3 & 1 & $+1$\\
+\hline
+креветка & 2 & 2 & 3 & $-1$\\
+\hline
+бекон & 1 & 5 & 3 & $-1$\\
+\hline
+орехи & 3 & 3 & 3 & $-1$\\
+\hline
+сыр & 2 & 1 & 3 & $-1$\\
+\hline
+рыба & 3 & 2 & 3 & $-1$\\
+\hline
+огурец & 2 & 8 & 2 & $-1$\\
+\hline
+яблоко & 9 & 8 & 1 & $+1$\\
+\hline
+морковь & 4 & 10 & 2 & $-1$\\
+\hline
+сельдерей & 2 & 9 & 2 & $-1$\\
+\hline
+салат айсберг & 3 & 7 & 2 & $-1$\\
+\hline
+груша & 8 & 7 & 1 & $+1$\\
+\hline
+\end{tabular}
+\label{data_k=1}
+\end{center}
+Обучив модель, используя алгоритм логистической регрессии, приходим к разделяющей прямой, задаваемой уравнением (коэффициенты округлены до сотых)
+$$
+-6.23 + 1.22 X_1 - 0.12 X_2 = 0.
+$$
+Аналогичные шаги проделываются при $i = 2$ и $i = 3$, что приводит нас к еще двум прямым, которые задаются уравнениями
+$$
+7.52 - 0.95 X_1 - 0.97 X_2 = 0,
+$$
+$$
+-5.53 - 0.57 X_1 + 1.09 X_2 = 0.
+$$
+Отобразив прямые на плоскости, легко увидеть, что каждая из построенных моделей справляется со своей задаче и не допускает ошибок на тренировочных данных.
+
+Теперь классификация нового, тестового наблюдения, не составляет труда: опираясь на алгоритм, необходимо выбрать тот класс, которому соответствует самый уверенный базовый классификатор. Возьмем объект <<Перец>> с координатами $(6,9)$, найдем значение $\Psi_i$ для каждого из классификаторов:
+$$
+\Psi_1 = -6.23 + 1.22 \cdot 6 - 0.12 \cdot 9 = 0.01.
+$$
+$$
+\Psi_2 = 7.52 - 0.95 \cdot 6 - 0.97 \cdot 9 = -6.91,
+$$
+$$
+\Psi_3 = -5.53 - 0.57 \cdot 6 + 1.09 \cdot 9 = 0.86.
+$$
+Теперь найдем вероятности отнесения объекта к классу <<плюс>> (каждый раз -- к своему), согласно формуле
+$$
+\mathsf{P}_{+}=\frac{1}{1+e^{-\Psi}}.
+$$
+Подставив в нее полученные значения, найдем вероятности отнесения объекта <<Перец>> к классам фрукты, протеины и овощи, соответственно:
+$$
+\mathsf{P}_{+}(\Psi_1)=\frac{1}{1+e^{-0.01}} \approx 0.503,
+$$
+$$ 
+\mathsf{P}_{+}(\Psi_2)=\frac{1}{1+e^{6.91}} \approx 0.001, 
+$$
+$$ 
+\mathsf{P}_{+}(\Psi_3)=\frac{1}{1+e^{-0.86}} \approx 0.703.
+$$
+В результате чего, <<Перец>> будет классифицирован, как овощ! 
+
+Отметим также, что если тестовый объект попадает в треугольник (на рисунке), образованный пересечением трех прямых, то классификация относительно каждого из обученных алгоритмов будет неуверенной (выдаваемые вероятности будут меньше, чем $0.5$), и именно для таких объектов следует обдумать финальное решение: классифицировать ли их вовсе.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{log_pred.png}
+\caption{Базовые модели логистических регрессий.}
+\end{figure}
+
+\subsection{Все против всех (all-vs-all)}
+Второй подход схож с предыдущим и основан все на том же умении определять принадлежность объекта к одному из двух классов. Однако, если раньше мы <<сталкивали>> каждый класс со всеми остальными, то теперь мы <<столкнем>> при обучении каждый класс с каждым. Перейдем к алгоритму.
+
+\begin{enumerate}
+	\item Пусть решается задача $M$-классовой классификации, $Y = \{1,2, ...,M\}$, $a(x)$ -- алгоритм бинарной логистической регрессии, выдающий класс <<$+1$>> или <<$-1$>>. Тогда для каждого $i, j \in  \{1, 2, ...,M\}$, $i < j$
+	\begin{enumerate}
+	\item Составить подвыборку $X_{ij}$ исходной выборки $X$, содержащую все объекты из классов $i$ и $j$.
+	\item Сопоставить элементам класса $i$ отклик <<$+1$>>, а элементам класса $j$ -- отклик <<$-1$>>. 
+	\item Обучить алгоритм $a(x)$ и создать новый алгоритм $a_{ij}(x)$ присваивающий корректные номера классам
+	$$
+	a_{ij}(x) = \begin{cases}
+ i, & a(x) = +1 \\
+ j, & a(x) = -1	
+ \end{cases}.
+	$$
+	\item Положить $a_{ji}(x) = a_{ij}(x)$, $a_{ii}(x) = 0$.
+\end{enumerate}
+\item Итоговый классификатор $a(x)$ выдает класс, соответствующий голосованию большинства среди всех обученных алгоритмов, то есть:
+$$
+a(x) = \argmax_{m \in \{1, 2, ..., M\}} \sum_{i=1}^K \sum_{j=1}^K \mathsf{I} (a_{ij}(X) = m).
+$$
+В случае, если подходит несколько значений $m$, можно присвоить объекту любой из подходящих классов, или фиктивный класс <<$0$>>.
+\end{enumerate}
+
+
+\subsubsection{Пример}
+Вернемся все к тем же данным, они представлены в таблице \ref{hrust}. Отклик состоит из трех уникальных значений: фрукты, овощи и протеины, а значит пары <<сталкиваемых>> классов такие: (фрукт, овощ), (фрукт, протеин), (овощ, протеин). 
+Составим подвыборку для первой пары (таблица \ref{frveg}).
+\begin{center}
+\captionof{table}{Обучающая подвыборка $X_\text{(фрукт, овощ)}$.} 
+\begin{tabular}{||p{3cm}|p{3cm}|p{3cm}|p{3cm}||} 
+\hline
+Продукт & Сладость & Хруст & Класс\\
+\hline\hline
+банан & 10 & 1 & фрукт\\
+\hline
+апельсин & 7 & 4 & фрукт\\
+\hline
+виноград & 8 & 3 & фрукт\\
+\hline
+огурец & 2 & 8 & овощ\\
+\hline
+яблоко & 9 & 8 & фрукт\\
+\hline
+морковь & 4 & 10 & овощ\\
+\hline
+сельдерей & 2 & 9 & овощ\\
+\hline
+салат айсберг & 3 & 7 & овощ\\
+\hline
+груша & 8 & 7 & фрукт\\
+\hline
+\end{tabular}
+\label{frveg}
+\end{center}
+Будем использовать логистическую регрессию в качестве алгоритма классификации, моделирование приводит к уравнению разделяющей прямой:
+$$
+-2.11 + 0.95 X_1 - 0.44 X_2 = 0,
+$$
+которая отделяет фрукты от овощей (ведь информация о протеинах, которым соответствуют светло-зеленые точки в левом нижнем углу, не была использована при обучении). Нормаль прямой имеет координаты $(0.95, -0.44)$, и указывает в сторону зеленых точек (фруктов). 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{log_all-vs-all.png}
+\caption{Тренировочные данные и регрессия для классов фрукты и овощи.}
+\end{figure}
+
+Аналогичным образом формируются подвыборки $X_\text{(фрукт, протеин)}$ и $X_\text{(овощ, протеин)}$, для которых получены уравнения следующих разделяющих прямых:
+$$
+-6.36 + 1.04 X_1 + 0.28 X_2 = 0,
+$$
+$$
+-6.96 + 0.33 X_1 + 1.07 X_2 = 0.
+$$
+Все прямые отображены на рисунке \ref{allvsall}. 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{log_all-vs-all_2.png}
+\caption{Тренировочные данные и базовые алгоритмы.}
+\label{allvsall}
+\end{figure}
+
+Теперь проверим нашу модель, возьмем объект <<Перец>> с координатами (6,9) и найдем значения $\Psi_i$ для каждого из классификаторов и соответствующие вероятности:
+$$
+\Psi_1 = -2.11 + 0.95 \cdot 6 - 0.44 \cdot 9 = - 0.37, \;
+\mathsf{P}_{+}(\Psi_1)=\frac{1}{1+e^{0.37}} \approx 0.41,
+$$
+$$
+\Psi_2 = - 6.36 + 1.04 \cdot 6 + 0.28 \cdot 9 = 2.4,\;
+\mathsf{P}_{+}(\Psi_2)=\frac{1}{1+e^{-2.4}} \approx 0.92,
+$$
+$$
+\Psi_3 = -6.96 + 0.33 \cdot 6 + 1.07 \cdot 9 = 4.65, \;
+\mathsf{P}_{+}(\Psi_3)=\frac{1}{1+e^{-4.65}} \approx 0.99.
+$$
+Итак, первая модель относит объект <<Перец>> к классу овощи ($\mathsf{P}_{+} < 0.5$), вторая модель к классу фруктов и третья к классу овощи. Таким образом класс <<овощ>> назначается объекту <<Перец>> большинством голосов. 
+
+\end{document}
+

@@ -1,0 +1,909 @@
+\documentclass[a4paper,14pt]{extarticle}
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm]{geometry}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{fancyvrb}
+\usepackage{fvextra}
+\usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+ 
+% Добавляем свои блоки
+ 
+\makeatletter
+\algblock[ALGORITHMBLOCK]{BeginAlgorithm}{EndAlgorithm}
+\algblock[BLOCK]{BeginBlock}{EndBlock}
+
+\makeatother
+ 
+% Нумерация блоков
+ 
+\usepackage{caption}% http://ctan.org/pkg/caption
+\captionsetup[ruled]{labelsep=period}
+\renewcommand{\thealgorithm}{\arabic{algorithm}}
+
+\sloppy
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+%ДЛЯ АЛГОРИТМОВ
+	% Перевод данных об алгоритмах
+	\renewcommand{\listalgorithmname}{Список алгоритмов}
+	\floatname{algorithm}{Алгоритм}
+	
+\algnewcommand{\Init}[1]{%
+  \State \textbf{Инициализировать:}
+  \Statex \hspace*{\algorithmicindent}\parbox[t]{.8\linewidth}{\raggedright #1}
+}
+
+	
+	% Перевод команд псевдокода
+	\algrenewcommand\algorithmicwhile{\textbf{Повторять пока }}
+	\algrenewcommand\algorithmicdo{\textbf{Выполнять}}
+	\algrenewcommand\algorithmicrepeat{\textbf{Повторять}}
+	\algrenewcommand\algorithmicuntil{\textbf{Пока выполняется}}
+	\algrenewcommand\algorithmicend{\textbf{Конец}}
+	\algrenewcommand\algorithmicif{\textbf{Если}}
+	\algrenewcommand\algorithmicelse{\textbf{иначе}}
+	\algrenewcommand\algorithmicthen{\textbf{тогда}}
+	\algrenewcommand\algorithmicfor{\textbf{Для}}
+	\algrenewcommand\algorithmicforall{\textbf{Выполнить для всех}}
+	\algrenewcommand\algorithmicfunction{\textbf{Функция}}
+	\algrenewcommand\algorithmicprocedure{\textbf{Процедура}}
+	\algrenewcommand\algorithmicloop{\textbf{повторять}}
+	\algrenewcommand\algorithmicrequire{\textbf{Вход:}}
+	\algrenewcommand\algorithmicensure{\textbf{Обеспечивающие условия:}}
+	\algrenewcommand\algorithmicreturn{\textbf{Возвратить}}
+	\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+	\algrenewtext{EndWhile}{\textbf{Конец цикла}}
+	\algrenewtext{EndLoop}{\textbf{Конец}}
+	\algrenewtext{EndFor}{\textbf{конец цикла}}
+	\algrenewtext{EndFunction}{\textbf{Конец функции}}
+	\algrenewtext{EndProcedure}{\textbf{Конец процедуры}}
+	\algrenewtext{EndIf}{\textbf{Конец условия}}
+	\algrenewtext{EndFor}{\textbf{Конец цикла}}
+	\algrenewtext{BeginAlgorithm}{\textbf{Начало алгоритма}}
+	\algrenewtext{EndAlgorithm}{\textbf{Конец алгоритма}}
+	\algrenewtext{BeginBlock}{\textbf{Начало блока. }}
+	\algrenewtext{EndBlock}{\textbf{Конец блока}}
+	\algrenewtext{ElsIf}{\textbf{иначе если }}
+	
+	\newcommand{\algorithmicbreak}{\textbf{Конец цикла}}
+    \newcommand{\BREAK}{\STATE \algorithmicbreak}
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Обучение с подкреплением\\
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+%
+\pagestyle{empty}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+
+\subsection{Оценка стратегий}
+В рассмотренном примере мы использовали уравнения Беллмана для нахождения ценности состояний. Для случая пяти состояний сформировать и решить систему линейных уравнений не составляет особого труда. Однако на практике количество возможных состояний агента может быть достаточно велико. Как мы уже отмечали, если количество доступных агенту состояний равно $n$, то возникает задача решения системы из $n$ уравнений с $n$ неизвестными. Стоит задуматься, а есть ли какой-то способ упростить вычисления? Оказывается есть.
+
+ 
+
+\subsubsection{Немного о матричных уравнениях и нормированных пространствах}
+Оказывается, решение системы уравнений Беллмана можно записать в явном виде. Перепишем систему уравнений
+$$
+ v_{\pi}(s) = \sum\limits_{a \in A(s)}\pi(a|s)\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{\pi}\left(s^{\prime}\right)\right), \quad s \in S,
+$$
+используя следующие матричные обозначения:
+\begin{enumerate}
+\item Пусть $v_\pi$ -- вектор-столбец высоты $|S|$, $j$-ый элемент которого равен $v_\pi(s_j)$, $j \in \{1, 2, ..., |S|\}$.
+\item Пусть $r_\pi$ -- вектор-столбец высоты $|S|$, $j$-ый элемент которого равен $\mathsf E_\pi(r_{t + 1}|s_t = s_j)$, $j \in \{1, 2, ..., |S|\}$.
+\item Пусть $T_\pi$ -- матрица размера $|S|\times |S|$, с элементами 
+$$
+(T_\pi)_{ij} = \mathsf P_\pi(s_{t + 1} = s_j| s_t = s_i) = \sum\limits_{a \in A(s_i)}\pi(a|s_i)\mathcal P_{s_is_j}^a.
+$$
+\end{enumerate}
+В таких обозначениях система уравнений Беллмана переписывается, как
+$$
+v_\pi = r_\pi + \gamma T_\pi v_\pi.
+$$
+Ясно, что тогда
+$$
+(I - \gamma T_\pi) v_\pi = r_\pi \ \Rightarrow \ v_\pi = (I - \gamma T_\pi)^{-1}r_\pi.
+$$
+Для исследования написанного выражения, сначала напомним понятие нормированного пространства.
+\begin{definition}[Нормированное пространство]
+	Пусть $X$ -- линейное пространство. Нормой называется функция $\|\cdot\| : X \to \mathbb{R}$, удовлетворяющая следующим аксиомам:
+\begin{enumerate}
+\item $\forall x \in X \Rightarrow \|x\| \geq 0$, причем $\|x\| = 0  \Leftrightarrow  x = 0$.
+\item $\|\lambda x\| = |\lambda| \|x\|$, $\lambda \in \mathbb{R}$, $x \in X$.
+\item $\|x + y\| \leq \|x\| + \|y\|$, $x, y \in X$.
+\end{enumerate}
+\end{definition}
+\begin{remark}
+	Понятно, что норма в общем случае обобщает понятие длины. Если $X = \mathbb{R}$, то можно положить $\|x\| = |x|$. Если, например, $X = \mathbb{R}^n$, то в качестве нормы $x = (x_1, x_2, ..., x_n) \in \mathbb{R}^n$ можно рассмотреть знакомую нам длину вектора:
+$$
+\|x\| = \sqrt{x_1^2 + x_2^2 + ... + x_n^2}.
+$$
+\end{remark}
+\begin{remark}
+В $\mathbb{R}^n$ можно рассмотреть и другие нормы, например
+$$
+\|x\|_p = \sqrt[p]{|x_1|^p + |x_2|^p + ... + |x_n|^p}, \ p \in \mathbb N.
+$$	
+Знакомая нам длина вектора -- частный случай написанной нормы при $p = 2$. Мы будем пользоваться в дальнейшем нормой при $p = +\infty$:
+$$
+\|x\|_\infty = \max_{i \in \{1, ..., n\}}|x_i|.
+$$
+\end{remark}
+Теперь перейдем к понятию нормы оператора.
+\begin{definition} Пусть $X$ -- линейное нормированное пространство и $A: X \to X$ -- линейный оператор. Нормой оператора $A$ называется величина
+$$
+\|A\| = \sup_{x: \ \|x\| = 1} \|Ax\|.
+$$	
+\end{definition}
+Итак, норма оператора в некотором смысле -- это число, которое показывает максимальное значение <<растяжения>> вектора единичной длины под действием оператора $A$. Заметим, что в конечномерном пространстве норма оператора всегда конечна.
+\begin{remark}
+Отметим, что из определения нормы сразу следует неравенство
+$$
+\|Ax\| \leq \|A\| \|x\|, \ \forall x \in X.
+$$	
+\end{remark}
+
+\begin{remark}
+Хорошо известно, что всякий линейный оператор $A: X \to X$ может быть отождествлен с его матрицей (в случае, когда в $X$ фиксирован некоторый базис). При этом сумме и произведению операторов отвечает сумма и произведение соответствующих матриц, а обратному оператору -- обратная матрица. В итоге, обратимость оператора равносильна обратимости его матрицы в некотором базисе.
+\end{remark}
+
+
+\begin{example}
+Найдем норму оператора $A: \mathbb R^n \to \mathbb R^n$ с нормой $\|x\|_\infty$. Пусть в фиксированном базисе оператору сопоставлена матрица $A$ с элементами $a_{ij}$, $i, j \in \{1, 2, ..., n\}$. Тогда,	
+$$
+\|Ax\|_\infty = \max_{i \in \{1, ..., n\}}\left|\sum\limits_{j = 1}^n a_{ij}x_j\right| \leq \max_{i \in \{1, ..., n\}}\sum\limits_{j = 1}^n \left|a_{ij}\right|\|x\|_\infty.
+$$
+Итого, при $x \neq 0$, обозначив $y = \frac{x}{\|x\|_\infty}$
+$$
+\|A y \| \leq \max_{i \in \{1, ..., n\}}\sum\limits_{j = 1}^n \left|a_{ij}\right|, \ \|y\|_\infty = 1.
+$$
+Если мы докажем, что написанная оценка достигается, то мы докажем, что 
+$$
+\|A\| =\max_{i \in \{1, ..., n\}} \sum\limits_{j = 1}^n \left|a_{ij}\right|.
+$$
+Пусть хотя бы один элемент матрицы не равен нулю (иначе его норма равна $0$ и равенство, очевидно, достигается). Тогда пусть
+$$
+i_0 = \argmax_{i \in \{1, ..., n\}} \sum\limits_{j = 1}^n \left|a_{ij}\right|
+$$
+-- какое-то $i$, на котором достигается максимум. Тогда в качестве $x$ возьмем вектор $x = (\sign a_{i_01}, \sign a_{i_02}, ..., \sign a_{i_0n})$.  Ясно, что $\|x\|_\infty = 1$ и 
+$$
+A x = \sum\limits_{j = 1}^n a_{i_0j} \sign a_{i_0j} =  \sum\limits_{j = 1}^n |a_{i_0j}| = \max_{i \in \{1, ..., n\}} \sum\limits_{j = 1}^n \left|a_{ij}\right|.
+$$
+\end{example}
+
+
+\begin{lemma}[Об обратимости оператора]
+	Для того чтобы линейный оператор $A: X \to X$, $X$ -- нормированное пространство с нормой $\| \cdot \|$, был обратим, необходимо и достаточно, чтобы нашлось  такое $m > 0$, что
+	$$
+	\forall x \in X \ \Rightarrow \ \|A x\| \geq m \|x\|.
+	$$
+\end{lemma}
+\begin{proof}
+Докажем достаточность. Написанное неравенство означает, что при $x_1 \neq 0 \ \Rightarrow A x_1 \neq 0$. В случае линейности оператора это и означает обратимость. 	
+
+Докажем необходимость. Пусть оператор обратим, тогда $y = A x$, $x = A^{-1} y$ и
+$$
+\|A^{-1}y\| \leq \|A^{-1}\|\|y\| \Rightarrow \|x\| \leq \|A^{-1}\|\|Ax\| \Rightarrow \|Ax\| \geq \|A^{-1}\|^{-1}\|x\|
+$$
+и $m = \|A^{-1}\|^{-1}$.
+\end{proof}
+
+\begin{lemma}[О существовании решения системы]
+Пусть $\gamma \in (0, 1)$. Матрица $(I - \gamma T_\pi)$
+обратима, а значит решение системы уравнений Беллмана существует и единственно, причем
+$$
+v_\pi = (I - \gamma T_\pi)^{-1}r_\pi.
+$$
+\end{lemma}
+\begin{proof}
+Обратимость матрицы равносильна обратимости оператора, заданного в фиксированном базисе матрицей $(I - \gamma T_\pi)$. Так как $\|I\| = 1$ и $\|T_\pi\| = 1$ (так как рассматривается пространство $R^{|S|}$ с нормой $\|x\|_\infty$),  то
+$$
+\|(I - \gamma T_\pi)x\| \geq \left|\|Ix\| - \gamma \|T_\pi x\| \right| \geq (1 - \gamma)\|x\|.
+$$ 
+Значит, оператор обратим, и лемма доказана.
+\end{proof}
+Введем следующее важное определение.
+\begin{definition}
+Пусть $A:X \to X$ -- линейный оператор, $X$ -- нормированное пространство. Оператор $A$ называется сжатием, если $\exists \alpha \in(0, 1)$, что
+$$
+\|Ax - Ay\| \leq  \alpha\|x - y\|
+$$
+\end{definition}
+По сути своей сжатие уменьшает расстояние между образами.
+\begin{definition}
+	Пусть $A:X \to X$ -- линейный оператор. Тогда точка $x^\ast \in X$, для которой 
+	$$
+	Ax^\ast = x^\ast
+	$$
+называется неподвижной точкой оператора $A$.
+\end{definition}
+Неподвижные точки оператора -- точки, которые переходят сами в себя под действием оператора.
+\begin{theorem}[Простейший метод сжимающих отображений]
+	Пусть $A: \mathbb R^n \to \mathbb R^n$ -- линейный оператор, являющийся сжатием с параметром $\alpha$, $\|\cdot \|$ -- произвольная норма в $\mathbb{R}^n$. Тогда у оператора $A$ существует единственная неподвижная точка $x^\ast$, причем последовательность
+	$$
+	x_{k+1} = A x_k, \quad x_0 \in \mathbb{R}^n
+	$$
+сходится к $x^\ast$ при $k \to + \infty$. Кроме того,
+$$
+\|x^\ast - x_k\| \leq \frac{\alpha^k}{1 - \alpha}\|x_1 - x_0\|.
+$$
+\end{theorem}
+\begin{proof}
+Покажем, что последовательность $x_k$ фундаментальна. Из этого будет следовать ее сходимость (вне зависимости от введенной нормы). Используя неравенство треугольника, получим
+$$
+\|x_{k + p} - x_k\| \leq \|x_{k + p} - x_{k + p - 1}\| + \|x_{k + p - 1} - x_{k + p - 2}\| + ... + \|x_{k+1} - x_k\|.
+$$
+Воспользуемся определением последовательности $x_k$, тогда
+$$
+\|x_{k + p} - x_k\| \leq \|Ax_{k + p -1} - A x_{k + p - 2}\| + ... + \|A x_k -  A x_{k - 1}\|\leq 
+$$
+$$
+\left(\alpha^{k + p - 1} + ... + \alpha^k \right) \|x_1 - x_0\| = \frac{\alpha^k(1 - \alpha^p)}{1 - \alpha}\|x_1 - x_0\| \leq \frac{\alpha^k}{1 - \alpha}\|x_1 - x_0\|,
+$$
+что и доказывает фундаментальность. Тем самым, последовательность сходится. Пусть $p \to + \infty$, тогда
+$$
+\|x^\ast - x_k\| \leq \frac{\alpha^k}{1 - \alpha}\|x_1 - x_0\|.
+$$
+
+Докажем единственность. Пусть $x^\ast$, $y^\ast$ -- две неподвижные точки. Тогда
+$$
+\|x^\ast - y^\ast\| = \|A x^\ast - A y^\ast\| \leq \alpha \|x^\ast - y^\ast\|.
+$$
+Отсюда, $\|x^\ast - y^\ast\| = 0$ и $x^\ast = y^\ast$.
+\end{proof}
+
+\subsubsection{Итеративная оценка стратегий}
+Итак, мы готовы сформулировать теорему об итеративной оценке стратегии.
+ 
+\begin{theorem}[Об итеративной оценке стратегий]
+Пусть $v_\pi(s)$ -- функция ценности состояния, $s \in S$. Пусть так же $v_0(s) \in \mathbb{R}$ -- произвольное число, если состояние $s$ не является терминальным, и $v_0(s) = 0$ иначе. Тогда последовательность
+$$
+v_{k+1}(s) = \sum\limits_{a \in A(s)}\pi(a|s)\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{k}\left(s'\right)\right)
+$$
+сходится к $v_\pi(s)$ при $k \to + \infty$.
+ 
+\begin{proof}
+Рассмотрим так называемый оператор Беллмана
+$$
+B v = r_\pi + \gamma T_\pi v.
+$$
+Покажем, что этот оператор является сжатием при рассмотрении нормы $\|\cdot \|_\infty$. Так как в этом случае $\|T_\pi\| = 1$, то
+$$
+\|B v - B v'\|_\infty = \|\gamma T_\pi(v - v')\| \leq \gamma \|v - v'\|.
+$$
+Осталось применить доказанный метод сжимающих отображений.
+\end{proof}
+\end{theorem}
+ 
+\begin{remark}
+%Метод сжимающих отображений дает оценку погрешности при замене истинной ценности состояния ее приближением.
+Можно произвести оценку погрешности при замене истинной ценности состояния ее приближением.
+$$
+|v_\pi(s) - v_k(s)| \leq \frac{\gamma^k}{1 - \gamma}\max_{s \in S}|v_1(s) - v_0(s)|.
+$$	
+\end{remark}
+
+Получается, что для оценки ценности состояний при использовании некоторой стратегии, можно использовать следующий алгоритм:
+
+\begin{algorithm}[H]
+		\caption{Итеративная оценка стратегии}\label{ref:alg:EMB}
+		\begin{algorithmic}[1]
+			\State Выбор оцениваемой стратегии
+			\State Инициализировать $v_0(s)=0$ для всех $s\in S$
+			\State Инициализировать $k = 0$
+			\Do
+    		\State $\Delta \leftarrow 0$
+    		\For {$s\in S$}
+    		\State $v^\ast \leftarrow v_k(s)$
+    		\State $v_{k + 1}(s) \leftarrow \sum\limits_{a \in A(s)}\pi(a|s)\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_k\left(s^{\prime}\right)\right)$
+    		\State $\Delta \leftarrow \max \left( \Delta, |v^\ast-v_{k+1}(s)| \right)$
+    		\EndFor
+    		\State $k \leftarrow k + 1$
+  			\doWhile{$\Delta < \theta}$ \text{(малое положительное число)} % <--- use \doWhile for the "while" at the end
+  			\State
+  			\Return $v_{k}$
+		\end{algorithmic}
+	\end{algorithm}
+Применим описанный алгоритм для уже знакомого примера. Схема МППР изображена на рисунке \ref{example_0}.
+
+\begin{figure}[h!]
+	\center{\includegraphics[width=0.8\linewidth]{img/example_0.png}}
+	\caption{Исходные данные}
+	\label{example_0}
+\end{figure} 
+На первом этапе все значения ценностей состояний были приняты равными нулю. Далее, на каждом шаге значения ценностей обновлялись в соответствии с ранее полученными уравнениями Беллмана:
+
+$$
+v_{k + 1}(s_1) = 0.9 \left(\frac{1}{3} \left(-10 + 0.8v_{k}(s_3)\right)+\frac{2}{3} \left(-2+0.8v_{k}(s_1)\right)\right) + 
+$$
+$$
++0.1\cdot 1\cdot (-2 + 0.8v_{k}(s_2)).
+$$
+$$
+v_{k+1}(s_2) = 0.7(-1+0.8v_{k}(s_1)) + 0.3(7+0.8v_{k}(s_5))
+$$
+$$
+v_{k + 1}(s_3) = 0.5(-3+0.8v_{k}(s_2)) + 0.5(-3+0.8v_{k}(s_4))
+$$
+$$
+v_{k + 1}(s_4) = 0.2(5+0.8v_{k}(s_2)) + 0.8(15+0.8v_{k}(s_5))
+$$
+$$
+v_{k+1}(s_5) = 5+0.8v_{k}(s_5)
+$$
+
+Результаты вычислений (округленные до сотых) представлены в таблице
+
+\begin{center}
+\begin{tabular}{ || c | c | c |c | c | c || }
+\hline
+\textbf{Шаг} & \textbf{$v_k(s_1)$} & \textbf{$v_k(s_2)$} & \textbf{$v_k(s_3)$} & \textbf{$v_k(s_4)$} & \textbf{$v_k(s_5)$}  \\ \hline
+$0$ & $ 0 $ & $0 $ & $0 $ & $0 $ & $0 $ \\
+\hline
+$1$ & $-4.4$ & $1.4$ & $-3$ & $13$ & $5$ \\ \hline
+$2$ & $-7.12$ & $0.14$ & $2.76$ & $16.42$ & $9$ \\ \hline
+$3$ & $-7.14$ & $-0.43$ & $3.62$ & $18.78$ & $12.2$ \\ \hline
+$\dots$&$\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$\\ \hline
+$36$ & $-2.24$ & $6.14$ & $11.45$ & $29.98$ & $24.99$ \\ \hline
+$37$ & $-2.23$ & $6.15$ & $11.45$ & $29.98$ & $24.99$ \\ \hline
+$38$ & $-2.23$ & $6.15$ & $11.45$ & $29.98$ & $24.99$ \\ \hline
+$39$ & $-2.23$ & $6.15$ & $11.45$ & $29.98$ & $25$ \\ \hline
+
+\end{tabular}
+\end{center}
+
+Заметим, что для получения требуемой точности (совпадение в сотых) понадобилось достаточно большое количество итераций. Погрешность составляет меньше, чем
+$$
+13\cdot \frac{0.8^{39}}{1 - 0.8} \approx 0.011.
+$$
+ 
+\subsection{Оптимальные стратегии}
+С точки зрения обучения с подкреплением, нам интересны не столько состояния, сколько стратегии, которые обеспечивают максимальную приведенную выгоду. Находя решение уравнения Беллмана для каждой стратегии, можно выбрать наилучшую или  так называемую оптимальную стратегию. Что означают эти слова? Сначала введем определения.
+\begin{definition}
+Функция 
+$$
+v^{\ast}(s) = \max_\pi v_{\pi}(s), \quad \forall s \in S,
+$$
+называется оптимальной функцией ценности состояний.
+\end{definition}
+
+\begin{definition}
+Функция 
+$$
+q^{\ast}(s,a) = \max_\pi q_{\pi}(s,a), \quad  \forall s \in S,\  \forall a \in A(s), 
+$$
+называется оптимальной функцией ценности действий.
+\end{definition}
+Итак, введенные функции показывают, какой максимальной может быть ценность состояния и (или) действия.
+\begin{remark}
+Покажем, что максимумы, написанные выше, в случае финитного марковского процесса принятия решений, существуют. Например, почему $v^\ast(s)$ -- корректно определенная функция? Согласно уравнению Беллмана,
+$$
+v_\pi(s) = \sum\limits_{a \in A(s)}\pi(a|s)\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{\pi}\left(s^{\prime}\right)\right) \leq 
+$$
+$$
+\leq \sum\limits_{a \in A(s)}\pi(a|s) \max_{a \in A(s)} \left(\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{\pi}\left(s^{\prime}\right)\right)\right) = 
+$$
+$$
+= \max_{a \in A(s)} \left(\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{\pi}\left(s^{\prime}\right)\right)\right) = \max_{a \in A(s)} q_\pi(s,a).
+$$	
+Так как множество $A(s)$ конечно, то ясно, что стратегия, на которой достигается полученное справа выражение, такова (в случае, когда максимум достигается на одном действии):
+$$
+\pi(a|s) = \begin{cases}
+ 1, & a = \argmax\limits_{a \in A(s)} q_\pi(s, a) \\
+ 0, & \text{\emph{иначе}}	
+ \end{cases}.
+$$
+Если максимум достигается на нескольких действиях, то можно выбирать любое из них. Итак, мы оценили нашу функция сверху и нашли стратегию, на которой эта оценка достигается. Значит, это и есть искомый максимум.
+\end{remark}
+Те же самые рассуждения полезно провести в терминах стратегий.
+\begin{definition}
+	Говорят, что стратегия $\pi$ не хуже, чем стратегия $\pi^{\prime}$, и пишут
+	$$
+	\pi \geq \pi^{\prime},
+	$$
+	если для всех $s\in S$
+	$$
+	v_{\pi}(s) \geq v_{\pi^{\prime}}(s).
+	$$
+\end{definition}
+\begin{remark}
+Часто говорят, что введенное отношение $\geq$ индуцирует (или вводит) частичный порядок на множестве всех стратегий $\pi$. Обратите внимание, что может случиться так, что какие-то две стратегии $\pi_1$ и $\pi_2$ не сравнимы. Это значит, что найдутся $s_1, s_2 \in S$, что
+$$
+v_{\pi_1}(s_1) \leq v_{\pi_2}(s_1),
+$$
+но
+$$
+v_{\pi_1}(s_2) \geq v_{\pi_2}(s_2).
+$$
+\begin{example}
+	Если в уже рассмотренном примере вместо оригинальной стратегии рисунок (\ref{example_3}.a)) использовать стратегию $\pi^{\prime}$, где $\pi^{\prime}(a_1|s_1) = 1, \pi^{\prime}(a_2|s_1) = 0, \pi^{\prime}(a_4|s_4) = 1, \pi^{\prime}(a_2|s_4) = 0$ (рисунок (\ref{example_3}.б)), то получим следующие ценности состояний:
+	
+\begin{center}
+\begin{tabular}{ || c | c | c |c | c | c || }
+\hline
+\textbf{Стратегия} & \textbf{$v(s_1)$} & \textbf{$v(s_2)$} & \textbf{$v(s_3)$} & \textbf{$v(s_4)$} & \textbf{$v(s_5)$}  \\ \hline
+$\pi$ & $ -2.23 $ & $6.15 $ & $11.45 $ & $29.98 $ & $25 $ \\
+\hline
+$\pi^{\prime}$ & $ -2.32 $ & $6.1 $ & $13.44 $ & $35 $ & $25 $ \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\begin{figure}[h]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{img/example_2.png} \\ а)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{img/example_3.png} \\ б)}
+\end{minipage}
+\caption{Пример несравнимых стратегий.}
+\label{example_3}
+\end{figure}
+
+Можно заметить, что для состояний $s_1$ и $s_2$ более высокие значения ценности получаются при использовании стратегии $\pi$, а для $s_3$ и $s_4$ ситуация обратная.
+
+\end{example}
+\end{remark}
+Конечно, хочется найти такую стратегию, которая не хуже всех других. 
+\begin{definition}
+	Стратегия $\pi^{\ast}$ называется оптимальной, если для любой стратегии $\pi$ выполнено неравенство
+	$$
+	\pi^{\ast} \geq \pi.
+	$$
+\end{definition}
+\begin{remark}
+Конечно, введенное определение влечет сразу много вопросов: всегда ли существует оптимальная стратегия, и будет ли оптимальная стратегия единственной? Оказывается, что в общем случае ответ на оба вопроса: <<Нет>>. Мы вернемся к этому чуть позже.
+\end{remark}
+В то же время, имея оптимальную стратегию $\pi^\ast$, логично ввести в рассмотрение и функции $v_{\pi^\ast}(s)$ и $q_{\pi^\ast}(s, a)$, которые являются кандидатами на роль оптимальной функции ценности состояний и действий, соответственно. Давайте выясним их связь. Во-первых установим, что функции $v_{\pi^\ast}(s)$ и $q_{\pi^\ast}(s, a)$ в случае, когда оптимальная стратегия существует, определены корректно (на разных оптимальных стратегиях они дают одно и то же значение).
+\begin{lemma}
+Для любых двух оптимальных стратегий $\pi_1^\ast$ и $\pi_2^\ast$
+$$
+v_{\pi_1^\ast} \equiv v_{\pi_2^\ast} \text{ и }  q_{\pi_1^\ast} \equiv q_{\pi_2^\ast}.
+$$	
+\end{lemma}
+\begin{proof}
+Докажем, например, первое тождество. Так как $\pi_1^\ast$ -- оптимальная стратегия, то, согласно определению,
+$$
+v_{\pi_1^\ast}(s) \geq v_{\pi}(s), \quad \forall s \in S,
+$$	
+в частности, когда $\pi = \pi_2^\ast$, откуда $v_{\pi_1^\ast}(s) \geq v_{\pi_2^\ast}(s)$. Меняя $\pi_1^\ast$ и $\pi_2^\ast$ местами, получаем неравенство $v_{\pi_2^\ast}(s) \geq v_{\pi_1^\ast}(s)$, что и завершает доказательство.
+\end{proof}
+Ответим теперь на вопрос: а всегда ли существует оптимальная стратегия? Оказывается, в предположении финитности марковского процесса принятия решений, да. Кроме того, справедлива следующая (достаточно ожидаемая) теорема.
+\begin{theorem}
+	Пусть марковский процесс принятия решений является финитным. Тогда
+	\begin{enumerate}
+	\item Существует оптимальная стратегия $\pi^\ast$.
+	\item Для любой оптимальной стратегии $v_{\pi^\ast} \equiv v^\ast$.
+	\item Для любой оптимальной стратегии $q_{\pi^\ast} \equiv q^\ast$.	
+	\end{enumerate}
+\end{theorem}
+Итак, оказывается, что оптимальные функции ценности состояний и действий -- это соответствующие функции ценности состояний и действий в случае, когда используется оптимальная стратегия.
+\begin{proof}
+	Доказательство следует из того, что было показано ранее. На роль оптимальной стратегии $\pi^\ast$ подходит, например, такая (если максимум достигается лишь на одном действии):
+$$
+\pi(a|s) = \begin{cases}
+ 1, & a = \argmax\limits_{a \in A(s)} q_\pi(a) \\
+ 0, & \text{иначе}	
+ \end{cases}.
+$$
+Если максимум достигается на нескольких действиях, то можно выбирать любое из них. Дальнейшие рассуждения очевидны.
+\end{proof}
+Аналогично тому, как были найдены уравнения Беллмана для $v_\pi(s)$ и $q_\pi(s, a)$, найдем их и для $v^\ast(s)$ и $q^\ast(s, a)$.
+\begin{lemma}
+	Пусть $v^{\ast}(s)$ и $q^{\ast}(s,a)$ -- оптимальные функции ценности состояний и действий соответственно, тогда имеют место следующие соотношения.
+$$
+	v^{\ast}(s) = \max_{a \in A(s)}\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v^{\ast}(s^{\prime}) \right),
+$$
+$$
+q^{\ast}(s,a) = \sum\limits_{s^{\prime} \in S}\mathcal{P}_{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma \underset{a^{\prime} \in A(s')}{\max} \ q^{\ast}(s^{\prime},a^{\prime}) \right).
+$$
+\end{lemma} 
+\begin{proof}
+Как мы выяснили, оптимальные функции ценности -- это функции ценности на оптимальной стратегии $\pi^\ast$, то есть, если максимум достигается на одном действии, на стратегии
+$$
+\pi(a|s) = \begin{cases}
+ 1, & a = \argmax\limits_{a \in A(s)} q_\pi(a) \\
+ 0, & \text{иначе}	
+ \end{cases}.
+$$
+Так как в общем случае
+$$
+v_\pi(s) = \sum\limits_{a \in A(s)}\pi(a|s)\sum\limits_{s' \in S}\mathcal P_{ss'}^a(\mathcal P_{ss'}^a + \gamma v_\pi(s')),
+$$
+то для оптимальной стратегии $\pi^\ast$
+$$
+v^{\ast}(s) = \max_{a \in A(s)}\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v^{\ast}(s^{\prime}) \right).
+$$
+Аналогично доказывается второе соотношение.
+\end{proof}
+\begin{remark}
+Важно понимать, что знание оптимальной функции ценности состояний сразу дает нам и оптимальную стратегию: нужно переходить в то состояние, чья ценность больше!
+\end{remark}
+
+\begin{remark}
+	В качестве замечания отметим, что полученные уравнения называют уравнениями оптимальности Беллмана относительно ценности состояний и действий, соответственно. В отличие от уравнений Беллмана, полученная система уже не является системой линейных алгебраических уравнений, поэтому ее решение -- отдельная задача.
+\end{remark}
+Оказывается, рассмотренный ранее итерационный подход помогает и в этой ситуации.
+\begin{theorem}
+	Пусть $v^\ast(s)$ -- оптимальная функция ценности состояния, $s \in S$. Пусть так же $v_0(s) \in \mathbb{R}$ -- произвольное число, если состояние $s$ не является терминальным, и $v_0(s) = 0$ иначе. Тогда последовательность
+$$
+v_{k+1}(s) = \max_{a \in A(s)}\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{k}\left(s'\right)\right)
+$$
+сходится к $v^\ast(s)$ при $k \to + \infty$.
+\end{theorem}
+ 
+\begin{proof} 
+Рассмотрим оптимальный оператор Беллмана $B^{\ast}$, действующий по правилу
+$$
+B^\ast v = \max_{a \in A} \sum\limits_{s' \in S}\mathcal P_{ss'}^a(\mathcal R_{ss'}^a + \gamma v(s')),
+$$
+где
+$$
+v =   \left(v(s_1), v(s_2), \ldots, v(s_{|S|}) \right)^{T}.
+$$
+Рассмотрим $B^\ast v$ и $B^\ast v'$. В силу финитности ММПР, найдутся $a$ и $a'$ (не обязательно различные), что
+$$
+B^\ast v = \sum\limits_{s' \in S}\mathcal P_{ss'}^a(R_{ss'}^a + \gamma v(s')),
+$$
+$$
+B^\ast v' = \sum\limits_{s' \in S}\mathcal P_{ss'}^{a'}(R_{ss'}^{a'} + \gamma v'(s')).
+$$
+Кроме того, $B^\ast v' \geq \sum\limits_{s' \in S}\mathcal P_{ss'}^{a}(R_{ss'}^{a} + \gamma v'(s')$, откуда
+$$
+B^\ast v - B^\ast v' \leq \sum\limits_{s' \in S}\mathcal P_{ss'}^a(R_{ss'}^a + \gamma v(s')) - \sum\limits_{s' \in S}\mathcal P_{ss'}^{a}(R_{ss'}^{a} + \gamma v'(s')) = 
+$$
+$$
+= \gamma \sum\limits_{s' \in S}\mathcal P_{ss'}^a(v(s') - v'(s')) \leq \gamma \|v - v'\|_\infty.
+$$
+Меняя $v$ и $v'$ местами, получим, что
+$$
+|B^\ast v - B^\ast v'| \leq \gamma \|v - v'\|_\infty \ \Rightarrow \|B^\ast v - B^\ast v'\|_\infty \leq \gamma \|v - v'\|_\infty.
+$$
+Осталось воспользоваться простейшим методом сжимающих отображений.
+\end{proof}
+ 
+Аналогично сделанному ранее, можно сформулировать алгоритм итеративного поиска оптимальных функций состояний.
+\begin{algorithm}[H]
+		\caption{Итеративная оценка оптимальной стратегии}\label{ref:alg:EMB}
+		\begin{algorithmic}[1]
+			\State Выбор оцениваемой стратегии
+			\State Инициализировать $v_0(s)=0$ для всех $s\in S$
+			\State Инициализировать $k = 0$
+			\Do
+    		\State $\Delta \leftarrow 0$
+    		\For {$s\in S$}
+    		\State $v^\ast \leftarrow v_k(s)$
+    		\State $v_{k + 1}(s) \leftarrow \max\limits_{a \in A(s)}\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_k\left(s^{\prime}\right)\right)$
+    		\State $\Delta \leftarrow \max \left( \Delta, |v^\ast-v_{k+1}(s)| \right)$
+    		\EndFor
+    		\State $k \leftarrow k + 1$
+  			\doWhile{$\Delta < \theta}$ \text{(малое положительное число)} % <--- use \doWhile for the "while" at the end
+  			\State
+  			\Return $v_{k}$
+		\end{algorithmic}
+	\end{algorithm}
+\begin{remark}
+Аналогично тому, как было сделано ранее, можно оценить погрешность между истинным и приближенным значением оптимальной стратегии на каждом шаге алгоритма.	
+\end{remark}
+Вернемся к уже знакомому примеру одного дня из жизни ребенка (рисунок \ref{example_0}) и выясним, какие же действия стоит предпринимать агенту, чтобы максимизировать приведенный выигрыш.
+\begin{figure}[h!]
+	\center{\includegraphics[width=0.8\linewidth]{img/example_0.png}}
+	\caption{Исходные данные}
+	\label{example_0}
+\end{figure} 
+
+Значения ценностей состояний для случая использования оптимальной стратегии представлены на рисунке \ref{example_4}. 
+
+\begin{figure}[h!]
+	\center{\includegraphics[width=0.8\linewidth]{img/example_4.png}}
+	\caption{Ценности состояний при использовании оптимальной стратегии}
+	\label{example_4}
+\end{figure} 
+
+Убедимся в том, что полученные значения действительно соответствуют оптимальной стратегии, а именно проверим, что для каждого состояния выполняется равенство
+
+$$
+	v^{\ast}(s) = \max_{a \in A(s)}\sum\limits_{s^{\prime}\in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v^{\ast}(s^{\prime}) \right).
+$$
+Для $v^{\ast}(s_1)$ имеем
+$$
+19.6 = \max \Bigg\{ \left( \frac{1}{3} (-10 + 0.8\cdot 25) + \frac{2}{3} (-2+0.8\cdot 19.6) \right),
+$$
+
+$$
+(-2 + 0.8\cdot27)\Bigg\},
+$$
+то есть 
+$$
+19.6 = \max \{ 12.45, 19.6\},
+$$
+что верно. Аналогично для $v^{\ast}(s_2)$:
+$$
+27 = \max \{ (-1+0.8\cdot19.6), (7+0.8\cdot25)\} = \max \{ 14.68, 27\},
+$$
+что тоже верно, и так далее.
+
+Заметим, что зная значения оптимальной функции ценности состояний, стратегия формируется достаточно очевидным образом: нужно просто переходить в состояние с максимальным значением ценности (рисунок \ref{example_5}). 
+
+\begin{figure}[h!]
+	\center{\includegraphics[width=0.75\linewidth]{img/example_5_1.png}}
+	\caption{Оптимальная стратегия}
+	\label{example_5}
+\end{figure} 
+
+Смотрите, теперь наша стратегия стала полностью детерминированной: в каждый момент времени агент точно знает какое действие следует предпринять. Например, находясь в состоянии <<Игра>>, нужно поесть и отправляться спать, а если заплакал -- отправиться на прогулку, поесть а затем уснуть. 
+
+Важным остается вопрос, а как же получить требуемые значения ценности состояний. Для получения точных значений можно решить систему уравнений оптимальности Беллмана, которая для нашего пример будет выглядеть следующим образом:
+$$
+v^{\ast}(s_1) = \max \Bigg\{ \left( \frac{1}{3} (-10 + 0.8v^{\ast}(s_3)) + \frac{2}{3} (-2+0.8v^{\ast}(s_1)) \right),
+$$
+
+$$
+(-2 + 0.8v^{\ast}(s_2))\Bigg\},
+$$
+
+
+$$
+v^{\ast}(s_2) = \max \{ (-1+0.8v^{\ast}(s_1)), \ (7+0.8v^{\ast}(s_5)) \}
+$$
+$$
+v^{\ast}(s_3) =\max \{  (-3+0.8v^{\ast}(s_2)), \ (-3+0.8v^{\ast}(s_4)) \}
+$$
+$$
+v^{\ast}(s_4) = \max \{ (5+0.8v^{\ast}(s_2)), \ (15+0.8v^{\ast}(s_5)) \}
+$$
+$$
+v^{\ast}(s_5) = 5+0.8v^{\ast}(s_5)
+$$
+Очевидно, что эта система уже не является линейной, а значит ее решение отыскать не так просто. Тут и пригодится ранее рассмотренный итерационный метод. Положим на первом шаге все значения ценностей равными нулю. Результаты вычислений (округленные до сотых) представлены в таблице
+
+\begin{center}
+\begin{tabular}{ || c | c | c |c | c | c || }
+\hline
+\textbf{Шаг} & \textbf{$v_k(s_1)$} & \textbf{$v_k(s_2)$} & \textbf{$v_k(s_3)$} & \textbf{$v_k(s_4)$} & \textbf{$v_k(s_5)$}  \\ \hline
+$0$ & $ 0 $ & $0 $ & $0 $ & $0 $ & $0 $ \\
+\hline
+$1$ & $-2$ & $7$ & $-3$ & $15$ & $5$ \\ \hline
+$2$ & $3.6$ & $11$ & $9$ & $19$ & $9$ \\ \hline
+$3$ & $6.8$ & $14.2$ & $12.2$ & $22.2$ & $12.2$ \\ \hline
+$\dots$&$\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$\\ \hline
+$38$ & $19.59$ & $26.99$ & $24.99$ & $34.99$ & $24.99$ \\ \hline
+$39$ & $19.6$ & $27$ & $25$ & $35$ & $25$ \\ \hline
+
+\end{tabular}
+\end{center}
+Отметим, что для достижения приемлемого уровня точности (совпадение в сотых) в нашем случае потребовалось порядка сорока итераций, что в данном случае вполне оправдано.
+

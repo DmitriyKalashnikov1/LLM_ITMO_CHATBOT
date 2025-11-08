@@ -1,0 +1,652 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm, headheight=30pt]{geometry}
+\usepackage{amssymb}
+\usepackage{cmap}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\usepackage{subcaption}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+
+
+\sloppy
+
+
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmin}{Arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+\DeclareMathOperator*{\logloss}{logloss}
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+
+
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+
+\usepackage{textcase} 
+\usepackage{titlesec}
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Ансамбли моделей\\
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+
+\newpage
+%
+\pagestyle{empty}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+\subsection{Адаптивный бустинг для двухклассовой классификации (AdaBoost)}
+Перейдем к рассмотрению еще одного метода построения ансамблей -- бустингу. 
+Основное отличие этого метода от ранее рассмотренного бэггинга заключается в том, что слабые ученики (базовые алгоритмы) обучаются теперь не независимо, а последовательно, учитывая опыт предыдущего. Так, каждый последующий ученик начинает придавать большее значение тем наблюдениям из тренировочного набора данных, на которых ошиблись предыдущие ученики. 
+
+Рассмотрим алгоритм адаптивного бустинга, причем применительно только к задаче двухклассовой классификации. Итак, предположим, что $Y = \{-1, 1\}$, $x_1, x_2, ..., x_n$ -- выборка (тренировочные данные) объема $n$, $x_i \in X$, $i \in \{1, 2, ..., n\}$ и $B$ -- множество алгоритмов классификации, то есть 
+$$
+B = \{b \ | \ b: X \to \{-1, 1\}\}.
+$$
+
+При построении ансамбля будем рассматривать корректирующее правило взвешенного голосования, тогда ансамбль может быть задан аналитическим выражением вида
+$$
+a(x) = \sign \left(\sum\limits_{t = 1}^T \omega_t b_t(x)\right), 
+$$
+где $b_t(x) \in B$, $\omega_t$ -- веса (не обязательно нормированные), $t \in \{1, 2, ..., T\}$, $T$ -- количество обученных алгоритмов. Подбор же как алгоритмов классификации, так и весов перед ними, будем производить итеративно, исходя из требования минимизации количества ошибок на тренировочных данных. Количество ошибок может быть задано следующим аналитическим выражением:
+$$
+Q_T = \sum\limits_{i = 1}^n\mathsf I(a(x_i) \neq y_i) = \sum\limits_{i = 1}^n\mathsf I\left(y_i\sum\limits_{t = 1}^T \omega_t b_t(x_i) < 0 \right),
+$$
+где $x_i \in X$, $\mathsf I$ -- индикатор. Действительно, каждое слагаемое в первом выражении равно единице только в том случае, когда ансамбль выдает класс, отличный от истинного класса тренировочного объекта. Конечно, наша задача -- в минимизации функции $Q_T$ на тренировочных данных, ведь чем меньше число ошибок, тем лучше.
+
+Минимизация написанного выражения -- задача затруднительная, так как написанная функция не является гладкой. Однако, если мы найдем какую-то <<хорошую>> функцию $\widetilde Q_T$, для которой $Q_T \leq \widetilde Q_T$, то, минимизируя последнюю, будет уменьшаться и исходная функция. Ясно, что так как
+$$
+Q_T = \sum\limits_{i = 1}^n\mathsf I\left(y_i\sum\limits_{t = 1}^T \omega_t b_t(x_i) < 0 \right) \leq \sum\limits_{i = 1}^n\exp\left(-y_i\sum\limits_{t = 1}^T \omega_t b_t(x_i)\right) = \widetilde Q_T,
+$$
+то написанная функция $\widetilde Q_T$ подходит. Именно она и используется в алгоритме адаптивного бустинга. Перепишем ее в виде
+$$
+\widetilde Q_T = \sum\limits_{i = 1}^n \exp\left(-y_i\sum\limits_{t = 1}^{T-1} \omega_t b_t(x_i)\right)e^{-y_i\omega_Tb_T(x_i)}
+$$
+и обозначим 
+$$
+\alpha_i = \exp\left(-y_i\sum\limits_{t = 1}^{T-1} \omega_t b_t(x_i)\right).
+$$
+Нормируем коэффициенты так, чтобы их сумма была равна единице, тогда получим
+$$
+\alpha_0 = \sum\limits_{i = 1}^n \alpha_i, \quad \alpha_i = \frac{\alpha_i}{\alpha_0}, \quad i \in \{1, 2, ..., n\}.
+$$ 
+
+\begin{remark}
+Последнее равенство следует понимать так: сначала вычисляется отношение $\alpha_i/\alpha_0$, а затем новое значение присваивается переменной $\alpha_i$. Часто это обозначают либо 
+$$
+\alpha_i \leftarrow \frac{\alpha_i}{\alpha_0}, \text{ либо } \alpha_i := \frac{\alpha_i}{\alpha_0}.
+$$
+\end{remark}
+
+\begin{remark}
+Полезно заметить, что выражение для $\widetilde Q_T$ переписывается в виде
+$$
+\widetilde Q_T = \sum\limits_{i = 1}^n \alpha_i e^{-y_i\omega_Tb_T(x_i)}
+$$
+и коэффициенты $\alpha_i$ не зависят от алгоритма $b_T$, а зависят только от алгоритмов $b_i$ c номерами $i < T$, а значит могут быть найдены итерационно. 
+\end{remark}
+Конечно, нужно пояснить, откуда берутся коэффициенты $\omega_i$, $i \in \{1, 2, ..., T\}$, но мы это сделаем непосредственно в алгоритме. 
+
+Итак, запишем алгоритм для тренировочного набора данных $x_1, x_2, ..., x_n$ объема $n$, заданного множества алгоритмов $B$ и числа используемых алгоритмов $T$ по шагам:
+\begin{enumerate}
+	\item Инициализировать начальные веса следующим образом: 
+	$$
+	\alpha_1 = \alpha_2 = ... = \alpha_n = \frac{1}{n}.
+	$$
+	\item Для всех $t \in \{1, 2, ..., T\}$
+	\begin{enumerate}
+	\item Найти алгоритм $b_t$ из множества $B$, минимизирующий количество ошибок на тренировочном наборе данных, с весами $\alpha_1, \alpha_2, ..., \alpha_n$:
+	$$
+	b_t = \argmin_{b \in B} \sum\limits_{i = 1}^n \alpha_i \cdot \mathsf I(b(x_i) \neq y_i).
+	$$
+	Если таких алгоритмов несколько, выбрать любой.
+	\item Пусть
+	$$
+	\varepsilon_t = \sum\limits_{i = 1}^n \alpha_i \cdot \mathsf I(b_t(x_i) \neq y_i)
+	$$
+	-- найденное минимальное значение на алгоритме $b_t$. Положить
+	$$
+	\omega_t = \frac{1}{2}\ln \frac{1 - \varepsilon_t}{\varepsilon_t}.
+	$$
+	\item Пересчитать $\alpha_i = \alpha_i e^{-y_i\omega_tb_t(x_i)}$, $i \in\{1, 2, ..., n\}$.
+	\item Нормировать полученные коэффициенты:
+	$$
+	\alpha_0 = \sum\limits_{i = 1}^n \alpha_i, \quad \alpha_i = \frac{\alpha_i}{\alpha_0}, \quad i \in \{1, 2, ..., n\}.
+	$$
+	\end{enumerate} 
+	\item Составить итоговый ансамбль в виде 
+	$$
+	a(x) = \sign \left(\sum\limits_{t = 1}^T \omega_t b_t(x)\right).
+	$$
+\end{enumerate}
+
+Можно доказать, что при некоторых необременительных ограничениях на множество алгоритмов $B$, минимум $\widetilde Q_T$ достигается именно при таком выборе параметров $\omega_i$, $i \in \{1, 2, ..., T\}$
+%\subsubsection{Математические обоснования}
+
+
+
+\subsubsection{Пример}
+Давайте рассмотрим следующий <<игрушечный пример>>, чтобы пройтись по шагам описанного алгоритма. Мы опустим подбор оптимального алгоритма $b_t$ на шаге 2а, подбирая его <<на глаз>>, лишь для упрощения изложения. 
+
+Итак, имеется выборка объема $n=12$, желтые точки соответствуют классу <<$+1$>>, зеленые -- классу <<$-1$>>. Пусть базовые алгоритмы классификации способны разделять плоскость либо горизонтальными, либо вертикальными прямыми. Легко увидеть, что ни одна из таких прямых не разделит плоскость так, чтобы не было ошибок классификации. 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{AdaBoost.png}
+\caption{Три итерации алгоритма AdaBoost.}
+\label{adaboost}
+\end{figure}
+Пусть $T=3$, тем самым наша задача -- корректным образом построить три алгоритма классификации, снабдив каждый корректным весом. Рассмотрим подробно каждую итерацию:
+\begin{enumerate}
+	\item На первом инициализируем значения $\alpha_1, \alpha_2, ..., \alpha_{12}$, они равны
+	$$
+	\alpha_1 = \frac{1}{12}, \ \alpha_2 = \frac{1}{12}, \ldots, \ \alpha_{12} = \frac{1}{12}.
+	$$
+	Пусть базовый алгоритм $b_1(x)$ представлен горизонтальной линией (верхнюю полуплоскость он относит к зеленым, а нижнюю -- к желтым). Мы видим, что два зеленых объекта классифицированы неверно, они выделены в таблице синим. 
+\begin{table}[h]
+\tiny
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$X$ & $(4,1)$ & $(2,4)$ & $(5,1)$ & $(3,2)$ & $(1,5)$ & $(3,5)$ & $(2,1)$ & $(2,2)$ & $(2,5)$ & \cellcolor{blue!25}$(4,3)$ & $(2,3)$ & \cellcolor{blue!25}$(5,2)$ \\ \hline
+$y_i$ & $+1$ & $-1$ & $+1$ & $+1$ & $-1$ & $-1$ & $+1$ & $+1$ & $-1$ & \cellcolor{blue!25}$-1$ & $+1$ & \cellcolor{blue!25}$-1$ \\ \hline
+$b_1(x_i)$ & $+1$ & $-1$ & $+1$ & $+1$ & $-1$ & $-1$ & $+1$ & $+1$ & $-1$ & \cellcolor{blue!25}$+1$ & $+1$ & \cellcolor{blue!25}$+1$ \\ \hline
+\end{tabular}
+\end{table}
+	Найдем $\varepsilon_1$ из соотношения
+	$$
+	\varepsilon_1 = \frac{1}{12}  \sum\limits_{i = 1}^{12} \mathsf I(b_1(x_i) \neq y_i) = \frac{1}{12} \cdot 2 \approx 0.167.
+	$$
+	Теперь найдем значение $\omega_1$: 
+	$$
+\omega_1 = \frac{1}{2} \ln \left(\frac{1-\varepsilon_{1}}{\varepsilon_{1}}\right) \approx \frac{1}{2} \ln \left(\frac{1-0.167}{0.167}\right) \approx 0.805.
+$$
+	Найдем новые веса для объектов, пересчитав их, используя соотношение
+	$$
+	\alpha_i = \alpha_i e^{-y_i\omega_1b_1(x_i)}, i \in\{1, 2, ..., n\}.
+	$$
+	Например, $\alpha_1$ находится, как
+	$$
+	\alpha_1 \approx \frac{1}{12} \cdot e ^ {-1 \cdot 0.805} \approx 0.037.
+	$$
+	Остальные значения получаются аналогичным образом и представлены в таблице. Теперь нормируем найденные веса. 
+	
+	Зная значение всех весов, находим их сумму $\alpha_0 \approx 0.745$ и делим каждый из весов на $\alpha_0$, получим значения указанные в последней строке таблицы -- это новые веса, используемые на следующей итерации (конечно, округленные).
+\begin{table}[h]
+\tiny
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$X$ & $(4,1)$ & $(2,4)$ & $(5,1)$ & $(3,2)$ & $(1,5)$ & $(3,5)$ & $(2,1)$ & $(2,2)$ & $(2,5)$ & $(4,3)$ & $(2,3)$ & $(5,2)$ \\ \hline
+$y_i$ & $+1$ & $-1$ & $+1$ & $+1$ & $-1$ & $-1$ & $+1$ & $+1$ & $-1$ & $-1$ & $+1$ & $-1$ \\ \hline
+$b_1(x_i)$ & $+1$ & $-1$ & $+1$ & $+1$ & $-1$ & $-1$ & $+1$ & $+1$ & $-1$ & $+1$ & $+1$ & $+1$ \\ \hline
+$\alpha_i \cdot e^{-y_i\omega_t b_1(x_i)}$ & $0.037$ & $0.037$ & $0.037$ & $0.037$ & $0.037$ & $0.037$ & $0.037$ & $0.037$ & $0.037$ & $0.186$ & $0.037$ & $0.186$ \\ \hline
+$\frac{\alpha_i  \cdot e^{-y_i\omega_t b_1(x_i)}}{\alpha_0}$ & $0.05$ & $0.05$ & $0.05$ & $0.05$ & $0.05$ & $0.05$ & $0.05$ & $0.05$ & $0.05$ & $0.25$ & $0.05$ & $0.25$ \\ \hline
+\end{tabular}
+\end{table}
+
+Как видим, почти все веса стали меньше начальных ($0.05 < 0.083$), кроме двух, которые, наоборот, увеличились. Не сложно догадаться, что это и есть те объекты, которые были классифицированы неверно. На следующей итерации следующий базовый алгоритм придаст им большее внимание.
+
+\item Переходим ко второму шагу. Теперь веса таковы:
+	$$
+	\alpha_i \approx \begin{cases}
+ 0.25, & i \in \{10, 12\} \\
+ 0.05, & i \in \{1, 2, ..., 12\} \setminus \{10, 12\}
+ \end{cases}.
+	$$
+Для наглядности изменим размер точек на рисунке \ref{adaboost} в соответствии с изменившимися весами. Пусть теперь выбранный базовый алгоритм $b_2(x)$ делит плоскость так, как показано на среднем рисунке (верх снова относится к зеленому классу, а низ -- к желтому). Классифицируем каждый объект, используя выбранный алгоритм, данные представлены в таблице.
+\begin{table}[h]
+\tiny
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$X$ & $(4,1)$ & $(2,4)$ & $(5,1)$ & \cellcolor{blue!25}$(3,2)$ & $(1,5)$ & $(3,5)$ & $(2,1)$ & \cellcolor{blue!25}$(2,2)$ & $(2,5)$ & $(4,3)$ & \cellcolor{blue!25}$(2,3)$ & $(5,2)$ \\ \hline
+$y_i$ & $+1$ & $-1$ & $+1$ & \cellcolor{blue!25}$+1$ & $-1$ & $-1$ & $+1$ & \cellcolor{blue!25}$+1$ & $-1$ & $-1$ & \cellcolor{blue!25}$+1$ & $-1$ \\ \hline
+$b_2(x_i)$ & $+1$ & $-1$ & $+1$ & \cellcolor{blue!25}$-1$ & $-1$ & $-1$ & $+1$ & \cellcolor{blue!25}$-1$ & $-1$ & $-1$ & \cellcolor{blue!25}$-1$ & $-1$ \\ \hline
+$\alpha_i$ & $0.05$ & $0.05$ & $0.05$ & \cellcolor{blue!25}$0.05$ & $0.05$ & $0.05$ & $0.05$ & \cellcolor{blue!25}$0.05$ & $0.05$ & $0.25$ & \cellcolor{blue!25}$0.05$ & $0.25$ \\ \hline
+\end{tabular}
+\end{table}
+
+Вес элементов, на которых допущена ошибка, равен $0.05$, а значит
+	$$
+	\varepsilon_2 \approx 3 \cdot 0.05 = 0.15.
+	$$
+	и тогда: 
+	$$
+	\omega_2 \approx \frac{1}{2} \ln \left(\frac{1-0.15}{0.15}\right) \approx 0.867.
+	$$
+Повторяем расчет аналогично проделанному в первом пункте, нормируем веса ($\alpha_0 \approx 0.714$) и представим данные в виде таблицы:
+\begin{table}[h]
+\tiny
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$X$ & $(4,1)$ & $(2,4)$ & $(5,1)$ & $(3,2)$ & $(1,5)$ & $(3,5)$ & $(2,1)$ & $(2,2)$ & $(2,5)$ & $(4,3)$ & $(2,3)$ & $(5,2)$ \\ \hline
+$y_i$ & $+1$ & $-1$ & $+1$ & $+1$ & $-1$ & $-1$ & $+1$ & $+1$ & $-1$ & $-1$ & $+1$ & $-1$ \\ \hline
+$b_2(X)$ & $+1$ & $-1$ & $+1$ & $-1$ & $-1$ & $-1$ & $+1$ & $-1$ & $-1$ & $-1$ & $-1$ & $-1$ \\ \hline
+$\alpha_i \cdot e^{-y_i\omega_t b_2(x_i)}$ & $0.021$ & $0.021$ & $0.021$ & $0.119$ & $0.021$ & $0.021$ & $0.021$ & $0.119$ & $0.021$ & $0.105$ & $0.119$ & $0.105$ \\ \hline
+$\frac{\alpha_i \cdot e^{-y_i\omega_t b_2(x_i)}}{\alpha_0}$ & $0.029$ & $0.029$ & $0.029$ & $0.167$ & $0.029$ & $0.029$ & $0.029$ & $0.167$ & $0.029$ & $0.147$ & $0.167$ & $0.147$ \\ \hline
+\end{tabular}
+\end{table}
+\item Остался последний шаг алгоритма. Как мы видим, теперь у нас имеется три категории весов: $0.029$ -- для точек, которые все рассмотренные ранее  базовые алгоритмы классифицировали верно (вес для них, кстати, продолжает уменьшаться), $0.167$ --- для трех точек, которые были классифицированы неверно (веса перед ними увеличились), и $0.147$ -- для точек, при которых на прошлой итерации вес был увеличен, но которые на этот раз были классифицированы верно, поэтому их веса немного, но уменьшились.
+
+Теперь веса:
+$$
+\alpha_i \approx \begin{cases}
+ 0.029, & i \in \{1, 2, 3, 5, 6, 7,9 \} \\
+ 0.147, & i \in \{10, 12\} \\
+ 0.167, & i \in \{4, 8, 11\} \\
+ \end{cases}.
+$$
+Пусть выбранный алгоритм $b_3(x)$ делит плоскость вертикальной прямой, как показано на нижнем рисунке (классификация такая: слева -- желтые, справа -- зеленые). Видно, что классификатор ошибается в шести случаях (соответсвующие столбцы закрашены в таблице и все имеют одинаковый вес).
+\begin{table}[h]
+\tiny
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$X$ & \cellcolor{blue!25}$(4,1)$ & \cellcolor{green!25}$(2,4)$ & \cellcolor{blue!25}$(5,1)$ & $(3,2)$ & \cellcolor{green!25}$(1,5)$ & \cellcolor{green!25}$(3,5)$ & $(2,1)$ & $(2,2)$ & \cellcolor{green!25}$(2,5)$ & $(4,3)$ & $(2,3)$ & $(5,2)$ \\ \hline
+$y_i$ & \cellcolor{blue!25}$+1$ & \cellcolor{green!25}$-1$ & \cellcolor{blue!25}$+1$ & $+1$ & \cellcolor{green!25}$-1$ & \cellcolor{green!25}$-1$ & $+1$ & $+1$ & \cellcolor{green!25}$-1$ & $-1$ & $+1$ & $-1$ \\ \hline
+$b_3(x_i)$ & \cellcolor{blue!25}$-1$ & \cellcolor{green!25}$+1$ & \cellcolor{blue!25}$-1$ & $+1$ & \cellcolor{green!25}$+1$ & \cellcolor{green!25}$+1$ & $+1$ & $+1$ & \cellcolor{green!25}$+1$ & $-1$ & $+1$ & $-1$ \\ \hline
+$\omega_3$ & \cellcolor{blue!25}$0.029$ & \cellcolor{green!25}$0.029$ & \cellcolor{blue!25}$0.029$ & $0.167$ & \cellcolor{green!25}$0.029$ & \cellcolor{green!25}$0.029$ & $0.029$ & $0.167$ & \cellcolor{green!25}$0.029$ & $0.147$ & $0.167$ & $0.147$ \\ \hline
+\end{tabular}
+\end{table}
+
+Тогда доля ошибок составит 
+$$
+\varepsilon_3 \approx 6 \cdot 0.029 \approx 0.174,
+$$
+а значение $\omega_3 \approx 0.779$. Все результаты (пересчет и нормирование весов) представим в таблице:
+
+\begin{table}[h]
+\tiny
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$X$ & $(4,1)$ & $(2,4)$ & $(5,1)$ & $(3,2)$ & $(1,5)$ & $(3,5)$ & $(2,1)$ & $(2,2)$ & $(2,5)$ & $(4,3)$ & $(2,3)$ & $(5,2)$ \\ \hline
+$y_i$ & $+1$ & $-1$ & $+1$ & $+1$ & $-1$ & $-1$ & $+1$ & $+1$ & $-1$ & $-1$ & $+1$ & $-1$ \\ \hline
+$b_3(X)$ & $-1$ & $+1$ & $-1$ & $+1$ & $+1$ & $+1$ & $+1$ & $+1$ & $+1$ & $-1$ & $-1$ & $+1$ \\ \hline
+$\omega_3 (i) \cdot e^{-\alpha_3 y_i b_3(X)}$ & $0.064$ & $0.064$ & $0.064$ & $0.076$ & $0.064$ & $0.064$ & $0.013$ & $0.076$ & $0.064$ & $0.067$ & $0.076$ & $0.067$ \\ \hline
+$\frac{\omega_3 (i) \cdot e^{-\alpha_3 y_i b_3(X)}}{Z_3}$ & $0.084$ & $0.084$ & $0.084$ & $0.1$ & $0.084$ & $0.084$ & $0.018$ & $0.1$ & $0.084$ & $0.089$ & $0.1$ & $0.089$ \\ \hline
+\end{tabular}
+\end{table}
+\end{enumerate}
+Итак, финальный алгоритм строится  следующим образом:
+$$
+a(x) = \sign \left (\sum_{t=1}^3 \omega_t b_t(x)\right ) \approx \sign \left (0.805 \cdot b_1(x)+ 0.867 \cdot b_2(x)+0.779 \cdot b_3(x) \right ).
+$$
+Тогда классификация тестового объекта, скажем, $x = (4,1)$ с помощью ансамбля может быть получена как:
+$$
+a(x) = \sign \left (0.805 \cdot (+1) + 0.867 \cdot (+1) + 0.779 \cdot (-1) \right ) = \sign \left (0.893\right ) = +1.
+$$
+Ансамбль его относит к желтым.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\textwidth]{AdaBoost_all.png}
+\caption{Итоговый классификатор, полученный алгоритмом AdaBoost.}
+\label{adaboostall}
+\end{figure}
+
+\newpage
+\subsection{Стекинг (Stacking)}
+В традиционных подходах ансамблевых моделей, что рассматривались ранее, мы использовали несколько базовых моделей на различных комбинациях входных данных и объединяли их результаты с помощью голосования, взвешенного голосования, усреднения результатов и т.д. В то же время резонно возникает следующий вопрос: почему, собственно, для создания композиции используются такие простые операции как усреднение или голосование? Может, подбор решающего правила доверить очередному алгоритму (т.н. <<метаалгоритму>>) машинного обучения.
+
+Идея стекинга в этом и состоит: обучить несколько разных базовых моделей и объединить их путем обучения так называемой метамодели. Метамодель является, по своей сути, еще одной моделью, которая служит для вывода прогнозов на основе нескольких прогнозов, возвращенных базовыми моделями. В итоге, мы используем не заранее спланированное решение, вроде голосования, а даем возможность выбрать корректирующее правило новой модели.
+
+Существует несколько возможных алгоритмов стекинга, мы рассмотрим лишь один из них. Обратите внимание, в этом алгоритме обозначения несколько отличаются от обозначений в предыдущих пунктах.
+
+\begin{enumerate}
+	\item Пусть $X = \{x_1, x_2, ..., x_n\}$ -- обучающая выборка с откликами $Y = \{y_1, y_2, ..., y_n\}$, $b_1, b_2, ..., b_k$ -- базовые алгоритмы. 
+	\item Разделить $X$ на $k$ непересекающихся почти одинаковых по размеру блоков (folds) 
+	$$
+	X = X_1 \cup X_2 \cup \ldots \cup X_k.
+	$$
+	Обычно $k$ -- это не очень большое число (до $10$).
+	\item Для каждого $i \in \{1, 2, ..., k\}$ и $j \in \{1, 2, ..., k\}$ обучить базовый алгоритм $b_i$ на наборе данных
+	$$
+	X_{[-j]} = X \setminus X_j,
+	$$
+	и протестировать на $X_j$, получив набор откликов $Y_{ji}$. 
+	\item Сформировать метаданные (метапредикторы) для обучения метамодели следующим образом
+	$$
+X_{meta} = \begin{pmatrix}
+ 	Y_{11} & Y_{12} & \ldots & Y_{1k} \\
+ 	Y_{21} & Y_{22} & \ldots & Y_{2k} \\
+ 	\vdots & \vdots & \ddots & \vdots \\
+ 	Y_{k1} & Y_{k2} & \ldots & Y_{kk}
+ \end{pmatrix}.
+	$$
+	В качестве откликов для обучения метамодели взять отклики исходные отклики $Y$.
+	\item Обученная метамодель и считается ансамблем, построенным на основе стекинга.
+\end{enumerate}
+\begin{remark}
+Для применения построенной метамодели к тестовым данным, часто поступают следующим образом: 
+\begin{itemize}
+	\item Базовые алгоритмы обучают на всей тестовой выборке. 
+	\item Тестовое данное подается на вход каждому базовому алгоритму, тем самым получая строку метаданных.
+	\item Строка полученных метаданных подается обученному метаалгоритму.
+\end{itemize}
+\end{remark}
+
+\subsubsection{Пример на пальцах}
+Чтобы продемонстрировать все этапы алгоритма, рассмотрим следующие данные. Пусть двое играют в дартс. Мишень -- круг с центром в точке $(0,0)$ единичного радиуса. Пусть $X_1$ откладывается по горизонтали, а $X_2$ -- по вертикали, тогда пара $(X_1, X_2)$ -- координаты дротика, попавшего в мишень. Пусть отклик $0$ соответствует первому игроку (зеленые точки на рисунке \ref{Stacking_data}), а отклик $1$ -- второму (желтые точки). 
+
+Составим модель классификации, которая будет предсказывать, кто из игроков выполнил бросок, основываясь на координатах попадания дротика.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{Stacking_data.png}
+\caption{Исходные данные попаданий в дартс.}
+\label{Stacking_data}
+\end{figure}
+
+Для стекинга будем использовать разделение на 4 непересекающихся блока случайным образом. В качестве базовых алгоритмов выберем: $k$-ближайших соседей ($k=3$) и дерево принятия решений (максимальная глубина $4$, критерий разбиения — энтропия). 
+Для сравнения результатов, применим алгоритмы к исходным данным. Из рисунков видно, что алгоритм $k$-ближайших соседей (рисунок \ref{Stacking_fin_knn}) допустил три ошибки, а дерево принятия решений (рисунок \ref{Stacking_fin_DTs}) -- две.
+
+\begin{figure}[h]
+  \begin{subfigure}[t]{0.475\textwidth}
+    \includegraphics[width=\textwidth]{Stacking_fin_knn.png}
+    \caption{Модель классификации: $k$-ближайших соседей}
+    \label{Stacking_fin_knn}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.475\textwidth}
+    \includegraphics[width=\textwidth]{Stacking_fin_DTs.png}
+    \caption{Модель классификации: дерево принятия решений}
+    \label{Stacking_fin_DTs}
+  \end{subfigure}
+  \caption{Сравнение моделей классификации} 
+  \label{fig:main}
+\end{figure}
+
+Выполнив четыре итерации алгоритма стекинга, получаем отклики выбранных базовых алгоритмов для каждого из разбиений (блока). Полученные результаты могут быть записаны в табличном виде:
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|r|r|c|c|c|}
+\hline
+Номер блока & $X_1$ & $X_2$ & $Y_{kNN}$ & $Y_{DT}$ & $Y$ \\ \hline \hline
+4 & 0.94 & -0.18 & 0 & 0 & 0 \\ \hline
+3 & 0.12 & -0.93 & 1 & 1 & 0 \\ \hline
+$\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ \\ \hline
+3 & 0.18 & -0.90 & 1 & 1 & 0 \\ \hline
+2 & -0.82 & -0.37 & 1 & 0 & 1 \\ \hline
+$\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ \\ \hline
+1 & 0.29 & -0.04 & 1 & 1 & 1 \\ \hline
+\end{tabular}
+\end{table}
+В принятых обозначениях получены метаданные (метапредикторы) для обучения метамодели
+	$$
+X_{meta} = \begin{pmatrix}
+ 	0 & 0 \\
+ 	1 & 1 \\
+ 	\vdots & \vdots \\
+ 	1 & 1 \\
+ 	1 & 0 \\
+ 	\vdots & \vdots \\
+ 	1 & 1 \\
+ \end{pmatrix}.
+	$$
+Метаалгоритм $a(x)$ обучим на предикторах $X_{meta}$ и отклике $Y$. В качестве метаалгоритма используем логистическую регрессию. Результат представлен на рисунке \ref{Stacking_fin_Meta_v2} из которого можно заметить, что итоговая модель вобрала черты двух моделей.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{Stacking_fin_Meta_v2.png}
+\caption{Модель классификации: стекинг.}
+\label{Stacking_fin_Meta_v2}
+\end{figure}
+
+
+\newpage \newpage
+\subsection{Случайный лес}
+Ранее мы познакомились с алгоритмом деревьев принятия решений. Этот алгоритм очень удобно модифицировать, используя бэггинг: построенное ДПР, как мы видели, может достигать нулевой ошибки на любой обучающей выборке, но, в то же время, может быть очень неустойчивым на тестовой.
+
+Случайный лес -- это ансамбль деревьев принятия решений, основанный на бэггинге, но с одним важным дополнением -- добавлением еще одной случайности -- случайности по признакам. Таким образом, каждое дерево в лесу будет обучено на случайной бутстрэп выборке и некотором наборе признаков из исходного тренировочного набора данных. Все это делает деревья менее похожими между собой, а итоговую модель более устойчивой. 
+Обычно для задачи регрессии рекомендуется использовать $m = [\frac{p}{3}]$, а в классификации $m = [\sqrt{p}]$ признаков (квадратные скобки обозначают целую часть числа).
+
+Резюмируя, запишем алгоритм построения случайного леса. Пусть имеется обучающая выборка $X$ объема $n$ с $p$ предикторами, тогда для каждого дерева $t=\{1,2,\ldots, T\}$ необходимо:
+\begin{enumerate}
+	\item Сформировать бутстрэп выборку $X_t$.
+	\item Из исходных $p$ предикторов, случайным образом выбрать $m$ предикторов.
+	\item Сформировать дерево принятия решений на основе выборки $X_t$, оставив $m$ предикторов.
+	\item Повторить шаги 1-3 заданное число $T$ раз.
+	\item В зависимости от задачи, сформировать решающее правило и ансамбль.
+\end{enumerate}
+
+Еще одно достоинство случайного леса заключается в том, что для оценки вероятности ошибочной классификации нет необходимости использовать кросс–проверку или тестовую выборку. Ведь при формировании деревьев используются бутстрэп, а как мы знаем бутстрэп выборка состоит из около $63\%$ объектов исходной выборки. А значит, на оставшихся, можно выполнить оценку.
+
+Обратимся к синтетическим данным и рассмотрим задачу классификации, сравнив три подхода: деревья принятия решений, бэггинг над ними и случайный лес (рисунок \ref{RF}). 
+Как мы видим (впрочем, мы это и так знали), деревья решений дают нам переобучение, что отражается на рисунке в виде ровных угловатых границ, уходящих далеко от объектов. 
+В случае бэггинга и случайного леса границы уже более гладкие, нет явных выступов: по сути, область выглядит более цельной.
+В целом проблема переобучения практически не свойственна случайному лесу, в особенности, если в лесу достаточно деревьев.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\textwidth]{RandomForest.png}
+\caption{Сравнение моделей.}
+\label{RF}
+\end{figure}
+
+Однако основным ограничением случайного леса является то, что большое количество деревьев может сделать алгоритм медленным и неэффективным для предсказаний в реальном времени. Как правило, эти алгоритмы быстро обучаются, но довольно медленно создают прогнозы после обучения. 
+

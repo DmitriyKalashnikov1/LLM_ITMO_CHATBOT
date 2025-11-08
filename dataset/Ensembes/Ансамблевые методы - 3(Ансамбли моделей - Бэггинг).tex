@@ -1,0 +1,547 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm, headheight=30pt]{geometry}
+\usepackage{amssymb}
+\usepackage{cmap}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\usepackage{subcaption}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+
+
+\sloppy
+
+
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmin}{Arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+\DeclareMathOperator*{\logloss}{logloss}
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+
+
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+
+\usepackage{textcase} 
+\usepackage{titlesec}
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Ансамбли моделей\\
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+
+\newpage
+%
+\pagestyle{empty}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+
+\section{Ансамбли моделей}
+\subsection{Общее понятие ансамбля}
+Как мы уже упоминали ранее, ансамбль моделей -- это подход машинного обучения, в котором несколько моделей, называемых еще часто \textbf{слабыми учениками}, обучаются для решения одинаковой задачи, а затем объединяются для получения лучших результатов. И, конечно, главный вопрос здесь -- как объединять таких учеников?
+
+Итак, предположим, что рассматривается обучение с учителем, и нам дана (конкретная) обучающая выборка $x_1, x_2, ..., x_n$ с откликами $y_1, y_2, ..., y_n$, где $x_i \in X$, $y_i \in Y$, $i \in \{1, 2, ..., n\}$.
+\begin{remark}
+	Немного поясним введенные обозначения. Например, если $X_1, X_2, ..., X_p$ -- числовые предикторы (ситуация, которая у нас обычно и возникает), то в качестве множества $X$ резонно рассматривать $\mathbb{R}^p$. Конкретное наблюдение тогда может быть отождествлено с вектором
+	$$
+	x_i = (x_{i1}, x_{i2}, ..., x_{ip}) \in \mathbb{R}^p.
+	$$
+При рассмотрении задачи классификации, множество $Y$ обычно имеет вид $Y = \{1, 2, 3, ..., M\}$, где $M$ -- количество классов (конечно, классы могут быть занумерованы как-то иначе). При рассмотрении же задачи регрессии, $Y$ часто либо совпадает с $\mathbb{R}$, либо является его <<непрерывным>> подмножеством.
+\end{remark}
+Итак, давайте дадим определение слову <<алгоритм>>, используемому в дальнейшем.
+\begin{definition}
+Пусть $b(x):X \to R$ -- базовый алгоритм, обучающийся на тренировочном наборе данных, $R$ -- вспомогательное множество, а $C: R \to Y$ -- так называемое решающее правило. Алгоритмом, основанном на базовом алгоритме $b$ с решающим правилом $C$, назовем отображение
+$$
+a(x) = C(b(x)).
+$$	
+\end{definition}
+Поясним, что имеется в виду под базовым алгоритмом, а также что такое множество $R$ на примерах.
+\begin{example}
+Пусть, например, $Y = \{-1, 1\}$, и решается задача двухклассовой классификации. Предположим, что $b(x)$ -- базовый алгоритм -- алгоритм логистической регрессии. Тогда $b(x)$ выдает число в диапазоне от $0$ до $1$, то есть вероятность отнесения объекта к классу <<$+1$>>, и множество $R$ -- это $[0, 1]$. Если выбрать порог отсечения, равный $0.5$, то решающее правило может быть следующим: <<если $b(x) \geq 0.5$, то присвоим наблюдению класс <<$+1$>>, иначе -- класс <<$-1$>>>>. Итого, алгоритм на основе логистической регрессии с выбранным решающим правилом может быт описан следующим образом:
+$$
+a(x) = \begin{cases}
+1, & b(x) \geq 0.5 \\
+-1, & b(x) < 0.5
+ \end{cases}.
+$$
+Решающее правило может быть выбрано и как-то иначе -- это, конечно же, задача исследователя.
+\end{example}
+\begin{remark}
+Например, с граничным значением $0.5$ из предыдущего примера поступать можно по-разному. Часто используется следующий подход -- добавление дополнительного класса <<$0$>> для объектов, которые непонятно как классифицировать. В этом случае алгоритм действует по правилу <<лучше промолчать, чем соврать>> и задается, например, так
+$$
+a(x) = \begin{cases}
+1, & b(x) > 0.5 \\
+0, & b(x) = 0.5 \\
+-1, & b(x) < 0.5
+ \end{cases}.
+$$
+Впрочем, выбор порога отсечения, равного $0.5$, тоже весьма субъективно.
+\end{remark}
+Приведем еще один пример.
+\begin{example}
+Пусть решается задача двухклассовой классификации, $Y = \{-1, 1\}$, а $b(x)$ -- базовый алгоритм -- алгоритм SVM. В этом случае $R = \mathbb{R}
+$, так как $b(x)$ выдает, вообще говоря, произвольные числа, а решающее правило с фиктивным классом <<$0$>> может быть задано так: <<если $b(x)>0$, то наблюдению $x$ присваивается класс <<$+1$>>, если $b(x) < 0$, то <<$-1$>>, а если $b(x) = 0$, то <<$0$>>>>. Аналитически алгоритм может быть задан так:
+$$
+a(x) = \sign b(x) = \begin{cases}
+ 1, & b(x) > 0 \\
+ 0, & b(x) = 0 \\
+ -1, & b(x) < 0	
+ \end{cases}.
+$$	
+\end{example}
+
+\begin{example}
+Пусть, например, решается задача $M$-классовой классификации, $Y = \{1, 2, ..., M\}$, $b_i(x)$ -- снова базовый алгоритм -- алгоритм логистической регрессии, выдающий вероятность отнесения объекта к классу с номером $i \in \{1, 2, ..., M\}$ (то, что $b_i(x) = p \in [0, 1]$ означает, что объект $x$ относится к классу $i$ с вероятностью $p$, и не относится к классу $i$ с вероятностью $(1-p)$). Вспомогательное множество $R$ -- это снова отрезок $[0, 1]$. Тогда решающее правило может быть, например, таким: <<отнести объект к тому классу, базовый алгоритм отнесения к которому выдает наибольшее число>>. Иными словами,
+$$
+a(x) = \argmax\limits_{i \in \{1, 2, ..., M\}} b_i(x).
+$$
+В случае, если подходит несколько классов, можно либо отнести наблюдение к любому из подходящих классов, либо отнести его к фиктивному классу <<$0$>> (конечно, введя его в рассмотрение).
+\end{example}
+\begin{example}
+Пусть решается задача регрессии, $b(x)$ -- базовый алгоритм множественной линейной регрессии. Тогда решающее правило, вообще говоря, не нужно (оно является тождественным отображением), и 
+$$
+a(x) = C(b(x)) = b(x),
+$$
+а значит $R = \mathbb{R}$.
+\end{example}
+Теперь, зная, что такое алгоритм, можно определить и ансамбль (или композицию) алгоритмов.
+\begin{definition}
+Пусть $b_i(x):X \to R$ -- базовые алгоритмы, $i \in \{1, 2, ..., k\}$. Пусть, кроме того, $F: R^k \to R$ -- корректирующее правило и $C: R \to Y$ -- решающее правило. Тогда ансамблем алгоритмов $b_1, ..., b_k$ с корректирующим правилом $F$ и решающим правилом $C$ называется алгоритм
+$$
+a(x) = C(F(b_1(x), b_2(x), ..., b_k(x))).
+$$	
+\end{definition}
+Поясним введенное определение на примере.
+\begin{example}
+	Пусть решается задача регрессии и $b_i(x)$ -- некоторый базовый алгоритм, $i \in \{1, 2, ..., k\}$ (например, алгоритмы полиномиальной регрессии с полиномами разных степеней). Тогда в качестве корректирующего правила можно рассмотреть, например, так называемое простое голосование (Simple Voting):
+$$
+F(b_1(x), b_2(x), ..., b_k(x)) = \frac{1}{k} \sum\limits_{i = 1}^k b_i(x).
+$$
+ -- банальное усреднение ответов. В этом случае решающего правила не требуется (оно тождественно), а предсказание может даваться следующим алгоритмом:
+$$
+a(x) = \frac{1}{k} \sum\limits_{i = 1}^k b_i(x).
+$$
+\end{example}
+В данном примере все алгоритмы имеют одинаковый вес, ни один не выделяется. Приведем еще один пример, обобщающий предыдущий.
+\begin{example}
+Пусть решается задача регрессии и $b_i(x)$ -- базовый алгоритм, $i \in \{1, 2, ..., k\}$. Тогда в качестве корректирующего правила можно рассмотреть, например, так называемое взвешенное голосование (Weighted Voting). Пусть $\omega_i$, $i \in \{1, 2, ..., n\}$ -- веса, то есть $\omega_i \geq 0$ и
+$$
+\sum\limits_{i = 1}^k \omega_i = 1.
+$$
+Тогда зададим корректирующее правило, как
+$$
+F(b_1(x), b_2(x), ..., b_k(x)) = \sum\limits_{i = 1}^k \omega_i b_i(x).
+$$
+Решающее правило снова тождественно, а предсказание может даваться следующим алгоритмом:
+$$
+a(x) = \sum\limits_{i = 1}^k \omega_i b_i(x).
+$$
+\end{example}
+Ясно, что в рассматриваемом примере больший вес имеет смысл сопоставлять алгоритму, которому мы больше <<доверяем>>, или который по той или иной причине мы предпочитаем остальным.
+\begin{example}
+Пусть решается задача $M$-классовой классификации, $Y = \{1, 2, ..., M\}$ и $a_i(x)$, $i \in \{1, 2, ..., k\}$ -- алгоритмы, построенные на основе каких-то базовых алгоритмов, то есть алгоритмы, выдающие класс. Рассмотрим в качестве корректирующего правила так называемое голосование большинством:
+$$
+F(a_1(x), a_2(x), ..., a_k(x)) = \mathsf{mode}(a_1(x), a_2(x), ..., a_k(x)),
+$$
+где $\mathsf{mode}$ выдает моду набора данных -- значение, которое встречается наиболее часто. Если таких значений несколько, то в качестве значения $F$ можно либо взять какую-то из мод, либо присвоить фиктивный класс <<$0$>>. Тогда ансамбль (с тождественным решающим правилом) можно определить, как
+$$
+a(x) = \mathsf{mode}(a_1(x), a_2(x), ..., a_k(x)).
+$$
+Аналогично рассмотренному ранее, можно предложить и взвешенное голосование. Без дополнительных пояснений отметим, что ансамбль может быть определен, как
+$$
+a(x) = \argmax_{m \in \{1,2,\ldots,M\}} \sum_{i=1}^{k} w_i \mathsf{I} \left (a_i(x) = m \right ),
+$$
+причем в случае, если подходит несколько классов, то можно поступать любым из способов, описанных ранее. Описанное правило выбирает тот класс, которому отвечает большая сумма, при этом решению каждого классификатора приписан некоторый вес, конечно же влияющий на всю сумму.
+\end{example}
+Приведенные корректирующие функции -- далеко не все возможные, но часто встречающиеся. Выбор корректирующей функции -- сложная задача, часто зависящая от предметной области.
+
+Базовые алгоритмы и алгоритмы, на них построенные, могут быть получены как с использованием различных алгоритмов машинного обучения, так и с помощью разных обучающих выборок. Перейдем к рассмотрению конкретных алгоритмов, и начнем с бэггинга. Он как раз-таки и использует разобранный статистический аппарат бутстрэпа.
+
+\subsection{Бэггинг}
+Бэггинг (от англ. Bagging = \textbf{B}ootstrap \textbf{agg}regat\textbf{ing}) -- один из подходов к формированию ансамблей, основанный на независимом обучении базовых алгоритмов на различных выборках. Опишем алгоритм формально, стараясь использовать ранее введенные обозначения. 
+\begin{enumerate}
+	\item Пусть $X_1, X_2, ..., X_n$ -- выборка объема $n$, $b_1(x), b_2(x), ..., b_t(x)$ -- базовые алгоритмы.
+	\item По выборке $X_1, X_2, ..., X_n$ создать $t$ независимых подвыборок 
+$$
+X_1^{(j)}, X_2^{(j)}, ..., X_l^{(j)}, \quad j \in \{1, 2, ..., t\}
+$$ 
+объема $l \leq n$ методом бутстрэп.
+	\item Для каждого $j \in \{1, 2, ..., t\}$ обучить базовый алгоритм $b_j(x)$ на выборке $X_1^{(j)}, X_2^{(j)}, ..., X_l^{(j)}$.
+	\item Сформировать ансамбль
+$$
+a(x) = C \left (F
+(b_1(x), b_2(x), \ldots, b_t(x))\right ).
+$$
+\end{enumerate}
+\begin{remark}
+Часто бэггинг используют для уменьшения дисперсии конкретного базового алгоритма $b(x)$. Для этого полагают $b_1(x) = b_2(x) = ... = b_t(x) = b(x)$ то есть, по сути, обучают один и тот же алгоритм, но на разных подвыборках исходной выборки. Все шаги описанного алгоритма сохраняются.
+\end{remark}
+\begin{remark}
+Отметим также, что выбор объема подвыборки $l$ -- отдельная задача. С одной стороны, получившаяся выборка должна быть репрезентативной для обучения, а с другой -- не позволять модели переобучиться. Кроме того, чем больше объем выборки, тем дольше обучается модель. Если, к тому же, велико и число $t$, то вычислительных мощностей может не хватить и вовсе.
+\end{remark}
+
+\subsubsection{Пример решения задачи классификации}
+Применим бэггинг к решению задачи классификации. Рассмотрим урезанные до двух предикторов данные по футбольной статистике: $X_1$ -- количество ударов в створ ворот; $X_2$ -- процент владения мячом. Урезание проводится лишь для того, чтобы можно было удобно визуализировать получающиеся результаты на плоскости. Объем исходной выборки невелик, всего $34$ наблюдения, а данные выглядят следующим образом (отклик -- первый столбец таблицы -- равен $1$, если команда выиграла, и равен $0$, если проиграла):
+\begin{center}
+ \begin{tabular}{||p{3cm} |p{4cm} |p{4cm} |p{3cm}||} 
+ \hline
+ Победа или \par проигрыш & Количество \par ударов в створ & Процент \par владения мячом \\ [0.5ex] 
+ \hline\hline
+ 1 & 7 & 40\\ 
+ \hline
+ 0 & 0 & 60 \\
+ \hline
+ 0 & 3 & 43 \\
+ \hline
+ 1 & 4 & 57 \\
+ \hline
+ \ldots & \ldots & \ldots \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+Наша цель -- имея данные о количестве ударов в створ ворот и проценте владения мячом, классифицировать команду в одну из двух групп: победившие или проигравшие. В качестве базового алгоритма будем рассматривать алгоритм, основанный на логистической регрессии. Результат применения логистической регрессии на исходных данных представлен на рисунке \ref{baggin_log} -- вся плоскость поделена на два класса синей прямой. Желтые объекты -- это победы команд, а зеленые -- проигрыши.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{football_log.png}
+\caption{Классификация с помощью логистической регрессии.}
+\label{baggin_log}
+\end{figure}
+
+Теперь воспользуемся бэггингом, сформировав $t = 5$ выборок (для наглядности визуализации) объема $34$, выбрав в качестве ансамбля <<голосование большинством>>, то есть
+$$
+a(x) = \mathsf{mode}(b_1(x), b_2(x), b_3(x), b_4(x), b_5(x)),
+$$
+где 
+$$
+b_i(x) = \begin{cases}
+ 1, & a_i(x) \geq 0.5 \\
+ 0, & a_i(x) < 0.5	
+ \end{cases},
+$$
+а $a_i(x)$ -- базовый алгоритм логистической регрессии, выдающий число-вероятность в диапазоне $[0, 1]$.
+ 
+Полученные результаты легко сравнить, если отобразить разделяющие плоскость прямые, полученные в результате логистической регрессии, на плоскости. На рисунке \ref{baggin_boost} видно, что результаты достаточно сильно отличаются. Нормали всех гиперплоскостей направлены в сторону класса желтых (вниз и вправо).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{football_log_with_boost.png}
+\caption{Базовые алгоритмы на основе бэггинга}
+\label{baggin_boost}
+\end{figure}
+
+Рассмотрим новое тестовое наблюдение $Z=(5,65)$ (рисунок \ref{baggin_boost_pred}), отвечающее вот какой ситуации: команда ударила в створ ворот пять раз и владела мячом $65\%$ игрового времени.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{football_log_with_boost_predict.png}
+\caption{Предсказание результата.}
+\label{baggin_boost_pred}
+\end{figure}
+
+Сравним результат классификации с помощью логистической регрессии и построенного ансамбля. Алгоритм логистической регрессии дает вероятность
+$$
+\mathsf{P}_{+} \approx 0.39
+$$
+отнесения нового объекта к классу желтых, а значит, при пороге отсечения $0.5$ относит его к классу зеленых (проигравших). Это понятно и из геометрических соображений -- рассматриваемый объект лежит в той части плоскости, которая отвечает классу <<зеленых>>.
+
+Аналогичные вычисления выполняются для каждого базового алгоритма $b_i(Z)$, а прогнозы равны
+$$
+\mathsf{P_{b_1}}_{+} \approx 0.63, \mathsf{P_{b_2}}_{+} \approx 0.39, \mathsf{P_{b_3}}_{+} \approx 0.45, \mathsf{P_{b_4}}_{+} \approx 0.38, \mathsf{P_{b_5}}_{+} \approx 0.75.
+$$
+В итоге, два алгоритма относят объект к классу желтых ($1$ый и $5$ый), а остальные три -- к классу зеленых. Это, опять же, понятно и без вычислений, просто из рисунка -- по расположению тестового объекта относительно разделяющих прямых. Поскольку в качестве ансамбля выбрано <<голосование большинством>>, то и ансамбль относит объект к классу зеленых -- проигравших. 
+
+\subsubsection{Пример задачи регрессии}
+Теперь приведем пример решения задачи регрессии с использованием ансамблей. В качестве тренировочного набора данных рассмотрим уже встречавшиеся нам ранее данные, показывающие время, проведенное в магазине, в зависимости от количества выбранных товаров. Данные представлены в виде таблицы. В качестве предиктора $X_1$ выберем количество товаров, которое купил человек, а в качестве отклика $Y$ – время, проведенное в магазине. 
+$$
+\begin{tabular}{|c|c|c|}
+\hline
+\text{№} & \text{Время в магазине (мин.)} & \text{Количество выбранных товаров} \\
+\hline
+1 & 10 & 15 \\
+\hline
+2 & 5 & 12 \\
+\hline
+3 & 12 & 18 \\
+\hline
+4 & 25 & 30 \\
+\hline
+5 & 1 & 3 \\
+\hline
+6 & 18 & 20 \\
+\hline
+7 & 11 & 14 \\
+\hline
+8 & 7 & 10 \\
+\hline
+9 & 19 & 20 \\
+\hline
+10 & 15 & 13 \\
+\hline
+\end{tabular}
+$$
+Уравнение регрессии $Y$ на $X_1$ (с округленными коэффициентами) имеет следующий вид:
+$$
+Y=4.06 + 0.93 X_1.
+$$
+Соответствующая прямая построена на плоскости (рисунок \ref{linear_start}), а предсказание необходимого времени для покупки $27$ товаров вычисляется подстановкой значения $X_1 = 27$ в полученную функцию, то есть:
+$$
+4.06 + 0.93 \cdot 27 = 29.17.
+$$
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{example_market_lin.png}
+\caption{Зависимость времени, проведенного в магазине, от количества выбранных товаров.}
+\label{linear_start}
+\end{figure}
+
+Теперь, аналогично предыдущему примеру, воспользуемся бэггингом, где в качестве базовых алгоритмов выступает линейная регрессия, а в качестве корректирующего правила выбрано простое голосование -- усреднение результатов. Моделируем $B=1000$ бутстрэп выборок, для пяти из которых на рисунке \ref{linear_bag} отображены прямые, соответствующие алгоритмам $b_i(x)$, каждый из которых может быть использован для предсказания.
+
+Отметим на рисунке \ref{linear_pred} вертикальной пунктирной прямой значение $X_1=27$, для которого будем искать предсказание. Так, базовый алгоритм $b_2(x)$, как видно из рисунка, дает предсказание около 24 минут. Из рисунка также виден значительный разброс результатов, от 24 до, примерно, 31 минуты.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{example_market_lin_boost.png}
+\caption{Базовые алгоритмы на основе бутстрэпа.}
+\label{linear_bag}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{example_market_lin_pred.png}
+\caption{Предсказание результата.}
+\label{linear_pred}
+\end{figure}
+
+Что же насчет среднего, среди всей тысячи результатов? Оно составит около 28.66 минут:
+$$
+\frac{1}{1000} \left ( 31.21+ 23.94+ 27.48+ 30.84+ 25.49 + \ldots \right) = 28.66,
+$$
+что на пол минуты больше, чем прогноз, который нам давала исходная модель.
+

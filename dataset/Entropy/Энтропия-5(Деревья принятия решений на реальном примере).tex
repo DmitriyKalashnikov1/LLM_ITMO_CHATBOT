@@ -1,0 +1,338 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm, headheight=30pt]{geometry}
+\usepackage{amssymb}
+\usepackage{cmap}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+
+
+\sloppy
+
+
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmin}{Arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+\DeclareMathOperator*{\logloss}{logloss}
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+
+
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+
+\usepackage{textcase} 
+\usepackage{titlesec}
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Энтропия\\ Деревья принятия решений
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+
+\newpage
+%
+\pagestyle{empty}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+
+\section{Деревья принятия решений на реальном примере}
+Одним из примеров применения деревьев принятия решений являются системы скоринга, используемые банками для оценки клиентов. Например, некий банк имеет клиентскую базу, и хочет понять, какие клиенты согласятся на оформление потребительского кредита в будущем, а какие нет. 
+
+Рассмотрим данные (рисунок \ref{data}) о текущих клиентах банка\footnote{https://www.kaggle.com/itsmesunil/bank-loan-modelling} -- всего 12 предикторов, среди которых: возраст, опыт работы, доход, семейное положение, образование и проч., и отклик -- $Personal Loan$, принимающий значений 0, если клиент отказался оформить потребительский кредит, и 1 -- если согласился. Исходный объем данных содержит $5000$ объектов. Для дальнейшей оценки качества модели, мы его разделили на тренировочные и тестовые данные в отношении $70 \%$ на $30 \%$. Таким образом, обучение модели осуществляется на $3500$ объектах ($3158$ из которых относятся к классу $0$ -- клиенты отказавшиеся оформлять потребительский кредит, остальные к классу $1$ -- согласились). 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{bank_data.png}
+\caption{Пример тренировочных данных.}
+\label{data}
+\end{figure}
+Отметим, что все предикторы принимают числовые значения, то есть являются некатегориальными. Будем строить бинарное дерево решений. В качестве критерия разделения будем использовать критерий $X_i \leq C$, где $C$ -- пороговый параметр из диапазона значений, принимаемых предиктором $X_i$. Так, на первом уровне, самым информативным является разделение по доходу (предиктор $Income$) с пороговым значением $92.5$ тысячи долларов в год. Такое разделение приводит к достаточно информативному множеству $S_{11}$ с близкой к нулю энтропией, второе же множество -- $S_{12}$ обладает высокой степенью неопределенности.
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{bank_tree_e.png}
+\caption{Дерево принятия решений (энтропия).}
+\label{bank_tree_e}
+\end{figure}
+
+Теперь построим второй уровень дерева. Для $S_{11}$ самым информативным будет разделение по предиктору $CCAvg$ -- расходы по кредитным картам в месяц. Для $S_{12}$ -- $Education$ -- уровень образования (он принимает значения $1$ -- для студентов, $2$ -- для выпускников и $3$ -- для имеющих профессиональное образование (степень)). В результате, уже на втором уровне мы получаем подмножество из $2393$ клиентов, которые отнесены к классу $0$ (левый блок с нулевой энтропией) -- это клиенты, которые не соглашались на оформление потребительского кредита, имели доход не более $92.5$ тысяч долларов в год и незначительные расходы по кредитной карте -- не более $2.95$ тысячи долларов в месяц.
+
+Третий уровень дерева построен для оставшихся множеств с ненулевой энтропией -- множеств $S_{22}, S_{23}, S_{24}$. На этом уровне тоже получаем множество с нулевой энтропией (правый нижний блок на рисунке \ref{bank_tree_e}). На этот раз блок отвечает клиентам, согласившимся оформить потребительский кредит. Что это за клиенты, согласно построенному дереву? Это клиенты с высоким доходом, более $116.5$ тысяч долларов в год и либо выпускники, либо имеющие дополнительный уровень образования (степень).
+
+В остальных подмножествах присутствуют разные клиенты, и мы можем либо продолжить построение дерева, либо закончить на трех уровнях. В таком случае класс назначается, как обычно, исходя из <<большинства>>.
+
+На основании классификации тестовых данных, по построенному дереву может быть составлена матрица ошибок:
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{\multirow{2}{*}{\textbf{Матрица ошибок}}} & \multicolumn{2}{c|}{Исходный класс} \\ \cline{3-4} 
+\multicolumn{2}{|c|}{} & + & -- \\ \hline
+\multirow{2}{*}{Прогноз} & + & TP=108 & FP=7 \\ \cline{2-4} 
+ & -- & FN=30 & TN=1355 \\ \hline
+\end{tabular}
+\end{table}
+Полученные результаты свидетельствуют о высокой точности модели
+$$
+Precision =\frac{TP}{TP + FP}=\frac{108}{108 + 7} \approx 0.9391,
+$$
+а также полноте
+$$
+Recall =\frac{TP}{TP + FN}=\frac{108}{108 + 30} \approx 0.7826.
+$$
+
+ 
+Обучение на аналогичных данных, но с использованием неопределенности Джини, приводит к результату, отображенному на рисунке \ref{bank_tree_g}. Можно заметить, что многие критерии схожи с ранее построенным деревом.
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{bank_tree_g.png}
+\caption{Дерево принятия решений (Джини).}
+\label{bank_tree_g}
+\end{figure}
+Кроме того, классификация тестовых данных дает тоже схожий результат:
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{\multirow{2}{*}{\textbf{Матрица ошибок}}} & \multicolumn{2}{c|}{Исходный класс} \\ \cline{3-4} 
+\multicolumn{2}{|c|}{} & + & -- \\ \hline
+\multirow{2}{*}{Прогноз} & + & TP=113 & FP=4 \\ \cline{2-4} 
+ & -- & FN=25 & TN=1358 \\ \hline
+\end{tabular}
+\end{table}
+Точность и полнота немного, но повысились:
+$$
+Precision =\frac{TP}{TP + FP}=\frac{113}{113 + 4} \approx 0.9658,
+$$
+$$
+Recall =\frac{TP}{TP + FN}=\frac{113}{113 + 25} \approx 0.8188.
+$$
+
+\section{Заключение}
+Итак, в этой лекции мы осветили еще один подход к классификации -- деревья принятия решений, основная сфера применения которых -- поддержка процессов принятия управленческих решений. Метод не наделен такими тонкостями, как подбор гиперпараметров модели, и позволяет быстро обучить модель. Выбор той или иной меры неопределенности существенно не сказывается на результатах классификации, а ограничения по глубине дерева или количеству элементов в каждом узле дерева являются эвристическими подходами, т.е. не гарантируют лучшего результата или вообще работают только в каких-то частных случаях. Кроме того, обоснованных рекомендаций по тому, какой метод лучше работает, в настоящее время не существует, и окончательное решение остается на откуп исследователю.
+
+\end{document}
+

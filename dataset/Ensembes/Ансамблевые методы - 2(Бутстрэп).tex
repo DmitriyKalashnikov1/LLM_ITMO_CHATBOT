@@ -1,0 +1,402 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm, headheight=30pt]{geometry}
+\usepackage{amssymb}
+\usepackage{cmap}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\usepackage{subcaption}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+
+
+\sloppy
+
+
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmin}{Arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+\DeclareMathOperator*{\logloss}{logloss}
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+
+
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+
+\usepackage{textcase} 
+\usepackage{titlesec}
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Ансамбли моделей\\
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+
+\newpage
+%
+\pagestyle{empty}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+
+\subsection{Бутстрэп}
+Давайте рассмотрим еще один из методов генерации повторных псевдовыборок -- бутстрэп. Этот метод был предложен в 1979 году Брэдли Эфроном (Bradley Efron), и с тех пор заработал заслуженную популярность. Он, как и джекнайф, позволяет оценивать различные характеристики рассматриваемой статистики такие, как смещение и дисперсию, позволяет строить доверительные интервалы и так далее. В то же время, границы применимости этого метода намного шире, чем метода джекнайф, естественно, за счет большей вычислительной сложности.
+
+\subsubsection{Общая идея оценок методом бутстрэп}
+Итак, попробуем самостоятельно, из логических соображений прийти к методу бутстрэп. Пусть, как обычно, $\theta$ -- некоторый неизвестный параметр (или характеристика) распределения генеральной совокупности $\xi$, $X_1, X_2, ..., X_n$ -- выборка из генеральной совокупности $\xi$, а
+$$
+\widehat \theta = \widehat \theta_n(X_1, X_2, ..., X_n)
+$$
+-- некоторая (состоятельная) оценка $\theta$. На конкретной выборке (в результате эксперимента) мы можем получить лишь конкретное (одно) значение нашей оценки $\widehat \theta$, а значит никак не можем оценить ни среднее, ни разброс, ни, тем более, построить какой-либо доверительный интервал для $\theta$. Как же поступать в таком случае?
+
+Сначала представим себе <<идеальную ситуацию>>. Пусть мы можем получить не одну выборку из генеральной совокупности, а, скажем, $B$ штук. Тогда у нас в руках $B$ наборов 
+$$
+X_1^{(j)}, X_2^{(j)}, ..., X_n^{(j)}, \quad j \in \{1, 2, ..., B\}
+$$
+независимых и одинаково (с $\xi$) распределенных случайных величин, на каждом из которых мы можем вычислить значение нашей статистики $\widehat \theta$
+$$
+\widehat \theta^{j} = \widehat \theta_n^{j}(X_1^{(j)}, X_2^{(j)}, ..., X_n^{(j)}), \quad j \in \{1, 2, ..., B\}.
+$$
+Совершенно ясно, что разумной оценкой как математического ожидания, так и дисперсии $\widehat \theta$ являются
+$$
+\widehat{\theta}_{(\bullet),B} = \frac{1}{B}\sum\limits_{j = 1}^B \widehat \theta^{j}
+$$
+и
+$$
+\widehat{\mathsf{Var}}_B = \frac{1}{B-1}\sum\limits_{j = 1}^B\left(\widehat \theta^j - \frac{1}{B}\sum\limits_{j = 1}^B \widehat \theta^{j}\right)^2 = \frac{1}{B-1}\sum\limits_{j = 1}^B\left(\widehat \theta^j - \widehat{\theta}_{(\bullet),B}\right)^2.
+$$
+Все сказанное ранее подтверждается и теоретически -- изложенное, по сути своей, -- это хорошо известный в статистике метод Монте-Карло. Все бы было хорошо, но перед нами маячит вот какая проблема: обычно мы не можем получать сколько угодно выборок из генеральной совокупности. Что же в таком случае делать? Как применить, вроде бы, совершенно логичные рассуждения, которые мы привели? Тут и возникает бутстрэп.
+
+\subsubsection{Метод бутстрэп}
+Метод бутстрэп основывается вот на какой идее. Пусть $X_1, X_2, ..., X_n$ -- выборка. Опираясь на нее, мы можем смоделировать распределение $\xi$ и в последствии получить необходимые выборки из смоделированного распределения. Такой подход позволит нам  применить аппарат, описанный ранее.
+
+Как известно из статистики, истинное распределение $\xi$ по выборке $X_1, X_2, ..., X_n$ разумно приближается эмпирическим с функцией распределения
+$$
+F_n^\ast(x) = \frac{1}{n}\sum\limits_{i = 1}^n \mathsf I(X_i < x),
+$$
+где $\mathsf I(A)$ -- индикатор события $A$, аналитическое задание которого следующее:
+$$
+\mathsf I(A) = \begin{cases}
+ 1, & A \text{ произошло}\\
+ 0, & A \text{ не произошло}
+\end{cases}.
+$$
+Имея же функцию распределения, мы легко можем моделировать выборки нужного нам объема. Но чему, по сути дела, это эквивалентно? Конечно, формированию выборок путем случайного выбора $n$ объектов с возвращением из исходной выборки.
+\begin{definition}
+Бутстрэп-выборками объема $n$ из выборки $X_1, X_2, ..., X_n$ называются наборы
+$$
+X_1^{(j)}, X_2^{(j)}, ..., X_n^{(j)},
+$$	
+где $X_i^{(j)} \in \{X_1, X_2, ..., X_n\}$.
+\end{definition}
+Понятно, что число таким образом полученных выборок чрезвычайно велико! Индекс $j$ может принимать значения из диапазона $\{1, 2, ..., n^n\}$ и, например, для выборки объема $12$ количество бутстрэп-выборок равно
+$$
+12^{12} = 8\ 916\ 100\ 448\ 256
+$$
+-- числу, даже названия разрядов которого знает далеко не каждый. Поэтому на практике, конечно, берут куда меньшее бутстрэп-выборок, чем существует на самом деле.
+
+\begin{remark}
+Так как выбор производится с возвращением, то в бутстрэп-выборках могут встречаться повторяющиеся элементы исходной выборки. Интересно, что с ростом $n$ доля уникальных элементов исходной выборки, встречающихся в бутстрэп-выборке, стремится к $\approx 0.632$.
+
+Пусть мы <<набираем>> выборку $S_1, S_2, ..., S_n$. Для каждого элемента исходной выборки $X_1, X_2, ..., X_n$ вероятность, что $S_i \neq X_j$ равна
+$$
+\mathsf P \left(S_i \neq X_j \right) = 1 - \frac{1}{n}.
+$$
+Так как выбор производится независимо, то
+$$
+\mathsf P(S_1 \neq X_j, S_2 \neq X_j, ..., S_n \neq S_j) = \left( 1 - \frac{1}{n}\right)^n \xrightarrow[n \to + \infty]{} e^{-1} \approx 0.368.
+$$
+Значит, вероятность того, что элемент $X_j$ встретится в набираемой нами выборке равна
+$$
+1 - e^{-1} \approx 0.632,
+$$
+и это справедливо для любого элемента исходной выборки, то есть при всех $j \in \{1, 2, ..., n\}$.
+\end{remark}
+
+Итак, после генерации бутстрэп-выборок, алгоритм получения оценок математического ожидания и дисперсии оценки $\widehat \theta$ следующий. 
+\begin{enumerate}
+\item Пусть сгенерировано $B$ бутстрэп-выборок 
+$$
+X_1^{(j)}, X_2^{(j)}, ..., X_n^{(j)}, \quad j \in \{1, 2, ..., B\}.
+$$
+\item На каждой из них вычисляется значение $\widehat \theta$, 
+$$
+\widehat \theta^{j} = \widehat \theta_n^{j}(X_1^{(j)}, X_2^{(j)}, ..., X_n^{(j)}), \quad j \in \{1, 2, ..., B\}.
+$$
+\item В качестве оценок математического ожидания и дисперсии $\widehat \theta$ берутся
+$$
+\widehat{\theta}_{(\bullet),B} = \frac{1}{B}\sum\limits_{j = 1}^B \widehat \theta^{j}
+$$
+и
+$$
+\widehat{\mathsf{Var}}_B = \frac{1}{B-1}\sum\limits_{j = 1}^B\left(\widehat \theta^j - \frac{1}{B}\sum\limits_{j = 1}^B \widehat \theta^{j}\right)^2 = \frac{1}{B-1}\sum\limits_{j = 1}^B\left(\widehat \theta^j - \widehat{\theta}_{(\bullet),B}\right)^2,
+$$
+соответственно. 
+\end{enumerate}
+
+\begin{definition}
+Введенные выше величины 	
+$$
+\widehat{\theta}_{(\bullet),B} = \frac{1}{B}\sum\limits_{j = 1}^B \widehat \theta^{j}
+$$
+и
+$$
+\widehat{\mathsf{Var}}_B = \frac{1}{B-1}\sum\limits_{j = 1}^B\left(\widehat \theta^j - \frac{1}{B}\sum\limits_{j = 1}^B \widehat \theta^{j}\right)^2 = \frac{1}{B-1}\sum\limits_{j = 1}^B\left(\widehat \theta^j - \widehat{\theta}_{(\bullet),B}\right)^2,
+$$
+называют бутстрэп-оценками математического ожидания и дисперсии оценки $\widehat  \theta$, соответсвенно.
+\end{definition}
+
+
+\begin{example}
+Рассмотрим уже знакомый пример, когда генеральная совокупность имеет распределение $\mathsf U_{\theta, \theta + 1}$ с параметром $\theta = 2.5$. 
+Выполним моделирование и найдем истинное значения дисперсии оценки, а также джекнайф и бутстрэп-оценки дисперсии $\widehat \theta = X_{(1)}$.
+\begin{figure}[h!]
+	\centering\includegraphics[width=1\linewidth]{jack_uniform_var.png}
+	\caption{Зависимость оценок дисперсии $\widehat{\mathsf{Var}}_{jack}$ и $\widehat{\mathsf{Var}}_{B}$ от объема выборки $n$}
+		\label{jack_uniform_var}
+\end{figure}
+Можно заметить, что при малых значениях $n$ результаты варьируются, однако зачастую джекнайф-оценка дисперсии меньше. И наоборот, начиная с некоторого $n$, бутстрэп-оценка дисперсии меньше или совпадает с джекнайф-оценкой дисперсии. 
+Практика показывает, что метод джекнайф лучше показывает себя на малых выборках, а бутстрэп предпочтителен для больших объемов данных.
+\end{example}	
+
+
+\subsubsection{Построение доверительных интервалов}
+Построение доверительных интервалов для $\theta$ опирается на ровно те же самые идеи, что озвучены ранее. Рассмотрим здесь лишь самый простой случай. Если допустить, что 
+$$
+\frac{\widehat \theta - \theta}{\sqrt{\mathsf D_\theta \widehat \theta}} \xrightarrow[n \to + \infty]{\mathsf d} \eta \sim \mathsf N_{0, 1},
+$$
+или близко к нормальному, а $\widehat{\mathsf{Var}}_B$ -- состоятельная оценка $\mathsf D_\theta \widehat \theta$, то асимптотический доверительный интервал уровня $(1 - \varepsilon)$ для параметра $\theta$ строится обычным образом и имеет вид
+$$
+\left(\widehat \theta - \tau_{1 - \varepsilon/2}\sqrt{\widehat{\mathsf{Var}}_B}, \ \widehat \theta + \tau_{1 - \varepsilon/2}\sqrt{\widehat{\mathsf{Var}}_B} \right),
+$$
+где $\tau_{1 - \varepsilon/2}$ -- квантиль уровня $(1 - \varepsilon/2)$ стандартного нормального распределения.
+
+
+\subsubsection{Некоторые финальные замечания}
+Рассмотрению методов ресемплинга можно посвятить не одну лекцию. Рассмотренные нами моменты и подходы -- это лишь часть тех бонусов, что дает исследователю бутстрэп. Аналогично тому, как было сделано в методе джекнайф, бутстрэп может оценивать и улучшать смещение исходной оценки $\widehat \theta$ и многое другое. 
+
+Кроме того, все, что обсуждалось ранее, относится к непараметрическому бутстрэпу -- мы не выдвигаем никаких предположений о распределении $\xi$. В то же время, если известно, каким образом распределение $\xi$ зависит от интересующего нас параметра, метод может быть существенно усилен. Бутстрэп выборки в этом случае генерируются из эмпирической функции распределения, в которую вместо неизвестного параметра $\theta$ может быть подставлена его оценка. В этом случае количество бутстрэп выборок может быть сколь угодно большим.
+
+Итак, теперь мы готовы посмотреть, как изученные методы применяются на практике к построению ансамблей моделей.

@@ -1,0 +1,526 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm, headheight=30pt]{geometry}
+\usepackage{amssymb}
+\usepackage{cmap}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+
+
+\sloppy
+
+
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmin}{Arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+\DeclareMathOperator*{\logloss}{logloss}
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+
+
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+
+\usepackage{textcase} 
+\usepackage{titlesec}
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Энтропия\\ Деревья принятия решений
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+
+\newpage
+%
+\pagestyle{empty}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+
+\section{Введение}
+Здравствуйте, уважаемые слушатели! В данной лекции мы поговорим про такой популярный и эффективный подход к решению задачи классификации, как деревья принятия решений. На совсем бытовом уровне дерево принятия решений можно отождествить с подробной инструкцией, четко говорящей что, на каком этапе делать, и как в той или иной ситуации поступать. Посмотрите, для примера, на рисунок \ref{tree_example1}. На нем приведен чрезвычайно упрощенный алгоритм, опираясь на который, некоторый человек принимает решение: соглашаться на предложение о трудоустройстве, или нет. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{tree_example.png}
+\caption{Пример дерева решений}
+\label{tree_example1}
+\end{figure}
+Этот пример сразу демонстрирует и огромное преимущество деревьев принятия решений (из-за которого, в частности, они и завоевали столь большую популярность, причем не только в машинном обучении) -- они интуитивно понятны без каких-либо дополнительных пояснений. Скорее всего вы догадались, что, согласно описанному алгоритму, первым делом человек смотрит на размер предлагаемой заработной платы, причем, в зависимости от последнего, возникает три варианта дальнейших действий. Так, если предлагаемая заработная плата меньше, чем $50000$, то предложение безоговорочно отклоняется, а если больше или равна ста тысячам, то сразу же принимается. Ситуация же, когда заработная плата находится в диапазоне от $50000$ до $100000$, не является столь очевидной, как предыдущие: для принятия решения оказывается важным выяснить время транспортной доступности. И снова, если на дорогу придется затратить как минимум час, то предложение никуда не годится и отклоняется. Иначе же мы спускаемся ниже и видим, что окончательный ответ зависит от того: будут ли выплачиваться квартальные бонусы. Если да -- то предложение принимается, а если нет -- отклоняется.
+
+Конечно, не смотря на всю свою простоту, написанный алгоритм вызывает вопросы. Например, что делать в случае, если информация о квартальных бонусах по какой-либо причине не предоставляется? В описанном алгоритме нет варианта <<не знаю>>: есть либо <<да>>, либо <<нет>>. А что, если работа предполагает выезд на разные объекты? Тогда какие-то объекты могут быть расположены близко к дому, и дорога до них займет меньше, чем $60$ минут, а какие-то, наоборот, далеко от дома, а значит на дорогу придется тратить больше часа. А ведь еще работа может подразумевать обязательные командировки! На все эти вопросы у предложенного алгоритма нет ответа, а значит с каждой такой ситуацией нужно разбираться отдельно. В этой лекции мы расскажем, в том числе, про так называемые бинарные (или двоичные) деревья принятия решений, которые помогают решить описанные проблемы.
+
+Кроме того (что, наверное, вы поняли и из примера), при построении дерева важным является очередность признаков. В нашем модельном примере самый важный признак -- это размер заработной платы, затем время транспортной доступности, а на последнем месте -- наличие квартальных бонусов. В то же время, признаки и их очередность сильно зависят от задачи. Скажем, при решении вопроса о выдаче кредита конкретному человеку, банк, наверное, первым делом захочет узнать возрастную категорию заемщика, затем размер его дохода, образование, семейное положение и так далее. Вроде все логично и понятно, но чем больше признаков, тем сложнее построить их последовательность, и, в то же время, тем важнее построить эту последовательность правильно: мы же хотим оптимальный, быстро работающий алгоритм, а не цепочку вопросов <<длинною в жизнь>>.
+
+Последняя фраза хорошо поясняется на примере простой игры <<данетки>> или <<$20$ вопросов>>. Смысл в играх одинаковый: игроки могут задавать вопрос ведущему, а тот, в свою очередь, отвечать <<да>> или <<нет>>. Угадать необходимо фильм, сериал, да все что угодно, при этом тема игры известна. Очевидно, что если речь идет об актере, то, задав вопрос о его гендерной принадлежности, мы отсекам примерно половину возможных вариантов, а если, допустим, сразу зададим вопрос: <<это Николас Кейдж?>>, мы отсекаем всего один вариант. Это интуитивно соответствует понятию прироста информации, основанному на понятии энтропии (мере неопределенности события или эксперимента). Задав первый вопрос, мы получили куда больше информации, так как убрали много неверных вариантов, и неопределенность эксперимента по угадыванию актера сильно уменьшилась. Во втором же случае, мы отсекли лишь один вариант, тем самым неопределенность практически не изменилась.
+
+Итак, первым делом при построении дерева принятия решений нужно понять, как выстроить последовательность признаков. Для этого признаки имеет смысл разделить на более и менее информативные. Но что же такое информативность и как она измеряется? Давайте с обсуждения этих вопросов и начнем.
+
+\section{Энтропия}
+\subsection{Немного о степени неопределенности}
+В повседневной жизни мы постоянно задумываемся о различных событиях. При этом у какой-то части из них мы предугадываем исход с большей уверенностью, а у какой-то -- с меньшей. Так, например, мы ожидаем толкотню в вагоне метро в час пик, и, скорее всего, будем уверены, что не будем стоять в пробках по пути домой после изнурительного рабочего дня в $10$ часов вечера. 
+Ну или на вопрос ребенка: а что за черная птица пытается отобрать у голубей кусок хлеба, мы с большой долей вероятности обвиним ворону, не так ли?
+К чему эти рассуждения? А к тому, что все описанные ситуации для нас оказываются <<не очень сомнительными>> и несут мало неопределенности. 
+
+В то же время бывают и другие, прямо-таки противоположные примеры. Например, как вы думаете, выйдя завтра из дома, первый попавшийся вам навстречу человек будет мужчиной или женщиной? 
+Или, скажем, оглядывая попутчиков в вагоне метро, можете ли вы с уверенностью сказать, кто из них едет до конечной? Скорее всего нет. Все потому, что во всех предложенных ситуациях достаточно большая неопределенность.
+
+Для дальнейшего нам оказывается важным построить какую-то математическую модель этой неопределенности. Даже больше, нам будет важно уметь получать ее, этой неопределенности, численное значение. Давайте немного приблизимся к математической постановке задачи (не в самом общем виде, а лишь в том, что потребуется нам) и «пощупаем» еще раз понятие неопределенности, но уже на числах. 
+
+Итак, предположим, что эксперимент имеет лишь $n$ возможных мельчайших несовместных (то есть таких, которые не могут произойти одновременно) исходов $\omega_1, \omega_2, \ldots, \omega_n$. Кроме того, для каждого исхода $\omega_i$  определена его вероятность $\mathsf{P}_i \geq 0$, $i \in \{1,\ldots,n\}$, так, что сумма этих вероятностей равна единице, ведь кроме исходов $\omega_1, \omega_2, \ldots, \omega_n$ произойти больше ничего не может:
+$$
+\sum_{i=1}^n \mathsf{P}_i = 1.
+$$
+Обычно, для удобства и краткости исходы и их вероятности записывают следующей таблицей:
+\begin{center}
+\begin{tabular}{c|c|c|c}
+$\omega_1$ &  $\omega_2$ & $\ldots$ & $\omega_n$ \\
+\hline $\mathsf{P}_1$ & $\mathsf{P}_2$ & $\ldots$ & $\mathsf{P}_n$
+\end{tabular}
+\end{center}
+
+Рассмотрим простейший пример. Пусть эксперимент заключается в подбрасывании правильной монетки. Что значит правильной? Это значит, что как у орла, так и у решки шансы выпасть одинаковы. Значит, в наших обозначениях, эксперимент имеет всего два исхода: $\omega_1 =$ Орел (или выпал орел), $\omega_2 =$ Решка (выпала решка), причем вероятности этих исходов одинаковы и, соответственно, равны $\frac{1}{2}$. Запишем данные в таблицу:
+\begin{center}
+\begin{tabular}{c|c}
+Орел &  Решка  \\
+\hline $\frac{1}{2}$ & $\frac{1}{2}$ 
+\end{tabular}.
+\end{center}
+Что можно сказать про результат рассматриваемого эксперимента? На самом деле, ничего определенного. Какому исходу отдать предпочтение? Это совершенно непонятно, ведь у них, у этих исходов, одинаковые вероятности. Перед нами очень плохая, с точки зрения информативности, ситуация.
+
+Куда лучше ситуация с фальшивой монеткой, описываемая следующей таблицей
+\begin{center}
+\begin{tabular}{c|c}
+Орел &  Решка  \\
+\hline $\frac{99}{100}$ & $\frac{1}{100}$ 
+\end{tabular}
+\end{center}
+Наверное, практически все с уверенность скажут, что монета выпадет орлом, не так ли? Неопределенность эксперимента уменьшилась разительно. Хотя не стоит себя обнадеживать зря: шансы у решки тоже есть, хоть и маленькие, а значит неопределенность все равно присутствует.
+
+А что если у монетки с двух сторон нарисован орел? Тогда эксперимент описывается такой вот простой таблицей:
+\begin{center}
+\begin{tabular}{c}
+$\text{Орел}$  \\
+\hline $1$
+\end{tabular}
+\end{center}
+и неопределенности нет вообще -- мы точно знаем, что выпадет орел. Итак, худшей для нас ситуацией, с точки зрения информативности, является ситуация, когда исходы равновероятны. Лучшей же -- когда у одного из исходов вероятность равна единице. Запомним это :)
+
+Давайте обратим внимание еще вот на какой момент. Пусть подбрасывается, скажем, правильный игральный кубик. Тогда исходов $6$ (исход $\omega_i$ означает, что выпало число $i$), их вероятности одинаковы и равны $\frac{1}{6}$, и весь эксперимент описывается таблицей  
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c}
+$1$ &  $2$ & $3$ &  $4$ & $5$ & $6$  \\
+\hline $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$\  
+\end{tabular}
+\end{center}
+Сравните этот эксперимент с тем, когда подбрасывалась правильная монетка
+\begin{center}
+\begin{tabular}{c|c}
+Орел &  Решка  \\
+\hline $\frac{1}{2}$ & $\frac{1}{2}$ 
+\end{tabular}.
+\end{center}
+Какой из них информативнее? Похоже, что с кубиком дела обстоят куда хуже, ведь теперь кроме того, что все исходы равновозможны, исходов стало больше, а значит неопределенность только увеличилась.
+
+Можно приводить и множество других примеров, но кажется, что идея ясна, не так ли? Давайте теперь разберемся, как же все эти интуитивные представления свести к конкретному числу. 
+
+\subsection{Энтропия Шеннона и проверка ожидаемых свойств}
+Давайте повторим некоторые рассуждения, проделанные выше, чтобы ввести унифицированные обозначения и определения для дальнейших выкладок.  Итак, пусть в результате эксперимента $\Omega$ могут произойти лишь $n$ исходов $\omega_1, \omega_2, \ldots, \omega_n$. Как уже было отмечено, исходы -- это мельчайшие, неделимые и несовместные (то есть те, которые не могут произойти одновременно) результаты рассматриваемого эксперимента. Сопоставим каждому исходу $\omega_i$ его вероятность $\mathsf P_i \geq 0$ так, что сумма всех вероятностей равна $1$:
+$$
+\sum\limits_{i = 1}^n \mathsf P_i = \mathsf P_1 + \mathsf P_2 + \ldots + \mathsf P_n = 1.
+$$
+Тогда приходим к следующему определению.
+\begin{definition}
+Экспериментом $\Omega$ назовем произвольное множество исходов $\omega_1, \omega_2, \ldots, \omega_n$, каждому из которых сопоставлено число $\mathsf P_i \geq 0$, $i \in \{1, 2, \ldots, n \}$, называемое вероятностью исхода $\omega_i$, причем
+$$
+\sum\limits_{i = 1}^n \mathsf P_i = \mathsf P_1 + \mathsf P_2 + \ldots + \mathsf P_n = 1.
+$$
+\end{definition}
+Ясно, что эксперимент может быть описан (и даже отождествлен c) таблицей следующего вида
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$\Omega$ & $\omega_1$ &  $\omega_2$ & $\ldots$ & $\omega_n$ \\
+\hline $\mathsf P$ & $\mathsf{P}_1$ & $\mathsf{P}_2$ & $\ldots$ & $\mathsf{P}_n$
+\end{tabular}.
+\end{center}
+В первой строке таблицы стоят возможные исходы эксперимента $\Omega$, а во второй -- вероятности этих исходов.
+Оказывается, весьма удобной мерой неопределенности эксперимента $\Omega$, описываемого таблицей
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$\Omega$ & $\omega_1$ &  $\omega_2$ & $\ldots$ & $\omega_n$ \\
+\hline $\mathsf P$ & $\mathsf{P}_1$ & $\mathsf{P}_2$ & $\ldots$ & $\mathsf{P}_n$
+\end{tabular},
+\end{center}
+является величина
+$$
+\mathsf H(\Omega) = - \sum\limits_{i = 1}^n \mathsf{P}_i \log \mathsf{P}_i,
+$$
+где в случае, если $\mathsf{P}_i = 0$, значение выражения $\mathsf{P}_i \log \mathsf{P}_i$ считается равным нулю, что мотивируется тем, что
+$$
+\lim\limits_{x \to 0+} x \log x = 0.
+$$
+\begin{remark}
+Конечно, написанная мотивировка -- чисто математическая. На интуитивном же уровне понятно, что добавление исхода $\omega_i$, которому сопоставляется число $\mathsf P_i$ (вероятность этого исхода), равное нулю, не может менять неопределенность эксперимента (а значит и не должно добавлять никаких слагаемых в сумму). Такой исход можно и вовсе не добавлять в таблицу. 
+\end{remark}
+Функция $\log$ в написанных формулах -- это логарифм по произвольному основанию, большему единицы. Основание несущественно, ведь по своей сути изменение основания логарифма отвечает изменению единиц измерения величины $\mathsf H$ (мы же будем использовать в дальнейшем в качестве основания двойку, но об этом позже). Для удобства, объединим все сказанное в одном определении.
+\begin{definition}
+Пусть эксперимент $\Omega$ описывается таблицей 
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$\Omega$ & $\omega_1$ &  $\omega_2$ & $\ldots$ & $\omega_n$ \\
+\hline $\mathsf P$ & $\mathsf{P}_1$ & $\mathsf{P}_2$ & $\ldots$ & $\mathsf{P}_n$
+\end{tabular}.
+\end{center}
+Энтропией (или мерой неопределенности) $\mathsf H(\Omega)$ эксперимента $\Omega$ называется величина
+$$
+\mathsf H(\Omega) = - \sum\limits_{i = 1}^n \mathsf{P}_i \log \mathsf{P}_i,
+$$ 
+где $\log$ -- логарифм по произвольному основанию, большему единицы, а выражения вида $0 \log 0$ считаются равными нулю.
+\end{definition}
+
+Давайте сразу посмотрим, что же получится в уже рассмотренных ранее примерах. Итак, в примере с правильной монеткой эксперимент $\Omega = \{ \text{Орел, Решка} \}$ описывается таблицей
+\begin{center}
+\begin{tabular}{c|c|c}
+$\Omega$ & Орел &  Решка  \\
+\hline $\mathsf P$ & $\frac{1}{2}$ & $\frac{1}{2}$ 
+\end{tabular}.
+\end{center}
+Энтропия этого эксперимента вычисляется следующим образом:
+$$
+\mathsf H \left ( \Omega \right ) = - \frac{1}{2} \log \frac{1}{2} - \frac{1}{2} \log \frac{1}{2} = - \log \frac{1}{2}.
+$$
+Эксперимент с фальшивой монеткой описывается таблицей
+\begin{center}
+\begin{tabular}{c|c|c}
+$\Omega$ & Орел &  Решка  \\
+\hline $\mathsf P$ & $\frac{99}{100}$ & $\frac{1}{100}$ 
+\end{tabular},
+\end{center}
+а значит энтропия этого эксперимента вычисляется, как:
+$$
+\mathsf H \left (\Omega \right ) = - \frac{99}{100} \log \frac{99}{100} - \frac{1}{100} \log \frac{1}{100}.
+$$
+
+Итак, как мы уже упоминали ранее, будем использовать логарифм по основанию $2$. Объясним же свой выбор мы чуть позже. Выбрав значение основания логарифма, мы можем вычислить только что написанные выражения: для правильной монетки энтропия будет равна 
+$$
+-\log_2 \frac{1}{2} = 1,
+$$
+а для фальшивой 
+$$
+- \frac{99}{100} \log_2 \frac{99}{100} - \frac{1}{100} \log_2 \frac{1}{100} \approx 0.081.
+$$
+Смотрите, результаты более чем соответствуют интуитивным представлениям. Там, где интуитивная неопределенность больше, больше и энтропия, и наоборот.
+
+Давайте теперь проверим, выполняются ли наши ожидания не на конкретном примере, а в общем случае. Во-первых, как оказывается, энтропия -- величина неотрицательная.
+\begin{theorem}
+	$$
+\mathsf H( \Omega ) \geq 0.
+$$
+\end{theorem}
+\begin{proof}
+ Так как $\mathsf{P}_i \in [0, 1]$, то $\mathsf P_i \log \mathsf{P}_i \leq 0$, ведь основание логарифма (по определению энтропии) больше единицы. Тогда и 
+$$
+\sum\limits_{i = 1}^n \mathsf{P}_i \log \mathsf{P}_i \leq 0,
+$$
+как сумма неположительных слагаемых. А тогда
+$$
+ \mathsf H(\Omega) = - \sum\limits_{i = 1}^n \mathsf{P}_i \log \mathsf{P}_i \geq 0.
+$$
+\end{proof}
+
+Итак, мера неопределенности неотрицательна. Видимо, она должна быть равна нулю в том и только том случае, когда неопределенности нет, то есть, когда какой-то исход происходит с вероятностью $1$. Это тоже выполняется. 
+\begin{theorem}
+Энтропия равна нулю тогда и только тогда, когда какое-то значение $\mathsf{P}_i$ равно единице, то есть:
+$$
+\mathsf H( \Omega ) = 0 \Leftrightarrow \exists \ i \in \{1, 2, \ldots, n\}: \ \mathsf{P}_i = 1.
+$$
+\end{theorem}
+\begin{proof}
+В одну сторону доказательство следует из того, что если $\mathsf{P}_i = 1$, то все остальные $\mathsf{P}_k$, при $k \neq i$ равны нулю, значит и слагаемые, им отвечающие, равны нулю (так как, по соглашению, $0 \cdot \log 0 = 0$). Само же слагаемое с номером $i$ равно нулю, так как $1 \cdot \log 1 = 0$.
+
+Доказательство в обратную сторону проводится тоже не сложно. Достаточно заметить, что функция $x \log x$ на отрезке $[0, 1]$ равна нулю только на его концах (в нуле, опять же, по установленному соглашению, а в единице, так как $\log 1 = 0$), а во всех точках интервала $(0, 1)$ она отрицательна. Значит, чтобы энтропия была равна нулю, $\mathsf{P}_i$ должны принимать значения 0 или 1, но так как $\sum \limits _{i=1}^n \mathsf{P}_i = 1$, то существует только одно значение $i$ такое, что $\mathsf{P}_i = 1.$
+\end{proof}
+
+Какими еще свойствами должна обладать энтропия? Исходя из рассмотренных примеров, судя по всему, энтропия должна быть наибольшей в случае, когда все исходы равновероятны (в наших примерах такая ситуация возникала в экспериментах с правильной монеткой и правильным кубиком). Кроме того, чем больше равновероятных исходов, тем энтропия тоже должна быть больше, что мы опять же поняли интуитивно на разобранных примерах. 
+
+Оказывается, что введенная функция тоже удовлетворяет этому требованию, итак.
+\begin{theorem}
+	Энтропия $\mathsf H( \Omega )$ максимальна в случае, когда все исходы эксперимента равновозможны, то есть когда эксперимент описывается таблицей вида
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$\Omega$ & $\omega_1$ &  $\omega_2$ & $\ldots$ & $\omega_n$ \\
+\hline $\mathsf P$ & $\frac{1}{n}$ & $\frac{1}{n}$ & $\ldots$ & $\frac{1}{n}$
+\end{tabular}
+\end{center}
+В этом случае энтропия равна
+$$
+\mathsf H \left( \Omega \right) = \log n.
+$$
+\end{theorem}
+\begin{proof}
+Ясно, что для эксперимента, описываемого таблицей
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$\Omega$ & $\omega_1$ &  $\omega_2$ & $\ldots$ & $\omega_n$ \\
+\hline $\mathsf P$ & $\frac{1}{n}$ & $\frac{1}{n}$ & $\ldots$ & $\frac{1}{n}$
+\end{tabular},
+\end{center}
+равенство выполнено, ведь
+$$
+\mathsf H \left(\Omega \right) = - \sum\limits_{i = 1}^n \frac{1}{n}\log \frac{1}{n} = -\log \frac{1}{n} = \log n.
+$$
+
+Осталось показать, что это значение действительно максимально. Для этого воспользуемся неравенством Йенсена для выпуклых вниз функций, которое утверждает, что для чисел $p_1, p_2, \ldots, p_n > 0$, таких, что  $p_1 + p_2 +\ldots + p_n = 1$ и любых $x_1, x_2, \ldots , x_n$ из интервала выпуклости функции справедливо:
+$$
+f \left (p_1 x_1 + p_2 x_2 + \ldots + p_n x_n \right ) \leq p_1 f(x_1) + p_2 f(x_2) + \ldots + p_n f(x_n),
+$$
+или
+$$
+f\left(\sum\limits_{i = 1}^n p_i x_i \right) \leq \sum\limits_{i = 1}^n p_i f(x_i).
+$$
+Рассмотрим функцию $f(x) = x \log x$. Так как основание логарифма, согласно договоренности, больше единицы, то эта функция выпукла вниз. Положим в неравенстве Йенсена 
+$$
+x_i = \mathsf P_i, \quad p_i = \frac{1}{n},
+$$
+тогда 
+$$
+f\left( \sum\limits_{i = 1}^n p_i x_i\right) = f\left(\frac{1}{n}\sum\limits_{i = 1}^n \mathsf P_i \right) = f\left(\frac{1}{n}\right) = - \frac{1}{n}\log n.
+$$
+Кроме того,
+$$
+\sum\limits_{i = 1}^n p_i f(x_i) = \frac{1}{n}\sum\limits_{i = 1}^n \mathsf P_i \log \mathsf P_i.
+$$
+Тогда, в силу неравенства Йенсена,
+$$
+-\frac{1}{n}\log n \leq \frac{1}{n}\sum\limits_{i = 1}^n \mathsf P_i \log \mathsf P_i \Leftrightarrow -\sum\limits_{i = 1}^n \mathsf P_i \log \mathsf P_i \leq \log n \Leftrightarrow \mathsf H(\Omega) \leq \log n.
+$$
+что и требовалось доказать.
+\end{proof}
+
+Оказывается, при некоторых дополнительных предположениях, которые мы оставим за кадром, можно доказать, что представление, предложенное Шенноном, единственно с точностью до положительного сомножителя. Иными словами, если функция удовлетворяет описанным выше трем свойствам и еще кое-чему, чего мы касаться  не будем, то она равна
+$$
+- \alpha \sum\limits_{i = 1}^n \mathsf{P}_i \log \mathsf{P}_i
+$$
+для некоторого $\alpha > 0$. По сути, это и означает, что основание логарифма в выражении для функции может быть любым, большим единицы.

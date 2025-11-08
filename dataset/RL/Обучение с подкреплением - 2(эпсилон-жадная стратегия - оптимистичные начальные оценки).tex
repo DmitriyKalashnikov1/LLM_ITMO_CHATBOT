@@ -1,0 +1,566 @@
+\documentclass[a4paper,14pt]{extarticle}
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm]{geometry}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{fancyvrb}
+\usepackage{fvextra}
+\usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+ 
+% Добавляем свои блоки
+ 
+\makeatletter
+\algblock[ALGORITHMBLOCK]{BeginAlgorithm}{EndAlgorithm}
+\algblock[BLOCK]{BeginBlock}{EndBlock}
+
+\makeatother
+ 
+% Нумерация блоков
+ 
+\usepackage{caption}% http://ctan.org/pkg/caption
+\captionsetup[ruled]{labelsep=period}
+\renewcommand{\thealgorithm}{\arabic{algorithm}}
+
+\sloppy
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+%ДЛЯ АЛГОРИТМОВ
+	% Перевод данных об алгоритмах
+	\renewcommand{\listalgorithmname}{Список алгоритмов}
+	\floatname{algorithm}{Алгоритм}
+	
+\algnewcommand{\Init}[1]{%
+  \State \textbf{Инициализировать:}
+  \Statex \hspace*{\algorithmicindent}\parbox[t]{.8\linewidth}{\raggedright #1}
+}
+
+	
+	% Перевод команд псевдокода
+	\algrenewcommand\algorithmicwhile{\textbf{Повторять пока }}
+	\algrenewcommand\algorithmicdo{\textbf{Выполнять}}
+	\algrenewcommand\algorithmicrepeat{\textbf{Повторять}}
+	\algrenewcommand\algorithmicuntil{\textbf{Пока выполняется}}
+	\algrenewcommand\algorithmicend{\textbf{Конец}}
+	\algrenewcommand\algorithmicif{\textbf{Если}}
+	\algrenewcommand\algorithmicelse{\textbf{иначе}}
+	\algrenewcommand\algorithmicthen{\textbf{тогда}}
+	\algrenewcommand\algorithmicfor{\textbf{Для}}
+	\algrenewcommand\algorithmicforall{\textbf{Выполнить для всех}}
+	\algrenewcommand\algorithmicfunction{\textbf{Функция}}
+	\algrenewcommand\algorithmicprocedure{\textbf{Процедура}}
+	\algrenewcommand\algorithmicloop{\textbf{повторять}}
+	\algrenewcommand\algorithmicrequire{\textbf{Вход:}}
+	\algrenewcommand\algorithmicensure{\textbf{Обеспечивающие условия:}}
+	\algrenewcommand\algorithmicreturn{\textbf{Возвратить}}
+	\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+	\algrenewtext{EndWhile}{\textbf{Конец цикла}}
+	\algrenewtext{EndLoop}{\textbf{Конец}}
+	\algrenewtext{EndFor}{\textbf{конец цикла}}
+	\algrenewtext{EndFunction}{\textbf{Конец функции}}
+	\algrenewtext{EndProcedure}{\textbf{Конец процедуры}}
+	\algrenewtext{EndIf}{\textbf{Конец условия}}
+	\algrenewtext{EndFor}{\textbf{Конец цикла}}
+	\algrenewtext{BeginAlgorithm}{\textbf{Начало алгоритма}}
+	\algrenewtext{EndAlgorithm}{\textbf{Конец алгоритма}}
+	\algrenewtext{BeginBlock}{\textbf{Начало блока. }}
+	\algrenewtext{EndBlock}{\textbf{Конец блока}}
+	\algrenewtext{ElsIf}{\textbf{иначе если }}
+	
+	\newcommand{\algorithmicbreak}{\textbf{Конец цикла}}
+    \newcommand{\BREAK}{\STATE \algorithmicbreak}
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Обучение с подкреплением\\
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+%
+\pagestyle{empty}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+
+\subsection{$\varepsilon$-жадная стратегия}
+Итак, как мы уже поняли ранее, для получения более приемлемого результата скорее всего имеет смысл использовать что-то вроде смеси абсолютно исследовательской и жадной стратегий. Ведь чем лучше агент понимает, как устроена среда, тем более выгодные действия он может совершать. В то же время, исследование ради исследования -- малоинтересная задача, так что <<жадность>> полностью отключать, конечно же, нельзя, ведь принцип: <<если дают, надо брать>>, пока еще никто не отменял.
+
+\begin{definition}
+	Пусть $0 < \varepsilon < 1$. Стратегия, $\pi_t(a|s_t)$, которая в момент времени $t$ с вероятностью $(1-\varepsilon)$ ведет себя как жадная, а с вероятностью $\varepsilon$ как абсолютно исследовательская, называется $\varepsilon$-жадной. 
+\end{definition}
+Таким образом, введенная стратегия -- это попытка обеспечить компромисс между применением и изучением. Полезно отметить, что при $\varepsilon = 0$ или $\varepsilon = 1$ (хотя это и запрещено в определении), $\varepsilon$-жадная стратегия становится жадной и абсолютно исследовательской, соответственно.  
+
+Для практики бывает полезным следующее задание $\varepsilon$-жадной стратегии:
+$$
+\pi_t(a|s_t) = \begin{cases}
+	\displaystyle\frac{1-\varepsilon}{|A_t|} + \frac{\varepsilon}{|A(s_t)|}, & a\in A_t \\
+	\\
+	\displaystyle\frac{\varepsilon}{|A(s_t)|}, & a\not\in A_t
+\end{cases},
+$$
+где 
+$$
+A_t = \Argmax\limits_{a \in A(S_t)} q_t(a).
+$$
+\begin{remark}
+Давайте поясним, почему написанные формулы согласованы с данным выше определением. Ответим на вопрос: какова вероятность выбрать действие $a \in A_t$? Это действие выбирается с вероятностью $\frac{1}{|A_t|}$, если используется жадная стратегия, и с вероятностью $\frac{1}{|A(s_t)|}$, если используется абсолютно исследовательская стратегия. В силу того, что жадная стратегия выбирается с вероятностью $(1 - \varepsilon)$, а абсолютно исследовательская -- с вероятностью $\varepsilon$, получаем следующую вероятность выбрать действие $a \in A_t$:
+$$
+\frac{1 - \varepsilon}{|A_t|} + \frac{\varepsilon}{|A(s_t)|}.
+$$
+Аналогично, действие $a \notin A_t$ может быть выбрано только в случае, когда выбрана абсолютно исследовательская стратегия, причем в этом случае оно выбирается с вероятностью $\frac{1}{|A(s_t)|}$. Так как абсолютно исследовательская стратегия выбирается с вероятностью $\varepsilon$, то вероятность выбрать действие $a \notin A_t$ равна
+$$
+\frac{\varepsilon}{|A(s_t)|}.
+$$
+\end{remark}
+ 
+Покажем, что введенное определение корректно, то есть что введенная <<стратегия>> является стратегией в смысле введенного ранее определения.
+\begin{lemma}
+$\varepsilon$-жадная стратегия является стратегией.
+\end{lemma}
+\begin{proof}
+	Достаточно доказать, что 
+	$$
+	\sum\limits_{a \in A(s_t)} \pi_t(a|s_t) = 1.
+	$$
+Это и правда так, ведь
+$$
+\sum\limits_{a \in A(s_t)} \pi_t(a|s_t) = |A_t|\left(\frac{1-\varepsilon}{|A_t|} + \frac{\varepsilon}{|A(s_t)|} \right) + (|A(s_t)| - |A_t|)\left( \frac{\varepsilon}{|A(s_t)|} \right) = 1.
+$$
+\end{proof}
+ 
+Сравнение жадного и $\varepsilon$-жадного алгоритмов для примера с различными конфигурациями магазина ($1000$ игр по $1000$ итераций в каждой) представлено на рисунке \ref{eps_greedy}. Отметим, что для большей информативности этот и последующие графики будут строиться, начиная с шага $t=1$. 
+\begin{figure}[h!]
+	\center{\includegraphics[width=1\linewidth]{img/eps_greedy.png}}
+	\caption{Сравнение $\varepsilon$-жадных алгоритмов}
+	\label{eps_greedy}
+\end{figure} 
+Можно заметить, что при использовании различных значений $\varepsilon$, результаты несколько отличаются. Видно, например, что при значении $\varepsilon = 0.2$ (то есть в случае, когда дается больше <<свободы>> абсолютно исследовательской стратегии), высокие значения средней награды достигаются намного быстрее, чем в случае $\varepsilon = 0.1$ и $\varepsilon=0.01$. Однако, когда ценности действий изучены достаточно (начиная примерно с трехсотого шага), алгоритм при $\varepsilon = 0.2$ начинает проигрывать случаю $\varepsilon=0.1$ из-за того, что доля его исследовательских действий выше и действительно оптимальное действие (оценка ценности которого уже достаточно точна) выбирается реже. Случаю $\varepsilon = 0.01$ нужно гораздо больше времени на оценку ценностей всех действий. Потенциал этого алгоритма раскрывается в случае использования не $1000$, а $10000$ шагов (рисунок \ref{eps_greedy_10k}).
+
+\begin{figure}[h!]
+	\center{\includegraphics[width=1\linewidth]{img/eps_greedy_10k.png}}
+	\caption{Сравнение $\varepsilon$-жадных алгоритмов}
+	\label{eps_greedy_10k}
+\end{figure} 
+Можно заметить, что в конечном итоге при $\varepsilon=0.01$ значение средней награды оказывается выше конкурентов, начиная, примерно, с шага $t=8000$.
+ 
+\begin{remark}
+Важно отметить, что каждый из рассмотренных $\varepsilon$-жадных алгоритмов работает куда лучше, чем жадный алгоритм. Более того, значения средней награды в каждом из рассмотренных случаев достаточно быстро сходятся к значениям, близким к среднему максимуму -- к $3$. Скачкообразное поведение некоторых графиков при малом количестве шагов обуславливается неточными сведениями об оценке ценности действий (сведения просто еще не успели накопить). Для их уточнения действия выбираются в большей степени хаотично, что и влечет скачки средней награды.
+\end{remark}
+
+\begin{remark}
+
+Напоследок отметим следующее эвристическое замечание: со временем (то есть с ростом $t$) параметр $\varepsilon$ имеет смысл уменьшать, ведь оценки ценностей действий становятся точнее и имеет смысл большее внимание уделить применению, нежели изучению. Например, в качестве зависимости величины $\varepsilon$ от времени $t$ можно рассматривать функцию вида
+$$
+\varepsilon(t) = \frac{1}{1+ t\beta},
+$$
+где $t$ -- текущий момент времени, а $\beta \in(0,1)$ -- некоторый коэффициент, отвечающий за скорость уменьшения $\varepsilon$. В качестве $\beta$ можно брать, например, $\frac{1}{k}$, где $k$ -- число рукоятей бандита. Выбор функции, конечно, отдается на откуп исследователю.
+\end{remark}
+
+\subsection{Softmax-cтратегия}
+
+Использование $\varepsilon$-жадной стратегий имеет определенный недостаток. В случае, когда идет процесс <<изучения>>, действия выбираются с одинаковой вероятностью, что явно не лучшим образом сказывается на конечной цели -- наибольшей сумме поощрений (ведь  действия с высокими и низкими оценками ценности имеют одинаковые шансы быть выбранными). Принцип, которым руководствуется softmax-стратегия, можно описать следующим образом: уменьшение потерь при исследовании на итерации $t$ за счёт более редкого выбора действий $a$, которые имеют небольшую оценку ценности $q_t(a)$. Чтобы этого добиться, для каждого действия вычисляется свой <<весовой коэффициент>>, на базе которого и происходит выбор действия. Точнее, стратегия дается следующим определением.
+\begin{definition}
+	Стратегия, при которой вероятность выбора действия $a_t \in A(s_t)$ в момент времени $t$ равна
+$$
+\pi_t(a|s_t) = \frac{e^{q_{t}(a) / \tau}}{\sum\limits_{a \in A(s_t)} e^{q_{t}(a) / \tau}}, \quad \tau > 0,
+$$
+называется softmax-стратегией. 
+\end{definition}
+Параметр $\tau > 0$, называемый еще и температурой, является параметром модели. При больших значениях $\tau$ стратегия становится более исследовательской, при малых -- приближается к жадной. На рисунке \ref{softmax} (рисунок снова строится при $t \geq 1$) представлено сравнение $\varepsilon$-жадного алгоритма с параметром $\varepsilon=0.1$ и алгоритма softmax при различных значениях температуры $\tau$. 
+\begin{figure}[h!]
+	\center{\includegraphics[width=1\linewidth]{img/softmax.png}}
+	\caption{Сравнение $\varepsilon$-жадного алгоритма и алгоритма softmax}
+	\label{softmax}
+\end{figure} 
+Легко понять, что конкретно в нашем случае $\varepsilon$-жадный алгоритм показывает лучший результат. При этом выбор того или иного метода обычно отдается на откуп исследователю. Заметим также, что при $\tau=0.01$ softmax-алгоритм очень близок к жадному. 
+ \begin{remark}
+Введенное выше распределение вероятностей в физике часто называется распределением Гиббса (или Больцмана). Еще раз отметим, что при $\tau \to + \infty$ мы получаем почти одинаковые вероятности выбора действий $a \in A(s_t)$, а значит стратегия стремится к абсолютно исследовательской. В случае же, когда $\tau \to 0+$, стратегия стремится к жадной, так как среди всех экспонент больший вес имеет та, для которой $q_t(a)$ больше.
+ \end{remark}
+ \begin{remark}
+ Как и в случае $\varepsilon$-жадной стратегии, параметр $\tau$ имеет смысл уменьшать со временем. Как это делать и делать ли вовсе -- вопросы, которые отдаются на откуп исследователю. 
+  \end{remark}
+
+
+ \subsection{Метод UCB (Upper Confidence Bound)}
+Рассмотрим еще один способ нахождения компромисса при решении проблемы <<изучение-применение>>. Этот метод получил название метода максимальной верхней оценки (Upper Confidence Bound (UCB)). Идею метода можно описать следующим образом: чем реже было выбрано какое-то действие $a$, тем менее точной является оценка его ценности (ведь действие мало изучено). Чтобы решить описанную проблему, кажется резонным рассмотреть в качестве новой оценки ценности действия $a$ сумму текущей оценки ценности и <<близости>> этой оценки к истинному значению -- правую границу некоторого доверительного интервала для истинной ценности. Опишем метод формально.
+
+Пусть агент находится в состоянии $s_t$, $t \geq 0$. Пусть $N_0(a) = 0$, $N_t(a)$ -- количество раз, которое было выбрано действие $a$ до шага $(t-1)$ включительно ($t \geq 1$).
+	\begin{enumerate}
+	\item Если существует $a \in A(s_t)$ такое, что $N_t(a) = 0$, тогда
+$$
+A_t = \{a \in A(s_t): \ N_t(a) = 0\}
+$$
+и стратегия выбора $a_t \in A_t$ такова:
+$$
+\pi_t(a|s_t) = \begin{cases}
+ \frac{1}{|A_t|}, & a \in A_t \\
+ 0, & a \notin A_t	
+ \end{cases}.
+$$
+	\item Иначе
+	$$
+	A_t = \Argmax\limits_{a \in A(S_t)}\left(q_{t}(a)+\delta \sqrt{\frac{\ln t}{N_{t}(a)}}\right), \quad \delta > 0,
+	$$
+ и стратегия выбора $a_t \in A_t$ такова:
+	$$
+	\pi_t(a|s_t) = \begin{cases}
+ \frac{1}{|A_t|}, & a \in A_t \\
+ 0, & a \notin A_t	
+ \end{cases}.
+	$$
+	\end{enumerate}
+Иными словами, если действие не было выбрано ни разу, то оно и выбирается в качестве следующего (если таких действий несколько, то выбор среди них осуществляется случайным образом). Если таких действий нет, то на выбор влияет, с одной стороны, ценность действия $q_t(a)$, а с другой -- степень его исследованности. Параметр $\delta>0$ в некотором смысле отвечает за вклад последней. Подробные пояснения могут быть найдены в дополнительных материалах.
+
+ 
+\begin{lemma}
+Пусть $X_1, X_2, \ldots, X_n$ -- выборка из генеральной совокупности $\xi$, причем $X_i \in [0,1]$, 
+$$
+\overline{X} = \frac{1}{n} \sum\limits_{i=1}^n X_i.
+$$
+Тогда справедливо неравенство Хёфдинга
+$$
+\mathsf{P}(\overline{X} - \mathsf{E}\xi \geq \varepsilon) \leq e^{-2n\varepsilon^2}.
+$$
+\end{lemma}
+Пусть $U \geq 0$. Переписав неравенство в наших обозначениях, а также пользуясь симметричностью последнего, получим
+$$
+\mathsf{P}(\mathsf{E}\xi - q_t(a) \geq U) \leq e^{-2N_t(a) U^2}.
+$$ 
+Или иначе
+$$
+\mathsf{P}(\mathsf{E}\xi \geq q_t(a) + U) \leq e^{-2N_t(a) U^2}.
+$$ 
+Итак, мы оценили сверху вероятность того, что истинная <<ценность>> больше, чем сумма оценки ценности и $U$ -- числа, называемого upper confidence bound (UCB). Обозначим 
+$$
+\mathsf p = e^{-2N_t(a) U^2},
+$$
+откуда
+$$
+\ln\mathsf{p} = -2N_t(a)U^2 \Longrightarrow U = \sqrt{\frac{\ln\mathsf{p}}{-2N_t(a)}}.
+$$
+$\mathsf{p}$ можно выбрать, например, как функцию от $t$, при этом разумно, чтобы
+$$
+\mathsf{p}(t) \xrightarrow[t \to + \infty]{} 0.
+$$
+Тогда, положив
+$$
+\mathsf{p} = \frac{1}{t^{2\delta^2}},
+$$
+получим
+$$
+U = \delta\sqrt{\frac{\ln{t}}{N_t(a)}},
+$$
+что и используется в предложенном выше алгоритме.
+\begin{remark}
+	В условиях неравенства Хёфдинга предполагается, что все элементы выборки $X_i \in [0,1]$, поэтому для корректности применения метода рекомендуется проводить предварительную нормировку.
+\end{remark}
+ 
+
+На рисунке \ref{UCB} представлены результаты сравнения метода UCB с различными параметрами $\delta$ и $\varepsilon$-жадного алгоритма.
+\begin{figure}[h!]
+	\center{\includegraphics[width=1\linewidth]{img/UCB.png}}
+	\caption{Сравнение $\varepsilon$-жадного и UCB алгоритмов}
+	\label{UCB}
+\end{figure} 
+Можно заметить, что в наблюдаемых условиях чем больше $\delta$, тем раньше алгоритм выходит на условное <<плато продуктивности>>. В случае $\delta=1.5$ доля исследовательских действий меньше, чем при $\delta=2$ и $\delta=3$, поэтому требуется больше времени на исследование, что, однако, положительно сказывается в более длительной перспективе. 
+\begin{remark}
+Отметим также, что параметр $\delta$ опять-таки имеет смысл уменьшать со временем, для того, чтобы смещать акцент с изучения на применение и увеличивать таким образом среднюю награду.	
+\end{remark}
+
+ \subsection{Оптимистичные начальные оценки}
+ Во всех ранее рассмотренных случаях выбор того или иного действия опирался на оценку его ценности. При этом начальные оценки для всех действий предполагались равными из-за того, что агент на начальным этапе не обладает какой-либо информацией о ценностях тех или иных действий. При использовании, например, $\varepsilon$-жадного алгоритма оценки ценности действий уточняются по мере выбора самих действий. 
+
+Похожая идея используется и в методе, который получил название <<метод оптимистичных начальных оценок>>. Оптимизм, следующий из названия, заключается в том, что при инициализации каждому действию устанавливается заведомо завышенное значение ценности. Поясним сказанное на рассматриваемом нами примере.
+
+Напомним, что значения поощрений генерировались из генеральных совокупностей, имеющих распределения $\mathsf{N_{2,1}}, \mathsf{N_{2.5,1}}, \mathsf{N_{3,1}}$. Таким образом, если в качестве начальных значений положить $q_0(a) = q_0(b) = q_0(c) = 10$ (что явно выше как $2$, так и $2.5$, и $3$), то такие оценки можно считать даже слишком оптимистичными -- они будут уменьшаться по мере обучения модели. Выбор действий будем производить при помощи жадной стратегии.
+
+Рассмотрим несколько шагов. Оценки ценности будем заносить в соответствующую таблицу.
+
+\begin{center}
+\begin{tabular}{ || c | c | c |c || }
+\hline
+\textbf{Шаг} & \textbf{$q_t(a)$} & \textbf{$q_t(b)$} & \textbf{$q_t(c)$}  \\ \hline
+$t = 0$ & $ 10 $ & $10 $ & $10 $ \\
+\hline
+\end{tabular}
+\end{center}
+
+Поскольку оценки ценностей всех действий одинаковы, выбирается произвольное действие, например, действие $c$. Пусть награда составит $r_1 = 2.8$, тогда 
+$$
+q_1(c) =q_{0}(c)+\frac{1}{1+1}\left(r_{1}-q_{0}(c)\right) = 10 + \frac{(2.8 - 10)}{2} = 6.4.
+$$
+Добавим значение в таблицу
+
+\begin{center}
+\begin{tabular}{ || c | c | c |c || }
+\hline
+\textbf{Шаг} & \textbf{$q_t(a)$} & \textbf{$q_t(b)$} & \textbf{$q_t(c)$}  \\ \hline
+$t = 0$ & $ 10 $ & $10 $ & $10 $ \\
+\hline
+$t = 1$ & $ 10 $ & $10 $ & $6.4 $ \\
+\hline
+\end{tabular}
+\end{center}
+
+Теперь, согласно жадному алгоритму, агент будет выбирать одно из действий $a$ или $b$, так как их текущая оценка ценности выше. Пусть выбрано действие $a$ и получена награда $r_2 = 2.2$. Тогда
+
+$$
+q_2(a) =q_{1}(a)+\frac{1}{1+1}\left(r_{2}-q_{1}(a)\right) = 10 + \frac{(2.2 - 10)}{2} = 6.1.
+$$
+Занесем полученный результат в таблицу.
+
+\begin{center}
+\begin{tabular}{ || c | c | c |c || }
+\hline
+\textbf{Шаг} & \textbf{$q_t(a)$} & \textbf{$q_t(b)$} & \textbf{$q_t(c)$}  \\ \hline
+$t = 0$ & $ 10 $ & $10 $ & $10 $ \\
+\hline
+$t = 1$ & $ 10 $ & $10 $ & $6.4 $ \\
+\hline
+$t = 2$ & $ 6.1 $ & $10 $ & $6.4 $ \\
+\hline
+\end{tabular}
+\end{center}
+
+Следующим, очевидно, будет выбрано действие $b$. Продолжая, агент будет переключаться между действиями, будучи разочарованным получаемой наградой. При этом все действия будут опробованы некоторое количество раз, что позволит построить оценки, достаточно близкие к истинным значениям.
+
+Нетрудно заметить, что в силу <<оптимизма>> на первых шагах происходит изучение, а когда оценки ценности уточнены, акцент смещается на применение. 
+
+Сравнение жадного алгоритма с оптимистичными начальными оценками и ранее рассмотренных алгоритмов ($1000$ игр по $1000$ шагов, построение при $t\geq 1$) представлено на рисунке \ref{optimistic}.
+
+\begin{figure}[h!]
+	\center{\includegraphics[width=1\linewidth]{img/optimistic.png}}
+	\caption{Сравнение различных алгоритмов}
+	\label{optimistic}
+\end{figure} 
+
+ Можно заметить, что в самом начале обучения оптимистичный алгоритм проигрывает $\varepsilon$-жадному с убывающим $\varepsilon$, так как <<изучает>> среду, однако по прошествии времени демонстрирует куда более высокие результаты.
+  
+
+ 

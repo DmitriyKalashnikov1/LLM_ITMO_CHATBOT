@@ -1,0 +1,670 @@
+\documentclass[a4paper,14pt]{extarticle}
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm]{geometry}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{fancyvrb}
+\usepackage{fvextra}
+\usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+ 
+% Добавляем свои блоки
+ 
+\makeatletter
+\algblock[ALGORITHMBLOCK]{BeginAlgorithm}{EndAlgorithm}
+\algblock[BLOCK]{BeginBlock}{EndBlock}
+
+\makeatother
+ 
+% Нумерация блоков
+ 
+\usepackage{caption}% http://ctan.org/pkg/caption
+\captionsetup[ruled]{labelsep=period}
+\renewcommand{\thealgorithm}{\arabic{algorithm}}
+
+\sloppy
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+%ДЛЯ АЛГОРИТМОВ
+	% Перевод данных об алгоритмах
+	\renewcommand{\listalgorithmname}{Список алгоритмов}
+	\floatname{algorithm}{Алгоритм}
+	
+\algnewcommand{\Init}[1]{%
+  \State \textbf{Инициализировать:}
+  \Statex \hspace*{\algorithmicindent}\parbox[t]{.8\linewidth}{\raggedright #1}
+}
+
+	
+	% Перевод команд псевдокода
+	\algrenewcommand\algorithmicwhile{\textbf{Повторять пока }}
+	\algrenewcommand\algorithmicdo{\textbf{Выполнять}}
+	\algrenewcommand\algorithmicrepeat{\textbf{Повторять}}
+	\algrenewcommand\algorithmicuntil{\textbf{Пока выполняется}}
+	\algrenewcommand\algorithmicend{\textbf{Конец}}
+	\algrenewcommand\algorithmicif{\textbf{Если}}
+	\algrenewcommand\algorithmicelse{\textbf{иначе}}
+	\algrenewcommand\algorithmicthen{\textbf{тогда}}
+	\algrenewcommand\algorithmicfor{\textbf{Для}}
+	\algrenewcommand\algorithmicforall{\textbf{Выполнить для всех}}
+	\algrenewcommand\algorithmicfunction{\textbf{Функция}}
+	\algrenewcommand\algorithmicprocedure{\textbf{Процедура}}
+	\algrenewcommand\algorithmicloop{\textbf{повторять}}
+	\algrenewcommand\algorithmicrequire{\textbf{Вход:}}
+	\algrenewcommand\algorithmicensure{\textbf{Обеспечивающие условия:}}
+	\algrenewcommand\algorithmicreturn{\textbf{Возвратить}}
+	\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+	\algrenewtext{EndWhile}{\textbf{Конец цикла}}
+	\algrenewtext{EndLoop}{\textbf{Конец}}
+	\algrenewtext{EndFor}{\textbf{конец цикла}}
+	\algrenewtext{EndFunction}{\textbf{Конец функции}}
+	\algrenewtext{EndProcedure}{\textbf{Конец процедуры}}
+	\algrenewtext{EndIf}{\textbf{Конец условия}}
+	\algrenewtext{EndFor}{\textbf{Конец цикла}}
+	\algrenewtext{BeginAlgorithm}{\textbf{Начало алгоритма}}
+	\algrenewtext{EndAlgorithm}{\textbf{Конец алгоритма}}
+	\algrenewtext{BeginBlock}{\textbf{Начало блока. }}
+	\algrenewtext{EndBlock}{\textbf{Конец блока}}
+	\algrenewtext{ElsIf}{\textbf{иначе если }}
+	
+	\newcommand{\algorithmicbreak}{\textbf{Конец цикла}}
+    \newcommand{\BREAK}{\STATE \algorithmicbreak}
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Обучение с подкреплением\\
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+%
+\pagestyle{empty}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+
+\section{Общая постановка задачи}
+\subsection{Взаимосвязь агента и окружающей среды}
+Ранее, говоря о $k$-руких бандитах, мы уже описали <<на пальцах>> схему взаимодействия агента и среды. Строго говоря, чуть ли не самое важное в описанном ранее -- это стратегия выбора действия агентом в момент времени $t$. Давайте еще раз подробно обсудим весь процесс.
+
+В каждый дискретный момент времени $t \in \{0, 1, 2, ..., n\}$, $n \in \mathbb{N}\cup \{0, \infty\}$, агент находится в некотором состоянии $s_{t} \in S$, где $S$ -- множество всех возможных состояний. Согласно стратегии $\pi_t(a|s_t)$, агент выбирает одно из возможных действий $a_t \in A(s_t)$, где $A(s_t)$ -- множество доступных агенту действий в состоянии $s_t$. В случае, если на любом шаге агенту доступны все действия, будем писать $a_t \in A$, где $A = \bigcup\limits_{s \in S} A(s)$ -- множество всех возможных действий. После совершения действия, агент получает награду $r_{t+1} \in \mathbb{R}$ и переходит в состояние $s_{t+1}$. В итоге, вся история обучения может рассматриваться как последовательность троек вида (состояние, действие, награда):
+$$
+s_0,a_0,r_1,
+$$
+$$
+s_1,a_1,r_2,
+$$
+$$
+\dots
+$$
+\begin{remark}
+Отметим отдельно, что так как действия выбираются согласно стратегии (не детерминировано, а вероятностно), то как вознаграждение, так и следующее состояние агента тоже являются в некотором смысле случайными. Поэтому можно говорить, что среда генерирует как награду $r_{t+1}$ за действие $a_t$, так и следующее состояние $s_{t+1}$ агента, в зависимости от последовательности ранее выбранных действий и состояний. А значит, $s_t$ и $r_t$ являются случайными величинами, причем
+$$
+s_{t+1} \sim p(s|s_t, a_t, r_t, s_{t-1}, a_{t - 1}, r_{t-1},  ..., s_0, a_0),
+$$
+$$
+r_{t+1} \sim p(s|s_t, a_t, r_t, s_{t-1}, a_{t - 1}, r_{t-1},  ..., s_0, a_0),
+$$
+где $p$ -- какое-то вероятностное распределение.
+\end{remark}
+Итого оказывается, что рассматриваемая тройка (состояние агента, стратегия выбора действия, награда за выбранное действие) на каждом последующем шаге зависит от каждого предыдущего шага. Такая постановка оказывается чрезвычайно сложной как с точки зрения теории (многомерные совместные распределения), так и с точки зрения практики: хранение огромного количества предшествующей информации. В рамках данной лекции мы упростим себе задачу и будем считать, что следующий шаг зависит только от текущего положения дел, а прошлый опыт не учитывается вовсе. Введем следующее определение.
+\begin{definition}
+Марковским процессом принятия решений (МППР) называется четверка $(S, A, R, P)$, где
+\begin{enumerate}
+\item $S$ -- множество возможных состояний агента.
+\item $A$ -- множество доступных действий агента.
+\item $R: S \times A \to \mathbb{R}$ -- функция поощрения (или ожидаемое вознаграждение) при переходе из состояния $s$ в состояние $s'$ при выборе действия $a$. 
+\item $P: S \times A \to \Pi(S)$ -- функция перехода между состояниями, $\Pi(S)$ -- множество распределений вероятностей над $S$,
+\end{enumerate}
+причем вероятности последующих переходов не зависят от истории предыдущих переходов, то есть
+$$
+s_{t+1} \sim \kappa (s_t, a_t) \in \Pi(S),
+$$
+$$
+\mathsf P_\kappa(s_{t+1} = s'|s_t, a_t, r_t, s_{t-1}, a_{t - 1}, r_{t-1},  ..., s_0, a_0) = \mathsf P_\kappa(s_{t +1} = s'|s_t, a_t).
+$$
+\end{definition}
+Итак, $\kappa(s_t,a_t)$ -- это распределение вероятностей перехода в некоторое состояние из состояния $s_t$ в результате совершения действия $a_t$, а МППР -- это модель, при использовании которой у агента в каком-то смысле <<отсутствует память>>: вероятность перехода в состояние $s'$ на шаге $t$ зависит только от текущего состояния $s_t$ и выбранного действия $a_t$.
+
+\begin{remark}[!]
+Прежде чем пояснить каждый пункт определения детальнее, отметим следующий важный момент. Обучение с подкреплением использует в своей основе МППР, но не описывается <<вчистую>> таковым. Отличие заключается в том, что агент в каждом состоянии $s$ выбирает некоторое действие $a \in A(s)$ с вероятностью $\pi(a|s)$ (то есть действует в соответствии с некоторой стратегией). Мы будем впредь считать стратегию агента неотъемлемой частью ММПР, не обговаривая это отдельно.
+\end{remark}
+
+Теперь поясним каждый пункт определения детальнее. Понятия множества состояний агента и множества доступных действий нам уже известны. $R$ -- это функция, которая выдает ожидаемое вознаграждение при выборе действия $a \in A(s_t)$, находясь состоянии $s_t$. Грубо говоря, подавая на вход текущее состояние и выбранное действие, функция $R$ выдает число -- ожидаемое вознаграждение при таком <<ходе>>.  Функция $P$ же выдает распределение вероятностей перехода между состояниями в случае, когда агент находится в состоянии $s_t$ и выбирает действие $a_t$.
+\begin{example}
+На рисунке \ref{example_01} приведен пример МППР. 
+\begin{figure}[h!]
+	\center{\includegraphics[width=0.8\linewidth]{img/example_0.png}}
+	\caption{МППР}
+	\label{example_01}
+\end{figure} 
+
+В рассматриваемом случае агентом является ребенок, который может находиться в одном из пяти состояний (большие кружки):
+
+	$s_1: $ Игра.
+	
+	$s_2: $ Прием пищи.
+	
+	$s_3: $ Плач.
+	
+	$s_4: $ Прогулка.
+	
+	$s_5: $ Сон.
+	
+Будем считать, что всего агенту доступно лишь $4$ действия (маленькие кружки)
+
+ 	$a_1: $ Играть.
+	
+	$a_2: $ Попросить поесть.
+	
+	$a_3: $ Пойти гулять.
+	
+	$a_4: $ Лечь спать.
+ 
+Итак, как же прочитать и понять информацию, заложенную на рисунке \ref{example_01}? Стрелки, выходящие из кругов, отвечающих состояниям, приводят нас к доступным в этом состоянии действиям (числа $\pi$ около этих стрелок диктуются стратегией агента: они показывают вероятность выбора действия, к которому идет стрелка, находясь в состоянии, из которого идет стрелка). Далее, выбрав действие, возникает распределение вероятностей над $S$: числа $P$ около стрелок, выходящих из кругов, отвечающих действиям, показывают, с какой вероятностью и в какое состояние агент может перейти, а также какое вознаграждение $R$ он может получить. Так, из состояния $s_1$, выбрав действие $a_1$ (с вероятностью $0.9)$, агент переходит в состояние $s_3$ с вероятностью $1/3$, получая вознаграждение $r = -10$, и возвращается в состояние $s_1$ c вероятностью $2/3$, получая при этом вознаграждение $-2$. Распределение вероятностей перехода из состояния $s_1$ при выборе действия $a_1$ -- это и есть распределение $\kappa(s_1, a_1)$ из определения МППР. В нашем примере оно задается следующей таблицей: 
+\begin{center}{
+\begin{tabular}{c|c|c}
+ & $s_1$ & $s_3$  \\
+\hline
+$\mathsf{P}$ & $2/3$ &$1/3$
+\end{tabular}.
+}
+\end{center} 
+В то же время, выбрав в том же состоянии действие $a_2$ (с вероятностью $0.1$), автоматически осуществляется переход (с вероятностью $P = 1$) в состояние $s_2$ с наградой $r = -2$, то есть распределение $\kappa(s_1, a_2)$ задается таблицей
+\begin{center}{
+\begin{tabular}{c|c}
+ & $s_2$   \\
+\hline
+$\mathsf{P}$ & $1$ 
+\end{tabular}.
+}
+\end{center} 
+Ну и так далее.
+\end{example}
+В общем случае множества состояний $S$ и действий $A$ могут быть как конечными, так и бесконечными. Мы в нашей лекции ограничимся случаем, когда оба этих множества конечны. Такие процессы имеют даже отдельное название.
+\begin{definition}
+Марковский процесс принятия решений, в котором множества $A$ и $S$ являются конечными, называется финитным.
+\end{definition}
+Отметим еще одно важное определение.
+\begin{definition}
+Если на шаге $T$ среда переходит в состояние, при котором взаимодействие агента и среды (игра) прекращается, то это состояние называется терминальным.  
+\end{definition}
+Например, в игре <<крестики-нолики>> (с конечным размером поля) терминальное состояние достигается либо когда один из игроков одерживает победу, либо когда все ячейки таблицы заполнены. 
+\begin{example}
+Немного изменим рассмотренный ранее пример -- изменилось состояние $s_5$. Теперь это состояние оказывается терминальным -- из него нет ни одного доступного действия. Родители могут отдохнуть :)
+\begin{figure}[h!]
+	\center{\includegraphics[width=0.8\linewidth]{img/example_02.png}}
+	\caption{МППР с терминальным состоянием}
+	\label{example_02}
+\end{figure}
+\end{example}
+Итак, основные определения введены. Теперь осталось понять: а что же мы будем оценивать в результате <<игры>>?
+\begin{definition}
+Пусть мы находимся на шаге $t$, а взаимодействие агента и среды предполагает бесконечное число шагов. Тогда ожидаемой выгодой после шага $t$ называется величина
+	$$
+	G_t = r_{t+1} + r_{t+2}+\ldots = \sum\limits_{k = 0}^{\infty} r_{t + k + 1}
+	$$
+Если рассматривается взаимодействие, предполагающее достижение терминального состояния за конечное число шагов $t \in \{0, 1, 2, ..., T\}$, то ожидаемой выгодой называется величина
+	$$
+	G_t = r_{t+1} + r_{t+2}+\ldots + r_{T}
+	$$
+\end{definition}
+Наверное, введенное определение -- одно из самых естественных: нет ничего проще, чем просто-напросто сложить все получаемые в дальнейшем награды (правда, пока неизвестно какие).
+\begin{remark}
+Отметим отдельно, что бесконечное взаимодействие агента и среды (то есть $T = +\infty$) -- вовсе не выброс, а весьма частая ситуация. Кроме того, зачастую так называемое <<время жизни>> агента не определено. Например, выход из лабиринта может закончиться за конечное число ходов (с заранее неизвестным (!) количеством), а может не закончиться вовсе (агент заблудился).
+\end{remark}
+В то же время, максимизация суммарной награды -- достаточно наивная вещь. Например, можно долго собирать <<плюсики>>, медленно путешествуя в сторону выхода из лабиринта, хотя, казалось бы, логичнее выбраться из него как можно быстрее, то есть использовать принцип: <<чем раньше прибыль, тем лучше>>. Тогда куда более логичным кажется использование следующего понятия.
+\begin{definition}
+Пусть мы находимся на шаге $t$, а взаимодействие агента и среды предполагает бесконечное число шагов. Тогда приведенной ожидаемой выгодой называется величина
+	$$
+	G_t = r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} \ldots = \sum \limits_{k=0}^{\infty} \gamma^kr_{t+k+1},
+		$$
+где величина $\gamma \in [0,1]$ называется коэффициентом дисконтирования.
+
+Если рассматривается взаимодействие, предполагающее достижение терминального состояния за конечное число шагов $t \in \{0, 1, 2, ..., T\}$, то приведенной ожидаемой выгодой называется величина
+	$$
+	G_t = r_{t+1} + \gamma r_{t+2} + ... + \gamma^{T - t - 1}r_{T}.
+	$$
+\end{definition}
+Приведенную ожидаемую выгоду можно еще назвать принципом <<обесценивания награды>>. В соответствии с описанным подходом, агент пытается выбирать действия таким образом, чтобы сумма обесценивающихся получаемых наград была наибольшей. То есть на каждом шаге агент пытается выбрать такое действие $a_t$, чтобы наибольшая возможная награда не обесценилась слишком сильно (последнее происходит, конечно, из-за промедления).
+
+Можно описать это и следующим образом. Коэффициент дисконтирования $\gamma$ отвечает за то, насколько важны будущие выигрыши, то есть регулирует <<дальновидность>> агента. Если $\gamma =0$, то агент не обращает внимания на все последующие выигрыши и стремится максимизировать текущий. В перспективе это может занизить ожидаемую выгоду. В то же время, значения $\gamma$ близкие к единице увеличивают значимость будущих вознаграждений.
+\begin{remark}
+	Заметим, что ожидаемая выгода как в случае конечного, так и в случае бесконечного числа шагов, получается из приведенной при $\gamma = 1$.
+\end{remark}
+ 
+Справедлива следующая лемма.
+\begin{lemma}
+	Если $\gamma \in (0, 1)$ и последовательность $r_{t+1}, r_{t+2}, r_{t+3}, \ldots $ ограничена, то приведенная выгода
+	$$
+	G_t =\sum \limits_{k=0}^{\infty} \gamma^kr_{t+k+1}
+	$$
+имеет конечное значение.
+\end{lemma}
+\begin{proof}
+Так как последовательность $\{r_{t+k + 1}\}_{k = 0}^\infty$ ограничена, то $|r_{t + k + 1}| \leq C$. Тогда
+$$
+\left|\gamma^k r_{t + k + 1}\right| \leq C\gamma^k.
+$$
+Так как ряд с общим членом $\gamma^k$ при $\gamma \in (0, 1)$ сходится (как геометрическая прогрессия), то исходный ряд сходится абсолютно, а значит сходится.
+\end{proof}
+ 
+
+
+\subsection{Функции ценности действий и состояний}
+Для того, чтобы агент понимал, как следует вести себя при взаимодействии со средой, то есть какой стратегии придерживаться, должен быть некоторый аппарат, описывающий состояния агента. В обучении с подкреплением применяется подход, в котором каждому состоянию присваивается некоторая численная величина -- ценность этого состояния. Ценность состояния призвана охарактеризовать это состояние с точки зрения приведенной выгоды.
+\begin{definition}
+	Пусть $\pi$ -- стратегия агента. Функцией ценности состояния $s$ при использовании стратегии $\pi$ называется функция вида
+	$$
+	v_{\pi}(s) = \mathsf{E}_{\pi}\left(G_{t} | s_{t}=s\right)=\mathsf{E}_{\pi}\left(\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+1} | s_{t}=s\right), \quad   s \in S.
+	$$
+\end{definition}
+Функция ценности состояний определяет среднее значение приведенной выгоды, если мы начинаем в состоянии $s$ и следуем стратегии $\pi$. Зная ценность каждого состояния, логично использовать такую стратегию, которая приведет нас к состоянию с максимальной ценностью. 
+\begin{remark}
+Формально (в определении функции ценности) перед нами не что иное, как условное математическое ожидание -- функция от состояния $s \in S$. Меняя состояние $s$, меняется стратегия $\pi(a|s)$, тем самым меняется и $v_\pi(s)$.
+\end{remark}
+К вопросу оценки ценности можно подойти и более педантично: оценивать приведенную выгоду, стартуя не столько из состояния $s$, но и выбрав действие $a$.  Тем самым мы приходим к понятию ценности действия.
+\begin{definition}
+	Пусть $\pi$ -- стратегия агента. Функцией ценности действия $a$ в состоянии $s$ при использовании стратегии $\pi$ называется функция
+	$$
+	q_{\pi}(s,a) = \mathsf{E}_{\pi}\left(G_{t} | s_{t}=s, a_t=a\right)=\mathsf{E}_{\pi}\left(\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+1} | s_{t}=s, a_t=a\right).
+	$$
+\end{definition}
+Еще раз повторим, что по своей сути функция ценности действия очень похожа на  функцию ценности состояния с той лишь разницей, что мы определяем приведенную выгоду, если начинаем в состоянии $s$, выбираем действие $a$ и следуем стратегии $\pi$.
+
+Вроде бы все логично, и, если бы мы знали все про среду и агента, то достаточно бы было выбирать то действие $a$, которое максимизирует $q(s, a)$. Конечно, это невозможно, но оказывается, что для функций ценности выполняются рекурсивные отношения.
+
+\begin{lemma}
+Пусть $v_{\pi}(s)$ и $q_{\pi}(s,a)$ -- функции ценности состояний и действий, соответственно. Пусть также известна вся информация о среде: известны вероятности всех переходов из состояния $s$ в состояние $s^{\prime}$ при выполнении действия $a$
+$$
+\mathcal{P}_{ss^{\prime}}^{a} = \mathsf{P}(s_{t+1}=s^{\prime}|s_t=s,a_t=a)
+$$
+и известны все ожидаемые премии
+$$
+\mathcal{R}_{ss^{\prime}}^{a} = \mathsf{E}_{\pi}\left(r_{t+1}|s_t=s,a_t=a, s_{t+1}=s^{\prime} \right).
+$$
+Тогда справедливы следующие соотношения
+$$
+ v_{\pi}(s) = \sum\limits_{a \in A(s)}\pi(a|s)\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{\pi}\left(s^{\prime}\right)\right)
+$$
+и
+$$
+q_{\pi}(s,a) = \sum\limits_{s^{\prime} \in S}\mathcal{P}_{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma \sum\limits_{a^{\prime} \in A(s')} \pi(a^{\prime}|s^{\prime}) q_{\pi}(s^{\prime},a^{\prime}) \right) = 
+$$
+$$
+= \sum\limits_{s^{\prime} \in S}\mathcal{P}_{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{pi}(s') \right)
+$$
+\end{lemma}
+ 
+\begin{proof} 1. Докажем первое равенство. По определению, используя свойство линейности математического ожидания, получим
+$$
+v_{\pi}(s) = \mathsf{E}_{\pi}\left(G_{t} | s_{t}=s\right)=\mathsf{E}_{\pi}\left(\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+1} | s_{t}=s\right)=  
+$$
+$$
+= \mathsf{E}_{\pi}\left( r_{t+1}|s_t = s\right) + \gamma\mathsf{E}_{\pi}\left(\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+2} | s_{t}=s\right).
+$$
+Рассмотрим пару полученных слагаемых по отдельности. Начнем с первого. Находясь в состоянии $s$, каждое действие выбирается с вероятностью $\pi(a|s)$, переход в состояние $s^{\prime}$ происходит с вероятностью $\mathcal{P}_{ss^{\prime}}^{a}$, при этом <<выдается>> ожидаемая премия $\mathcal{R}_{ss^{\prime}}^{a}$. Тогда	
+$$
+\mathsf{E}_{\pi}\left( r_{t+1}| s_t = s\right) = \sum\limits_{a \in A(s)}\sum\limits_{s^{\prime} \in S}\pi(a|s)\mathcal{R}_{ss^{\prime}}^{a}\mathcal{P}_{ss^{\prime}}^{a}.
+$$	
+Аналогично, желая заменить $s_t = s$ на $s_{t + 1} = s'$, получим
+$$
+\mathsf{E}_{\pi}\left(\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+2} | s_{t}=s\right) = \sum\limits_{a \in A(s)}\sum\limits_{s^{\prime} \in S} \pi(a|s) \mathsf{E}_{\pi}\left(\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+2} | s_{t+1}=s^{\prime}\right)\mathcal{P}_{ss^{\prime}}^{a}.
+$$
+Складывая и перегруппировывая, получим:
+$$
+ v_{\pi}(s) = \sum\limits_{a \in A(s)}\pi(a|s)\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma \mathsf{E}_{\pi} \left( \sum_{k=0}^{\infty} \gamma^{k} r_{t+k+2} | s_{t+1}=s^{\prime} \right) \right).
+ $$
+Так как 
+$$
+v_{\pi}(s^{\prime}) = \mathsf{E}_{\pi} \left( \sum_{k=0}^{\infty} \gamma^{k} r_{t+k+2} | s_{t+1}=s^{\prime} \right),
+$$
+получим
+$$
+ v_{\pi}(s) = \sum\limits_{a \in A(s)}\pi(a|s)\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{\pi}\left(s^{\prime}\right)\right).
+$$
+2. Аналогичным образом доказывается соотношение для $q_{\pi}(s,a)$.
+	По определению, используя свойство линейности математического ожидания,
+$$
+q_{\pi}(s,a) = \mathsf{E}_{\pi}\left(G_{t} | s_{t}=s, a_t=a\right)=\mathsf{E}_{\pi}\left(\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+1} | s_{t}=s, a_t=a\right) = 
+$$
+$$
+ = \mathsf{E}_{\pi}\left(r_{t+1}|s_t = s, a_t = a\right) + \gamma\mathsf{E}_{\pi}\left(\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+2} | s_{t}=s, a_t=a\right).
+$$
+Так как действие $a$ выбрано, то, во-первых,
+$$
+\mathsf{E}_{\pi}\left(r_{t+1}|s_t = s, a_t = a\right) = \sum\limits_{s^{\prime} \in S}\mathcal{P}_{ss^{\prime}}^{a}\mathcal{R}_{ss^{\prime}}^{a},
+$$	
+а во-вторых 
+$$
+\mathsf{E}_{\pi}\left(\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+2} | s_{t}=s, a_t=a\right) =  \sum\limits_{s^{\prime} \in S}\mathcal{P}_{ss^{\prime}}^a \mathsf{E}_{\pi}\left(\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+2} | s_{t+1}=s^{\prime}, a_t=a\right) = 
+$$
+$$
+=\sum\limits_{s^{\prime} \in S}\mathcal{P}_{ss^{\prime}}^a q_\pi(s', a) = \sum\limits_{s^{\prime} \in S}\mathcal{P}_{ss^{\prime}}^a \sum\limits_{a' \in A(s')} \pi(a'|s') q_\pi(s', a').
+$$
+В итоге,
+$$
+q_{\pi}(s,a) = \sum\limits_{s^{\prime} \in S}\mathcal{P}_{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma \sum\limits_{a^{\prime} \in A(s')} \pi(a^{\prime}|s^{\prime}) q_{\pi}(s^{\prime},a^{\prime}) \right) = \sum\limits_{s^{\prime} \in S}\mathcal{P}_{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v(s') \right).
+$$
+\end{proof}
+ 
+Ясно, что желая получить функции ценности состояний и действий, мы приходим к системе из $|S|$ уравнений с $|S|$ неизвестными в каждом случае.
+\begin{remark}
+Полученные уравнения называются уравнениями Беллмана для функций ценности при использовании стратегии $\pi$. В случае функции ценности состояний уравнение Беллмана выражает зависимость ценности некоторого состояния от ценностей последующих состояний. В случае функций ценности действий -- зависимость ценности пары (состояние, действие) от ценностей последующих таких пар.
+\end{remark}
+Идею (как и технику использования) уравнений можно понять из рисунка \ref{example_1}. Пусть нам (откуда-то) известны ценности всех состояний, а в качестве текущего состояния в данном случае рассматривается состояние $s_1$, тогда, используя соотношение
+$$
+ v_{\pi}(s) = \sum\limits_{a \in A(s)}\pi(a|s)\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{\pi}\left(s^{\prime}\right)\right)
+$$
+в случае, когда $\gamma = 0.8$, получим
+
+
+$$
+-2.23 = 0.9 \left(\frac{1}{3} \left(-10 + 0.8\cdot 11.45\right)+\frac{2}{3} \left(-2+0.8\cdot(-2.23)\right)\right) + 
+$$
+$$
++0.1\cdot 1\cdot (-2 + 0.8\cdot6.15),
+$$
+то есть верное равенство. Конечно, основной возникающий теперь вопрос таков: а как получить ценности состояний? Рассмотрим это на следующем примере.
+
+
+\begin{figure}[h!]
+	\center{\includegraphics[width=0.8\linewidth]{img/example_1.png}}
+	\caption{МППР}
+	\label{example_1}
+\end{figure} 
+
+\subsection{Пример}
+Прежде мы показали как связаны ценность текущего состояния $s$ и следующих состояния $s^{\prime}$, в которые может перейти агент. Рассмотрим на примере, как получить ценности всех состояний при помощи уравнений Беллмана, используя конкретную стратегию $\pi$. Исходные данные примера представлены на уже знакомом рисунке \ref{example_0_0}. 
+\begin{figure}[h!]
+	\center{\includegraphics[width=0.8\linewidth]{img/example_0.png}}
+	\caption{Исходные данные}
+	\label{example_0_0}
+\end{figure} 
+Возьмем в качестве коэффициента дисконтирования $\gamma = 0.8$ и, учитывая, что
+$$
+ v_{\pi}(s) = \sum\limits_{a \in A(s)}\pi(a|s)\sum\limits_{s^{\prime} \in S}\mathcal{P} _{ss^{\prime}}^a \left( \mathcal{R}_{ss^{\prime}}^a + \gamma v_{\pi}\left(s^{\prime}\right)\right),
+$$
+запишем уравнение Беллмана для состояния <<Игра>>:
+$$
+v_{\pi}(s_1) = 0.9 \left(\frac{1}{3} \left(-10 + 0.8v_{\pi}(s_3)\right)+\frac{2}{3} \left(-2+0.8v_{\pi}(s_1)\right)\right) + 
+$$
+$$
++0.1\cdot 1\cdot (-2 + 0.8v_{\pi}(s_2)).
+$$
+Так как во всех состояниях, отличных от $s_1$, при совершении конкретного действия переход в следующее состояние детерминирован (осуществляется с вероятностью $1$), то внутренняя сумма по $s^{\prime}$ состоит только лишь из одного слагаемого (умножаемого на $1$). Учитывая это наблюдение, аналогичным образом запишем остальные уравнения:
+$$
+v_{\pi}(s_2) = 0.7(-1+0.8v_{\pi}(s_1)) + 0.3(7+0.8v_{\pi}(s_5)),
+$$
+$$
+v_{\pi}(s_3) = 0.5(-3+0.8v_{\pi}(s_2)) + 0.5(-3+0.8v_{\pi}(s_4)),
+$$
+$$
+v_{\pi}(s_4) = 0.2(5+0.8v_{\pi}(s_2)) + 0.8(15+0.8v_{\pi}(s_5)),
+$$
+$$
+v_{\pi}(s_5) = 5+0.8v_{\pi}(s_5).
+$$
+Решив эту систему, получим следующие значения ценности состояний (округленные до сотых). Результаты также представлены на рисунке \ref{example_2}:
+$$
+\begin{cases}
+	v_{\pi}(s_1) = -2.23
+	\\
+	v_{\pi}(s_2) = 6.15
+	\\
+	v_{\pi}(s_3) = 11.45
+	\\
+	v_{\pi}(s_4) = 29.98
+	\\
+	v_{\pi}(s_5) = 25.
+\end{cases}
+$$
+\begin{figure}[h!]
+	\center{\includegraphics[width=0.8\linewidth]{img/example_2.png}}
+	\caption{Ценности состояний согласно выбранной стратегии}
+	\label{example_2}
+\end{figure} 
+
+\begin{remark}
+Очевидно, что значения ценностей состояний прямиком зависят от выбранной агентом стратегии. При изменении стратегии, вообще говоря, изменятся и ценности состояний. Например, если положить $\pi(a_1|s_1) = 0.5, \pi(a_2|s_1) = 0.5$, а остальные параметры оставить прежними, то получим следующие ценности состояний (округленные до сотых)
+	$$
+\begin{cases}
+	v_{\pi}(s_1) = 2.59
+	\\
+	v_{\pi}(s_2) = 8.85
+	\\
+	v_{\pi}(s_3) = 12.71
+	\\
+	v_{\pi}(s_4) = 30.42
+	\\
+	v_{\pi}(s_5) = 25.
+\end{cases}
+$$
+Заметим также, что в этом случае ценности всех состояний получились не меньше, чем соответствующие ценности при использовании предыдущей стратегии. Немного позднее мы обсудим такую ситуацию подробнее.
+\end{remark} 
+

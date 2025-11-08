@@ -1,0 +1,734 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+
+\usepackage[left = 20mm, right = 20mm, top = 25mm, bottom = 25mm, headheight=30pt]{geometry}
+\usepackage{amssymb}
+\usepackage{cmap}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{graphics}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{pgf,tikz}
+\usepackage{multicol}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{Университет ИТМО}
+\fancyhead[RE,LO]{Высшая школа цифровой культуры}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+
+
+\sloppy
+
+
+
+\usepackage{xcolor} % Required for specifying custom colours
+\definecolor{grey}{rgb}{0.9,0.9,0.9} % Colour of the box surrounding the title
+%\usepackage[sfdefault]{ClearSans} % Use the Clear Sans font (sans serif)
+%\usepackage{XCharter} % Use the XCharter font (serif)
+\definecolor{foo}{HTML}{EFF5F9}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Argmin}{Arg\,min}
+\DeclareMathOperator*{\Argmax}{Arg\,max}
+\DeclareMathOperator*{\logloss}{logloss}
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=\joinrel=}}
+\def\re{{\rm Re}}
+\def\im{{\rm Im}}
+\def\dim{\rm dim}
+\def\Ext{\rm Ext}
+\def\wt#1{{{\widetilde #1} }}
+\def\wh#1{{{\,\widehat #1\,} }}
+\def\graph{{\rm gr\,}}
+\def\ran{{\rm ran\,}}
+\def\dom{{\rm dom\,}}
+\def\ker{{\rm ker\,}}
+\def\supp{{\rm supp\,}}
+\def\diag{{\rm diag\,}}
+
+\newcommand\dN{{\mathbb{N}}}
+\newcommand\dR{{\mathbb{R}}}
+\newcommand\dC{{\mathbb{C}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bU}{{\mathbb{U}}}
+\newcommand\dZ{{\mathbb{Z}}}
+
+\newcommand\gotB{{\mathfrak{B}}}
+\newcommand\gotD{{\mathfrak{D}}}
+\newcommand\gotH{{\mathfrak{H}}}
+\newcommand\gotK{{\mathfrak{K}}}
+\newcommand\gotL{{\mathfrak{L}}}
+\newcommand\gotM{{\mathfrak{M}}}
+\newcommand\gotN{{\mathfrak{N}}}
+\newcommand\gotR{{\mathfrak{R}}}
+\newcommand\gotS{{\mathfrak{S}}}
+\newcommand\gotT{{\mathfrak{T}}}
+\newcommand\gott{{\mathfrak{t}}}
+\newcommand\gotC{{\mathfrak{C}}}
+\newcommand\gotZ{{\mathfrak{Z}}}
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\newcommand{\ga}{{\alpha}}
+\newcommand{\gd}{{\delta}}
+\newcommand{\gD}{{\Delta}}
+\newcommand{\gga}{{\gamma}}
+\newcommand{\gG}{{\Gamma}}
+\newcommand{\gF}{{\Phi}}
+\newcommand{\gf}{{\phi}}
+\newcommand{\gk}{{\kappa}}
+\newcommand{\gK}{{\Kappa}}
+\newcommand{\gl}{{\lambda}}
+\newcommand{\gL}{{\Lambda}}
+\newcommand{\gO}{{\Omega}}
+\newcommand{\go}{{\omega}}
+\newcommand{\gs}{{\sigma}}
+\newcommand\gS{{\Sigma}}
+\newcommand{\gT}{{\Theta}}
+\newcommand{\gY}{{\Upsilon}}
+
+
+\newcommand\cA{{\mathcal{A}}}
+\newcommand\cB{{\mathcal{B}}}
+\newcommand\cC{{\mathcal{C}}}
+\newcommand\cD{{\mathcal{D}}}
+\newcommand\cH{{\mathcal{H}}}
+\newcommand\cK{{\mathcal{K}}}
+\newcommand\cM{{\mathcal{M}}}
+\newcommand\cN{{\mathcal{N}}}
+\newcommand\cO{{\mathcal{O}}}
+\newcommand\cP{{\mathcal{P}}}
+\newcommand\cT{{\mathcal{T}}}
+\newcommand\cU{{\mathcal{U}}}
+\newcommand\cZ{{\mathcal{Z}}}
+
+\newcommand\Rg{{\rm Rg}}
+\newcommand\res{{\rm res}}
+\newcommand\pr{{\rm Pr}}
+
+\DeclareMathOperator{\sign}{sign}
+
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{lemma}{Лемма}[subsection]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{example}{Пример}[subsection]
+\newtheorem{remark}{Замечание}[subsection]
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bead}{\begin{eqnarray*}}
+\newcommand{\eead}{\end{eqnarray*}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\bed}{\begin{displaymath}}
+\newcommand{\eed}{\end{displaymath}}
+
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+
+\newcommand{\bspi}{\begin{split}}
+\newcommand{\espi}{\end{split}}
+
+\newcommand{\la}{\label}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+
+\newenvironment{proof}%
+{\begin{sloppypar}\noindent{\bf Доказательство.}}%
+{\hspace*{\fill}$\square$\end{sloppypar}}
+\renewcommand{\Large}{\fontsize{16}{25pt}\selectfont}
+
+\newcommand{\slim}{\,\mbox{\rm s-}\hspace{-2pt} \lim}
+\newcommand{\wlim}{\,\mbox{\rm w-}\hspace{-2pt} \lim}
+\newcommand{\olim}{\,\mbox{\rm o-}\hspace{-2pt} \lim}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle t}}}
+
+
+
+
+\graphicspath{ {img/} }
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+
+\usepackage{textcase} 
+\usepackage{titlesec}
+
+\usepackage{indentfirst} 
+\setlength\parindent{1cm}
+% НАСТРОЙКИ ЗАГОЛОВКОВ
+\usepackage{textcase} 
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\bfseries\filcenter}{\thesection}{0.5em}{}
+\titleformat{\subsection}[block]{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\subsection}{2cm}{1mm}{3mm}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	%------------------------------------------------
+	%	Grey title box
+	%------------------------------------------------
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{dc.png}
+    \end{center}
+    
+    	\vfill
+    	
+	\colorbox{foo}{
+		\parbox[t]{0.93\textwidth}{ % Outer full width box
+			\parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+				\raggedleft % Right align the text
+				%\fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+				\vspace{0.7cm} % Space between the start of the title and the top of the grey box
+				
+				\huge Энтропия\\ Деревья принятия решений
+				
+				\vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+			}
+		}
+	}
+	
+	\vfill % Space between the title box and author information
+	
+	%------------------------------------------------
+	%	Author name and information
+	%------------------------------------------------
+
+    
+
+	
+	\parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+		\raggedleft % Right align the text
+		%\large % Increase the font size
+		{Высшая Школа Цифровой Культуры}\\[4pt] % Extra space after name
+		Университет ИТМО\\[4pt] % Extra space before URL
+		dc@itmo.ru\\[4pt]
+		
+		\hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+	}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+
+\newpage
+%
+\pagestyle{empty}
+\tableofcontents
+%
+\clearpage
+\pagestyle{fancy}
+
+
+\section{Условная энтропия}
+\subsection{Наводящие соображения}
+Как вы, наверное, уже поняли, вероятности исходов экспериментов, которые встречаются в реальной жизни, зачастую неизвестны. Однако, проводя эксперимент и собирая его результаты, у нас накапливается некоторая статистика, которая каждому исходу сопоставляет какое-то, вообще говоря, количественное значение. Например, предположим, что вы проводите опрос, пойдет или нет ваш друг играть в футбол. Данные опроса вы можете наблюдать в таблице: 
+\begin{center}
+\begin{tabular}{c|c}
+Да & Нет \\ \hline 
+9 & 5
+\end{tabular}
+\end{center}
+По данным из таблицы понятно, что всего было опрошено $14$ человек, причем $9$ из них приняли приглашение, а пятеро отказались. Тогда имеет смысл оценить вероятность каждого исхода эксперимента, используя, как обычно, частоту. В предложенном примере оценки вероятностей исходов <<Да>> (играть в футбол) и <<Нет>> (не играть в футбол) будут равны   
+$$
+\mathsf{P} (\text{Да})=\frac{9}{14}, \quad \mathsf{P} (\text{Нет})=\frac{5}{14},
+$$ 
+а энтропия эксперимента, который описывается таблицей
+\begin{center}
+\begin{tabular}{c|c|c}
+$\Omega$ & $\text{Да}$ & $\text{Нет}$ \\
+\hline $\mathsf P$ & $\frac{9}{14}$ & $\frac{5}{14}$
+\end{tabular},
+\end{center} 
+составленной на основе вычисленных частот, равна
+$$
+\mathsf{H} (\Omega) = -\frac{9}{14} \log _{2} \frac{9}{14}-\frac{5}{14} \log _{2} \frac{5}{14} \approx 0.94.
+$$
+Энтропия близка к единице, что является максимумом для эксперимента, когда исходов всего два, а основание логарифма равно двум ($\log_2 2 = 1$), а значит ничего определенного об опросе мы сказать не можем.
+
+В рассмотренном эксперименте мы не учитывали ничего, кроме ответа случайно опрошенного человека. Но что, если учитывать какие-то дополнительные факторы? Скажем, составляя таблицу частот, мы теперь будем не просто опрашивать друзей на предмет: пойдет ли он играть в футбол или нет, но и будем обращать свое внимание на погоду в текущий момент времени. Тогда таблица будет более сложной и, например, может выглядеть следующим образом:
+\begin{center}
+\begin{tabular}{c|c|c}
+Погода $\backslash$ Играть в футбол & Да & Нет \\ \hline 
+Солнечно & 6 & 0 \\ \hline 
+Пасмурно & 2 & 2 \\ \hline 
+Дождь & 1 & 3 \\ 
+\end{tabular}
+\end{center}
+Какова теперь энтропия такой системы? Стала ли она меньше за счет новой информации? И вообще, а как вычислить энтропию в такой ситуации? Видимо, разработанного нами ранее аппарата для одного эксперимента уже не хватает. Давайте исправим эту ситуацию.  
+
+\subsection{Определение условной энтропии}
+Итак, давайте рассмотрим два эксперимента $\Omega$ и $\Theta$, первый из которых состоит из исходов $\omega_i$, $i \in \{1, 2, \ldots, m\}$, а второй -- из исходов $\theta_j$, $j \in \{1, 2, \ldots, n\}$.  Рассматривая пару экспериментов $(\Omega, \Theta)$, логично и паре исходов $(\omega_i, \theta_j)$, $i \in \{1, 2, \ldots, m\}$, $j \in \{1, 2, \ldots, n\}$ сопоставить вероятность $\mathsf P_{ij} \geq 0$ так, чтобы
+$$
+\sum\limits_{i = 1}^m \sum\limits_{j = 1}^n \mathsf P_{ij} = 1,
+$$
+снова потому, что никаких других вариантов быть не может (может возникнуть лишь какой-то исход первого эксперимента, и какой-то второго). Оказывается разумным ввести следующее определение.
+\begin{definition}
+	Экспериментом $(\Omega, \Theta)$ назовем произвольное множество пар исходов $(\omega_i, \theta_j)$, $i \in \{1, 2, \ldots, m\}$, $j \in \{1, 2, \ldots, n\}$, каждой из которых сопоставлено число $\mathsf P_{ij} \geq 0$, называемое вероятностью исхода $(\omega_i, \theta_j)$, такое, что
+$$
+\sum\limits_{i = 1}^m \sum\limits_{j = 1}^n \mathsf P_{ij} = 1,
+$$
+\end{definition}
+Ясно, что эксперимент $(\Omega, \Theta)$ может быть описан (и отождествлен) со следующей таблицей:
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$(\Omega, \Theta)$ & $\theta_1$ & $\theta_2$ & \ldots & $\theta_n$ \\
+\hline $\omega_1$ & $\mathsf P_{11}$ & $\mathsf P_{12}$ & \ldots & $\mathsf P_{1n}$ \\
+\hline $\omega_2$ & $\mathsf P_{21}$ & $\mathsf P_{22}$ & \ldots & $\mathsf P_{2n}$ \\
+\hline \ldots & \ldots & \ldots & \ldots & \ldots \\
+\hline $\omega_m$ & $\mathsf P_{m1}$ & $\mathsf P_{m2}$ & \ldots & $\mathsf P_{mn}$
+\end{tabular}
+\end{center}
+Так как перед нами тоже эксперимент (просто имеющий $m \cdot n$ исходов), то энтропия такого эксперимента записывается, как 
+$$
+\mathsf H \left ((\Omega, \Theta) \right ) = - \sum\limits_{i = 1}^m \sum\limits_{j = 1}^n \mathsf P_{ij} \log \mathsf P_{ij}.
+$$
+По написанной таблице понятно, как восстановить эксперименты $\Omega$ и $\Theta$ по отдельности. Так, чтобы найти вероятность того, что произошел исход $\omega_i$, достаточно сложить все вероятности в таблице, стоящие в $i$-ой строке:
+$$
+\mathsf P(\omega_i) = \sum\limits_{j = 1}^n \mathsf P_{ij}, \ i \in \{1, 2, \ldots, m\},
+$$ 
+а чтобы найти вероятность, что произошел исход $\theta_j$, нужно сложить все вероятности в таблице, стоящие в $j$-ом столбце:
+$$
+\mathsf P(\theta_j) = \sum\limits_{i = 1}^m \mathsf P_{ij}, \ j \in\{1, 2, \ldots, n \}.
+$$
+Итак, мы приходим к следующей теореме.
+\begin{theorem}
+Пусть эксперимент $(\Omega, \Theta)$ задается таблицей:
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$(\Omega, \Theta)$ & $\theta_1$ & $\theta_2$ & \ldots & $\theta_n$ \\
+\hline $\omega_1$ & $\mathsf P_{11}$ & $\mathsf P_{12}$ & \ldots & $\mathsf P_{1n}$ \\
+\hline $\omega_2$ & $\mathsf P_{21}$ & $\mathsf P_{22}$ & \ldots & $\mathsf P_{2n}$ \\
+\hline \ldots & \ldots & \ldots & \ldots & \ldots \\
+\hline $\omega_m$ & $\mathsf P_{m1}$ & $\mathsf P_{m2}$ & \ldots & $\mathsf P_{mn}$
+\end{tabular}.
+\end{center}
+Тогда эксперименты $\Omega$ и $\Theta$ могут быть восстановлены с использованием  следующих соотношений:
+$$
+\mathsf P(\omega_i) = \sum\limits_{j = 1}^n \mathsf P_{ij}, \ i \in \{1, 2, \ldots, m\},
+$$ 
+$$
+\mathsf P(\theta_j) = \sum\limits_{i = 1}^m \mathsf P_{ij}, \ j \in\{1, 2, \ldots, n \}.
+$$
+\end{theorem}
+Давайте сразу рассмотрим пример. Пусть эксперимент $(\Omega, \Theta)$ заключается в подбрасывании некоторой монеты одним из двух мальчиков: Петей или Степой. Эксперимент $(\Omega, \Theta)$ описывается следующей таблицей:
+\begin{center}
+\begin{tabular}{c|c|c}
+$(\Omega, \Theta)$ & Петя & Степа \\
+\hline Орел & $0.4$ & $0.275$ \\
+\hline Решка & $0.1$ & $0.225$ \\
+\end{tabular}.
+\end{center}
+Энтропия этого эксперимента равна
+$$
+\mathsf H((\Omega, \Theta)) = -0.4 \log_2 0.4 - 0.275 \log_2 0.275 - 0.1 \log_2 0.1 - 0.225 \log_2 0.225 \approx 1.86.
+$$
+Так как максимальная энтропия в данном эксперименте может быть равна $\log_2 4 = 2$, то можно заключить, что эксперимент $(\Omega, \Theta)$ обладает достаточно большой неопределенностью.
+
+Ясно, что как эксперимент $\Omega$, так и эксперимент $\Theta$ состоят из двух исходов: $\Omega = \{\text{Орел, Решка}\}$, $\Theta = \{\text{Петя, Степа}\}$. Просуммировав значения, стоящие в строках, придем к эксперименту $\Omega$, который может быть записан следующей таблицей:
+\begin{center}
+\begin{tabular}{c|c|c}
+$\Omega$ & Орел & Решка \\
+\hline $\mathsf P $ & $0.675$ & $0.325$ \\
+\end{tabular}.
+\end{center}
+Можно сделать вывод, что монетка явно не является правильной, так как выпадает орлом со значительно большей вероятностью, чем решкой. Сложив значения, стоящие в столбцах, придем к эксперименту $\Theta$, описываемому таблицей:
+\begin{center}
+\begin{tabular}{c|c|c}
+$\Theta$ & Петя & Степа \\
+\hline $\mathsf P $ & $0.5$ & $0.5$ \\
+\end{tabular}.
+\end{center}
+Из полученной таблицы можно сделать следующий вывод: Петя и Степа подбрасывают монетку или нет с одинаковыми (равными) вероятностями.
+
+Может оказаться известным, что в эксперименте $\Theta$ произошло событие $\theta_j$, тогда вероятности исходов эксперимента $\Omega$ меняются, причем понятно каким образом -- согласно формуле условной вероятности, которую мы уже встречали в байесовском классификаторе. Вычисляются эти вероятности следующим образом: 
+$$
+\mathsf P(\omega_i| \theta_j) = \frac{\mathsf P(\omega_i \cap \theta_j)}{\mathsf P (\theta_j)} = \frac{\mathsf P_{ij}}{\mathsf P (\theta_j)}, \ i \in \{1, 2, ..., m\}, j \in \{1, 2, ..., n\},
+$$
+Может быть и противоположная ситуация, когда известно, что произошел исход $\omega_i$ эксперимента $\Omega$. Тогда вероятности исходов эксперимента $\Theta$ вычисляются так:
+$$
+\mathsf P(\theta_j| \omega_i) = \frac{\mathsf P(\omega_i \cap \theta_j)}{\mathsf P (\omega_i)} = \frac{\mathsf P_{ij}}{\mathsf P (\omega_i)}, \ i \in \{1, 2, ..., m\}, j \in \{1, 2, ..., n\}.
+$$ 
+Понятно, что для экспериментов с новыми вероятностями можно тоже вычислить энтропию. Например,
+$$
+\mathsf H(\Omega| \theta_j) =  - \sum\limits_{i = 1}^m \mathsf P(\omega_i| \theta_j) \log \mathsf P(\omega_i| \theta_j) = - \sum\limits_{i = 1}^m \frac{\mathsf P_{ij}}{\sum\limits_{i = 1}^m \mathsf P_{ij}} \log \frac{\mathsf P_{ij}}{\sum\limits_{i = 1}^m \mathsf P_{ij}} 
+$$
+и 
+$$
+\mathsf H(\Theta| \omega_i) = - \sum\limits_{j = 1}^n \mathsf P(\theta_j| \omega_i) \log \mathsf P(\theta_j| \omega_i) = - \sum\limits_{j = 1}^n \frac{\mathsf P_{ij}}{\sum\limits_{j = 1}^n \mathsf P_{ij}} \log \frac{\mathsf P_{ij}}{\sum\limits_{j = 1}^n \mathsf P_{ij}}.
+$$ 
+Эти энтропии называются условными энтропиями. 
+ 
+\begin{definition}
+Условной энтропией эксперимента $\Omega$ при условии, что эксперимент $\Theta$ оказался в состоянии $\theta_j$ (то есть если произошел исход $\theta_j$), $j \in \{1, 2, \ldots, n\}$, называется величина
+$$
+\mathsf H(\Omega| \theta_j) =  - \sum\limits_{i = 1}^m \mathsf P(\omega_i| \theta_j) \log \mathsf P(\omega_i| \theta_j).
+$$ 
+\end{definition}
+\begin{remark}
+Ясно, что совершенно аналогичным образом (просто ввиду симметрии) определяется условная энтропия эксперимента $\Theta$ при условии, что эксперимент $\Omega$ оказался в состоянии $\omega_i$.
+\end{remark}
+
+Итак, давайте вернемся к примеру с монетой и посмотрим, как изменится энтропия. Напомним таблицу, которой описывается эксперимент $(\Omega, \Theta)$:
+\begin{center}
+\begin{tabular}{c|c|c}
+$(\Omega, \Theta)$ & Петя & Степа \\
+\hline Орел & $0.4$ & $0.275$ \\
+\hline Решка & $0.1$ & $0.225$ \\
+\end{tabular}.
+\end{center}
+Пусть известно, что монету бросал Петя, тогда
+$$
+\mathsf P(\text{Орел|Петя}) = \frac{\mathsf P(\text{Орел} \cap \text{Петя})}{\mathsf P(\text{Петя})} = \frac{0.4}{0.5} = 0.8,
+$$
+и
+$$
+\mathsf P(\text{Решка|Петя}) = \frac{\mathsf P(\text{Решка} \cap \text{Петя})}{\mathsf P(\text{Петя})} = \frac{0.1}{0.5} = 0.2.
+$$
+Запишем полученные результаты в виде таблицы:
+\begin{center}
+\begin{tabular}{c|c|c}
+	$(\Omega, \theta_1) = (\Omega|\text{Петя})$ & $(\text{Орел}|\text{Петя})$ & $(\text{Решка}|\text{Петя})$ \\
+	\hline $\mathsf P$ & $0.8$ & $0.2$
+\end{tabular}.
+\end{center}
+Условная энтропия эксперимента $\Omega$ при условии, что бросал монету Петя, составит:
+$$
+\mathsf H(\Omega | \theta_1) = \mathsf H(\Omega | \text{Петя}) =  - 0.8 \log_2 0.8 - \mathsf 0.2 \log_2 0.2 \approx 0.72.
+$$
+Проделав аналогичные расчеты в ситуации, когда бросает монету Степа, приходим к следующей таблице:
+\begin{center}
+\begin{tabular}{c|c|c}
+	$(\Omega, \theta_2) = (\Omega|\text{Степа})$ & $(\text{Орел}|\text{Степа})$ & $(\text{Решка}|\text{Степа})$ \\
+	\hline $\mathsf P$ & $0.55$ & $0.45$
+\end{tabular}.
+\end{center}
+Условная энтропия же в этом случае равна
+$$
+\mathsf H(\Omega | \theta_2) = \mathsf H(\Omega | \text{Степа}) =  - 0.55 \log_2 0.55 - \mathsf 0.45 \log_2 0.45 \approx 0.99.
+$$
+Итак, условная энтропия в случае, когда монетку бросает Петя меньше, чем в случае, когда ее бросает Степа. Полученные значения, опять-таки, подтверждают наши интуитивные ожидания -- достаточно сравнить таблицы 
+\begin{center}
+\begin{tabular}{c|c|c}
+	$(\Omega, \theta_1) = (\Omega|\text{Петя})$ & $(\text{Орел}|\text{Петя})$ & $(\text{Решка}|\text{Петя})$ \\
+	\hline $\mathsf P$ & $0.8$ & $0.2$
+\end{tabular},
+\end{center}
+\begin{center}
+\begin{tabular}{c|c|c}
+	$(\Omega, \theta_2) = (\Omega|\text{Степа})$ & $(\text{Орел}|\text{Степа})$ & $(\text{Решка}|\text{Степа})$ \\
+	\hline $\mathsf P$ & $0.55$ & $0.45$
+\end{tabular}.
+\end{center}
+Эксперимент в случае, когда монетку бросает Петя, имеет много меньшую неопределенность (вероятности исходов сильно отличаются), а значит факт того, что монету бросает Петя, дает нам несколько больше информации.
+ 
+
+Остался последний рывок. По большому счету, так как каждый исход эксперимента $\Omega$ и $\Theta$ происходит с какой-то вероятностью, то и условная энтропия принимает свои значения с некоторой вероятностью. Иными словами, значение $\mathsf H(\Omega| \theta_1)$ принимается с вероятностью $\mathsf P(\theta_1)$, значение $\mathsf H(\Omega| \theta_2)$ принимается с вероятностью $\mathsf P(\theta_2)$, и так далее. Так как $\Theta$ -- эксперимент, то сумма вероятностей элементарных исходов равна единице, а значит условная энтропия $\mathsf H(\Omega| \theta_j)$ является случайной величиной с рядом распределения
+\begin{center}
+\begin{tabular}{c|c|c|c}
+$\mathsf H(\Omega|\theta_j)$ & $\mathsf H(\Omega| \theta_1)$ & \ldots & $\mathsf H(\Omega| \theta_n)$ \\
+\hline $\mathsf P$ & $\mathsf P(\theta_1)$ & \ldots & $\mathsf P(\theta_n)$
+\end{tabular}.
+\end{center}
+ 
+\begin{definition}
+Случайная величина $\mathsf H(\Omega|\theta_j)$, заданная выше, называется условной энтропией эксперимента $\Omega$ при условии, что произошел эксперимент $\Theta$.	
+\end{definition}
+ 
+Оказывается, всю систему хорошо характеризует так называемая полная условная энтропия.
+ 
+\begin{definition}
+Полной условной энтропией эксперимента $\Omega$ при условии, что произошел эксперимент $\Theta$, называется величина
+$$
+\mathsf H(\Omega | \Theta) = \mathsf E \left(\mathsf H(\Omega| \theta_j) \right) = \sum\limits_{j = 1}^n \mathsf P(\theta_j) \mathsf H(\Omega| \theta_j).
+$$	
+\end{definition}
+Снова вернемся к примеру с монетой, описанному нами ранее. Вычисленные значения условной энтропии события $(\Omega, \theta)$ с соответствующими вероятностями запишем в виде ряда распределения
+\begin{center}
+\begin{tabular}{c|c|c}
+$\mathsf H(\Omega| \theta_j)$ & $\mathsf H(\Omega | \text{Петя})$ & $\mathsf H(\Omega | \text{Степа})$ \\
+\hline $\mathsf P$ & $\mathsf P(\text{Петя})$ & $\mathsf P(\text{Степа})$
+\end{tabular}.
+\end{center}
+В итоге приходим к следующей таблице:
+\begin{center}
+\begin{tabular}{c|c|c}
+$\mathsf H(\Omega| \theta_j)$ & $0.72$ & $0.99$ \\
+\hline $\mathsf P$ & $0.5$ & $0.5$
+\end{tabular}.
+\end{center}
+В результате, полная условная энтропия составит
+$$
+\mathsf H(\Omega | \Theta) = 0.72 \cdot 0.5 + 0.99 \cdot 0.5 = 0.855.
+$$
+Давайте теперь посмотрим, что произошло с энтропией эксперимента $\Omega$. В первоначальной, самой общей ситуации, так как эксперимент $\Omega$ описывается таблицей вида
+\begin{center}
+\begin{tabular}{c|c|c}
+$\Omega$ & Орел & Решка \\
+\hline $\mathsf P $ & $0.675$ & $0.325$ \\
+\end{tabular},
+\end{center}
+то его энтропия равнялась $\mathsf H(\Omega) = 0.910$. В то же время, знание того, что происходит с экспериментом $\Theta$ уменьшило энтропию, так как полная условная энтропия стала равна $\mathsf H(\Omega | \Theta) = 0.855$.
+ 
+
+
+\subsection{Пример на вычисление условной энтропии}
+Давайте посмотрим, что же получится в уже озвученном ранее примере. Напомним, что друзьям задавался вопрос: <<пойдешь играть в футбол или нет?>>. При этом фиксировался не только ответ конкретного человека, но и погода на момент опроса. Результаты представлены в следующей таблице:  
+\begin{center}
+\begin{tabular}{c|c|c}
+Погода $\backslash$ Играть в футбол (Ответ) & Да & Нет \\ \hline 
+Солнечно & 6 & 0 \\ \hline 
+Пасмурно & 2 & 2 \\ \hline 
+Дождь & 1 & 3 \\ 
+\end{tabular}
+\end{center}
+Давайте найдем полную условную энтропию такой системы, а именно $\mathsf H \left (\text{Ответ|Погода} \right )$, но для начала, по заполненной таблице составим таблицу вероятностей эксперимента $(\text{Погода, Ответ})$, используя, как обычно, частоту
+\begin{center}
+\begin{tabular}{c|c|c}
+(Погода, Ответ) & Да & Нет \\ \hline 
+Солнечно & $\frac{6}{14}$ & 0 \\ \hline 
+Пасмурно & $\frac{2}{14}$ & $\frac{2}{14}$ \\ \hline 
+Дождь & $\frac{1}{14}$ & $\frac{3}{14}$ \\ 
+\end{tabular}
+\end{center}
+Каждое значение в представленной таблице получено, как отношение количества появлений конкретного исхода, к общему числу исходов. Например, вероятность события, что <<друг пойдет играть в футбол, а одновременно идет дождь>> составит: 
+$$
+\mathsf{P}(\text{Ответ = Да} \cap \text{Погода = Дождь}) = \frac{1}{14}.
+$$
+То есть мы просто посмотрели, сколько друзей согласилось играть в футбол в дождь, и разделили на общее число исходов. 
+
+Перейдем к вычисления условной энтропии, а для этого зафиксируем некоторое состояние события погода. Пусть, например, идет дождь. Легко найти вероятность того, что идет дождь. Она равна
+$$
+\mathsf P(\text{Погода = Дождь}) = \frac{4}{14},
+$$
+так как дождь шел в $4$ случаях из $14$. Можно рассуждать и с помощью разработанной нами теории:
+$$
+\mathsf P(\text{Погода = Дождь}) = \mathsf P(\text{Погода = Дождь}|\text{Ответ = Да}) + 
+$$
+$$
++ \mathsf P(\text{Погода = Дождь}|\text{Ответ = Нет}) = \frac{1}{14} + \frac{3}{14} = \frac{4}{14}.
+$$
+Теперь можно вычислить условную вероятность события, что человек согласится играть в футбол при условии, что идет дождь. Эта вероятность равна 
+$$
+\mathsf{P}(\text{Ответ = Да} | \text{Погода = Дождь}) = 
+$$
+$$
+= \frac{\mathsf{P}(\text{Ответ = Да} \cap \text{Погода = Дождь})}{\mathsf P(\text{Погода = Дождь})} = \frac{\frac{1}{14}}{\frac{4}{14}} = \frac{1}{4} = 0.25,
+$$
+а так как исхода всего два, то
+$$
+\mathsf{P}(\text{Ответ = Нет} | \text{Погода = Дождь}) = 
+$$
+$$
+1 - \mathsf{P}(\text{Ответ = Да} | \text{Погода = Дождь}) = 0.75.
+$$
+  На основании полученных условных вероятностей, мы теперь можем найти условную энтропию эксперимента <<Ответ>> при условии, что эксперимент <<Погода>> находится в состоянии <<Дождь>>, а именно  
+$$
+\mathsf{H}(\text{Ответ|Погода = Дождь}) = -0.25 \log _{2} 0.25 - 0.75 \log _{2} 0.75 \approx 0.81.
+$$
+  Действуя аналогичным образом, найдем условные энтропии эксперимента <<Ответ>> в случаях, когда эксперимент <<Погода>> оказывается в состояниях <<Солнечно>> и <<Пасмурно>>:  
+$$
+\mathsf{H}(\text{Ответ|Погода = Солнечно}) = - 1 \log _{2}  1 - 0 \log _{2} 0 = 0,
+$$
+ 
+$$
+\mathsf{H}(\text{Ответ|Погода = Пасмурно}) = -0.5 \log _{2} 0.5 - 0.5 \log _{2} 0.5 = 1.
+$$
+Итак, мы нашли условные энтропии, а значит можем составить следующий ряд распределения для условной энтропии
+\begin{center}
+\begin{tabular}{c|c|c|c}
+$\mathsf H(\text{Ответ|Погода})$ & $0$ & $0.81$ & $1$ \\
+\hline $\mathsf P$ & $\frac{6}{14}$ & $\frac{4}{14}$ & $\frac{4}{14}$
+\end{tabular}.
+\end{center}
+Математическое ожидание полученной случайной величины характеризует полную условную энтропию эксперимента <<Ответ>> относительно эксперимента <<Погода>>. Согласно определению, получаем
+$$
+\mathsf E \left ( \mathsf H(\text{Ответ|Погода})\right ) = 0 \cdot \frac{6}{14} + 0.81 \cdot \frac{4}{14} + 1 \cdot \frac{4}{14} \approx 0.517,
+$$
+что говорит нам о <<средней>> неопределенности системы. Этот результат, в общем-то, понятен и интуитивно, если взглянуть на исходную таблицу
+\begin{center}
+\begin{tabular}{c|c|c}
+Погода $\backslash$ Играть в футбол (Ответ) & Да & Нет \\ \hline 
+Солнечно & 6 & 0 \\ \hline 
+Пасмурно & 2 & 2 \\ \hline 
+Дождь & 1 & 3 \\ 
+\end{tabular}.
+\end{center}
+Смотрите, если солнечно, никто не отказывается поиграть в футбол, а если дождливо, большая часть друзей останется дома. В пасмурную же погоду ответ друзей разделился поровну. 
+
+\subsection{Энтропия и прирост информации}
+Итак, что же мы узнали? Мы узнали, что энтропия показывает степень   неопределенности состояния некоторого эксперимента или системы. Чем больше мы знаем о системе, тем ее состояние становится менее неопределенным. Именно по этой причине удобно измерять изменение наших знаний о системе, отслеживая изменение энтропии.
+
+За счет чего возможно уменьшить энтропию системы или, что то же самое, получить прирост информации? Конечно, за счет дополнительных знаний о системе. Достаточно, чтобы произошло некое событие, предшествующее проведению эксперимента, событие, которое в некотором смысле доопределяет эксперимент. 
+
+На самом деле мы уже проделали все необходимые нам вычисления и выкладки, только не записали итоговое выражение. Давайте вспомним, изначально мы рассмотрели эксперимент, заданный таблицей
+\begin{center}
+\begin{tabular}{c|c}
+Да & Нет \\
+\hline 9 & 5
+\end{tabular}
+\end{center}
+  и, по сути, ничего не знали о системе, кроме ответов на вопрос. В таком эксперименте мы получили энтропию, равную  
+$$
+\mathsf{H} (\text{Ответ}) \approx 0.94.
+$$ 
+Потом же, исходя из второго события -- погоды, мы получили новые сведения, и полная условная энтропия эксперимента <<Ответ>> относительно эксперимента <<Погода>> стала равна
+$$
+\mathsf H \left (\text{Ответ|Погода} \right ) \approx 0.52.
+$$
+ Какой же прирост информации мы получили? Думаем вы догадались, что прирост логично определить следующим образом: 
+$$
+ \mathsf{H} (\text{Ответ}) - \mathsf H \left (\text{Ответ|Погода} \right ) = 0.42.
+$$
+Резюмируя, введем определение.
+\begin{definition}
+Приростом информации (information gain) называется величина
+$$
+\mathsf{IG} (\Omega | \Theta) = \mathsf{H}(\Omega) - \mathsf{H}(\Omega | \Theta). 
+$$
+\end{definition}
+Отметим, что прирост информации всегда неотрицателен. Это следует и из здравого смысла, и из того, что, как легко проверить,
+$$
+\mathsf H(\Omega) \geq \mathsf H(\Omega|\Theta)
+$$
+при любом эксперименте $\Theta$.
+ 
+
+\subsection{Вычисление прироста информации на конкретном примере}
+  Рассмотрим еще один пример, когда экспериментов (или событий) не два, а больше, и найдем прирост информации в зависимости от различных событий. Итак, представьте себе выставку кошек, которых оценивают по ряду критериев, и в результате оценивания, кошкам, которые проходят по критериям, дают медаль с надписью <<Чемпион>>. Перед вами таблица, содержащая информацию о породе кошек, цвете шерсти и росте в холке, которые влияют на привлекательность. 
+ 
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Порода} & \textbf{Шерсть} & \textbf{Рост} & \textbf{Привлекательность} \\ \hline
+Британец & Белый & Высокий & Нет \\ \hline
+Британец & Серый & Высокий & Да \\ \hline
+Британец & Белый & Низкий & Да \\ \hline
+Мейн-кун & Белый & Высокий & Нет \\ \hline
+Мейн-кун & Коричневый & Высокий & Да \\ \hline
+Мейн-кун & Коричневый & Низкий & Нет \\ \hline
+Рэгдолл & Серый & Высокий & Да \\ \hline
+Мейн-кун & Серый & Низкий & Да \\ \hline
+\end{tabular}
+\end{center}
+Интересно, какой из критериев является самым информативным. На что больше всего обращали внимания судьи?
+
+Представьте для начала, что вы, как посетитель выставки, видите лишь результаты колонки привлекательность, в которой говорится, какая кошка привлекательна, а какая -- нет. Рассчитаем энтропию $\mathsf{H}$ эксперимента (события) $\Omega$ <<Привлекательность>>, а для этого перенесем данные в привычную таблицу: 
+\begin{center}
+\begin{tabular}{c|c}
+Да & Нет \\
+\hline 5 & 3
+\end{tabular}.
+\end{center}
+  Составим таблицу эксперимента $\Omega$, она имеет следующий вид:
+\begin{center}
+\begin{tabular}{c|c|c}
+$\Omega$ & $\text{Да}$ & $\text{Нет}$ \\
+\hline $\mathsf P$ & $\frac{5}{8}$ & $\frac{3}{8}$
+\end{tabular}.
+\end{center}
+Энтропия этого эксперимента легко вычисляется и равна
+$$
+\mathsf{H}(\Omega)= -\frac{5}{8} \log _{2} \frac{5}{8}-\frac{3}{8} \log _{2} \frac{3}{8} \approx 0.954.
+$$
+Так как максимальная энтропия рассмотренного эксперимента может быть равна $\log_2 2 = 1$, то вывод очевиден: сплошная неопределенность. Оказывается, что рассмотрение только финальных оценок судей -- дело совершенно неинформативное.
+
+Пусть теперь вы видите еще и породу кошек (эксперимент $\Theta$), тогда таблица имеет следующий вид
+\begin{center}
+\begin{tabular}{c|c|c}
+Порода $\backslash$ Привлекательность & Да & Нет \\ \hline 
+Британец & 2 & 1 \\ \hline 
+Мейн-кун & 2 & 2 \\ \hline 
+Рэгдолл & 1 & 0 \\ 
+\end{tabular}
+\end{center}
+Попробуем понять, насколько для нас информативен признак <<Порода>>, а для этого вычислим полную условную энтропию и прирост информации. Сначала рассчитаем условные вероятности, они равны:
+$$
+\mathsf{P}(\text{Привлекательность = Да} | \text{Порода = Британец}) = \frac{2}{3}, 
+$$
+$$
+\mathsf{P}(\text{Привлекательность = Нет} | \text{Порода = Британец}) = \frac{1}{3},
+$$
+$$
+\mathsf{P}(\text{Привлекательность = Да} | \text{Порода = Мейн-кун}) = \frac{1}{2},
+$$
+$$
+\mathsf{P}(\text{Привлекательность = Нет} | \text{Порода = Мейн-кун}) = \frac{1}{2},
+$$
+$$
+\mathsf{P}(\text{Привлекательность = Да} | \text{Порода = Рэгдолл}) = 1
+$$
+$$
+\mathsf{P}(\text{Привлекательность = Нет} | \text{Порода = Рэгдолл}) = 0.
+$$
+Теперь вычислим условные энтропии. 
+$$
+\mathsf{H}(\text{Привлекательность|Порода = Британец})=-\frac{2}{3} \log _{2} \frac{2}{3}-\frac{1}{3} \log _{2} \frac{1}{3} \approx 0.918,
+$$
+$$
+\mathsf{H}(\text{Привлекательность|Порода = Мейн-кун})=-\frac{1}{2} \log _{2} \frac{1}{2}-\frac{1}{2} \log _{2} \frac{1}{2}=1,
+$$
+$$
+\mathsf{H}(\text{Привлекательность|Порода = Рэгдолл})=-\frac{1}{1} \log _{2} \frac{1}{1}=0.
+$$
+Тогда полная условная энтропия равна
+$$
+\mathsf{H}(\text{Привлекательность|Порода})=\frac{3}{8} \cdot 0.918 + \frac{4}{8} \cdot 1 + \frac{1}{8} \cdot 0 = 0.844.
+$$
+Таким образом, зная породу, мы получаем прирост информации, равный 
+$$
+\mathsf{IG}(\text{Привлекательность|Порода}) = 0.954 - 0.844 = 0.110.
+$$
+Много это или мало -- познается в сравнении. Предлагаем вам посчитать самостоятельно значения прироста информации, если вместо породы будут данные о шерсти или росте в холке кошек. 
+Результаты должны получиться следующие: 
+$$
+\mathsf{IG}(\text{Привлекательность|Шерсть}) \approx 0.360,
+$$
+$$
+\mathsf{IG}(\text{Привлекательность|Рост}) \approx 0.003.
+$$
+
+Полученные значения прироста информации показывают нам, что критерий <<Шерсть>> является самым информативным. Иначе говоря, результаты строгого жюри, выдавшего кошкам медали, лучше всего соотносятся с тем, какого цвета у кошек шерсть. Приведенный пример, конечно, весьма игрушечный, но надеемся, что идея ясна.
+
+Кроме того, надеемся ясна и идея того, зачем мы так подробно разобрали понятие энтропии и прироста информации. Перейдем теперь к нашей цели -- построению деревьев принятия решений.  
