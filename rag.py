@@ -31,6 +31,7 @@ class LatexRAGSystem:
 
         latex_context = "\n\n".join([item["content"] for item in self.query_latex(query)])
 
+
         messages = [
             {   "role":"system",
                 "content": f"{systemPrompt} LaTeX контекст: {latex_context} Отвечай сторого в формате LaTeX."

@@ -10,11 +10,11 @@ class MyEmbeddingFunction(Embeddings):
     def embed_documents(texts: List[str]) -> List[List[float]]:
         # embed the documents somehow
         #embeddingsModel = OllamaEmbeddings(model="evilfreelancer/enbeddrus")
-        embeddingsModel = lms.embedding_model("mxbai-embed-large-v1")
+        embeddingsModel = lms.embedding_model("nomic-embed-text-v1.5")
         embeddings = embeddingsModel.embed(texts)
         return embeddings
     def embed_query(text: str) -> list[float]:
         #embeddingsModel = OllamaEmbeddings(model="evilfreelancer/enbeddrus")
-        embeddingsModel = lms.embedding_model("mxbai-embed-large-v1")
+        embeddingsModel = lms.embedding_model("nomic-embed-text-v1.5")
         embeddings = embeddingsModel.embed(text)
         return embeddings

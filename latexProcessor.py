@@ -1,5 +1,7 @@
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain.text_splitter import Language
 from typing import List, Dict, Any, Optional
 import os
 import re
@@ -11,6 +13,10 @@ class LatexProcessor:
         self.collection = Chroma(collection_name="structured_latex_rag",
                                  embedding_function=MyEmbeddingFunction,
                                  persist_directory=pathToDB)
+        self.splitter = RecursiveCharacterTextSplitter(
+            chunk_size=500,  # Желаемое количество токенов
+            chunk_overlap=50  # Перекрытие между чанками для сохранения контекста
+        ).from_language(Language.LATEX)
 
     def extract_latex_structures(self, content: str) -> Dict[str, Any]:
         """Извлекает различные структуры из LaTeX документа"""
@@ -234,5 +240,5 @@ class LatexProcessor:
             documents.append(Document(page_content=theorem["content"],
                                       metadata=metaData,
                                       id=iD))  # LaTeX с разметкой
-
-        self.collection.add_documents(documents=documents)
+        documents_splited = self.splitter.split_documents(documents)
+        self.collection.add_documents(documents=documents_splited)

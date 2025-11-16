@@ -19,7 +19,14 @@ class LatexLLM:
         self.ollama = None
         self.chain =  None
 
-    def stream(self, modelName: str, lTitle:str, prompt:str, userQuery: str, chatHistory: List[Dict]):
+    def addHistoryToChain(self, history):
+        for d in history:
+            if d["role"] == "user":
+                self.chain.add_user_message(d["content"])
+            else:
+                self.chain.add_assistant_response(d["content"])
+
+    def stream(self, modelName: str, lTitle:str, prompt:str, userQuery: str, chatHistory: List[Dict], histLim=2):
         if lTitle in self.dbPaths.keys():
             self.rag = LatexRAGSystem(LatexProcessor(self.dbPaths[lTitle]).collection)
             #self.ollama = ChatOllama(model=modelName, validate_model_on_init=True, num_predict=500, reasoning=False)
@@ -33,14 +40,13 @@ class LatexLLM:
             promptAndQuery = self.rag.generatePromptWithLatexContext(prompt, userQuery)
             self.chain = lms.Chat(promptAndQuery[0]["content"])
             h = self.rag.convertHistory(chatHistory)
-            for d in h:
-                if d["role"] == "user":
-                    self.chain.add_user_message(d["content"])
-                else:
-                    self.chain.add_assistant_response(d["content"])
+            if len(h) > 2*histLim:
+                self.addHistoryToChain(h[-2*histLim:])
+            else:
+                self.addHistoryToChain(h)
             self.chain.add_user_message(promptAndQuery[1]["content"])
             outputStream = self.ollama.respond_stream(self.chain)
-
+            self.chain = None
             reason = True
             for chunk in outputStream:
                 if chunk.reasoning_type == "none":
