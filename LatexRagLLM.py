@@ -6,6 +6,7 @@ import lmstudio as lms
 from rag import LatexRAGSystem, LatexProcessor
 import time
 import datasetsPaths
+from lectures import LECTURES
 
 
 class LatexLLM:
@@ -14,6 +15,11 @@ class LatexLLM:
             "Энтропия": datasetsPaths.ENTROPY_CHROMA_PATH,
             "Ансамбли моделей": datasetsPaths.ENSEMBLES_CHROMA_PATH,
             "Обучение с подкреплением": datasetsPaths.RL_CHROMA_PATH
+        }
+        self.dsPaths = {
+            "Энтропия": datasetsPaths.ENTROPY_DS_PATH,
+            "Ансамбли моделей": datasetsPaths.ENSEMBLES_DS_PATH,
+            "Обучение с подкреплением": datasetsPaths.RL_DS_PATH
         }
         self.rag = None
         self.ollama = None
@@ -26,8 +32,8 @@ class LatexLLM:
             else:
                 self.chain.add_assistant_response(d["content"])
 
-    def stream(self, modelName: str, lTitle:str, prompt:str, userQuery: str, chatHistory: List[Dict], histLim=2):
-        if lTitle in self.dbPaths.keys():
+    def stream(self, modelName: str, lTitle:str, lTopic:str, prompt:str, userQuery: str, chatHistory: List[Dict], histLim=2):
+        if ((lTitle in self.dbPaths.keys()) and (lTopic in LECTURES[lTitle])):
             self.rag = LatexRAGSystem(LatexProcessor(self.dbPaths[lTitle]).collection)
             #self.ollama = ChatOllama(model=modelName, validate_model_on_init=True, num_predict=500, reasoning=False)
             # self.chain = ConversationalRetrievalChain.from_llm(
@@ -36,8 +42,11 @@ class LatexLLM:
             #     return_source_documents=False,
             #     verbose=False
             # )
+            lPath = f"{self.dsPaths[lTitle]}{lTopic}.tex"
+            with open(lPath, 'r', encoding="utf8") as file:
+                fullContent = file.read()
             self.ollama = lms.llm(modelName)
-            promptAndQuery = self.rag.generatePromptWithLatexContext(prompt, userQuery)
+            promptAndQuery = self.rag.generatePromptWithLatexContext(prompt, userQuery, fullContent)
             self.chain = lms.Chat(promptAndQuery[0]["content"])
             h = self.rag.convertHistory(chatHistory)
             if len(h) > 2*histLim:

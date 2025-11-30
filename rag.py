@@ -26,15 +26,15 @@ class LatexRAGSystem:
 
         return formatted_results
 
-    def generatePromptWithLatexContext(self, systemPrompt: str, query: str) -> List[dict]:
+    def generatePromptWithLatexContext(self, systemPrompt: str, query: str, fullContent:str) -> List[dict]:
         """Генерирует финальный промпт для LLM с LATEX-контекстом"""
 
-        latex_context = "\n\n".join([item["content"] for item in self.query_latex(query)])
+        key_moments = "\n\n".join([item["content"] for item in self.query_latex(query)])
 
 
         messages = [
             {   "role":"system",
-                "content": f"{systemPrompt} LaTeX контекст: {latex_context} Отвечай сторого в формате LaTeX."
+                "content": f"{systemPrompt}, Полный текст лекции: {fullContent},  Ключевые понятия, которые необходимо отразить в ответе: {key_moments}, Отвечай сторого в формате LaTeX."
             },
             {'role':"user", "content": query}
         ]

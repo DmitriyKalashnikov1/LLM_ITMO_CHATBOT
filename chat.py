@@ -29,8 +29,8 @@ if "rs" not in st.session_state:
     st.session_state.rs = ResultsSaver()
 if "models" not in st.session_state:
     st.session_state.models = ["gpt-oss-20b",
-                               "meta-llama-3-8b-instruct",
-                               "deepseek-r1-0528-qwen3-8b"]
+                               "qwen/qwen3-vl-8b",
+                               "qwen/qwen3-vl-4b"]
 
 LLM = get_LLM()
 
@@ -158,6 +158,7 @@ if not lectureTitle == None:
                     response = right.write_stream(LLM.stream(
                         modelName=model,
                         lTitle=lectureTitle,
+                        lTopic=lectureTopic,
                         prompt=st.session_state.prompt,
                         userQuery=query,
                         chatHistory=st.session_state.messages
