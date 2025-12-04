@@ -37,4 +37,4 @@ source .venv/bin/activate
 
 #### Режим тестирования
 
-[testingMode.mp4](https://disk.yandex.ru/i/7fIQe9SRrf9zuw)
+[testingMode.mp4](https://disk.yandex.ru/client/disk/LLM_AI_ITMO?idApp=client&dialog=slider&idDialog=%2Fdisk%2FLLM_AI_ITMO%2FtestingMode.mp4)
