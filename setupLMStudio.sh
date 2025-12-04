@@ -2,7 +2,7 @@
 if [ -n "$1" ]
 then
 
-#pip install -r ./req.txt
+pip install -r ./req.txt
 
 # start LmStudio first time
 sudo chmod 777 $1
@@ -26,8 +26,8 @@ rm ~/.lm-studio/.internal/http-server-config.json
 # Ensure sure executable has proper permissions
 sudo chmod +x /opt/lmstudio/lm-studio
 # add lms to PATH
-#sudo echo 'export PATH="$PATH:$HOME/.lmstudio/bin"' >> ./.bashrc
-#source ./.bashrc
+sudo echo 'export PATH="$PATH:$HOME/.lmstudio/bin"' >> ./.bashrc
+source ./.bashrc
 
 else
 echo "LM studio appimage path not set. "
