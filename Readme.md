@@ -33,8 +33,8 @@ source .venv/bin/activate
 #### Режим изучения
 
 
-[studyingMode.mp4](docs/studyingMode.mp4)
+[studyingMode.mp4](https://disk.yandex.ru/client/disk/LLM_AI_ITMO?idApp=client&dialog=slider&idDialog=%2Fdisk%2FLLM_AI_ITMO%2FstudyingMode.mp4)
 
 #### Режим тестирования
 
-[testingMode.mp4](docs/testingMode.mp4)
+[testingMode.mp4](https://disk.yandex.ru/i/7fIQe9SRrf9zuw)
