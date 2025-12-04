@@ -32,11 +32,9 @@ source .venv/bin/activate
 
 #### Режим изучения
 
-<figure class="video_container">
-  <iframe src="./docs/studyingMode.mp4" frameborder="0" allowfullscreen="true"> 
-</iframe>
-</figure>
 
+
+![link](https://disk.yandex.ru/client/disk/LLM_AI_ITMO?idApp=client&dialog=slider&idDialog=%2Fdisk%2FLLM_AI_ITMO%2FstudyingMode.mp4)
 
 #### Режим тестирования
 
