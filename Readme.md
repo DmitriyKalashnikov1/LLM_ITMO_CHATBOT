@@ -32,7 +32,11 @@ source .venv/bin/activate
 
 #### Режим изучения
 
-![](./docs/studyingMode.mp4)
+<figure class="video_container">
+  <iframe src="./docs/studyingMode.mp4" frameborder="0" allowfullscreen="true"> 
+</iframe>
+</figure>
+
 
 #### Режим тестирования
 
